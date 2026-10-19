@@ -1,0 +1,15 @@
+commit 4b11b52d7c082a3d83f8186a83f7c326160a14a3
+Author: Claude (<benutzer>) 
+Date:   Mon Oct 19 19:10:39 2026 +0200
+
+    feat(T-003): Profil-PDF und pruefbares Auslieferungspaket
+    
+    Profil-PDF (A4, 2 Seiten) aus de.json per Chrome-Druck, Metadaten neu
+    geschrieben (Titel/Autor), eingecheckt mit quelle.json; Build prueft PDF
+    (Positivlisten fuer Aktionen, Annotationen, Schriften; Leck-Suche) und
+    Aktualitaet. npm run paket erzeugt deterministisches ustar + .sha256 in
+    paket/, npm run paket:pruefen prueft wie der VPS-Admin. Evidenz ohne
+    lokale Benutzerpfade.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_011FPyMW1Lnj71cYrRKar6Zc
