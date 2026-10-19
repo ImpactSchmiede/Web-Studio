@@ -8,10 +8,14 @@
 //  4. Kontakt-Notiz: ein vom PO (Gate 17:30) vorgegebener Ersatztext (TEXT_ERSETZUNGEN, Mockup-Text -> Seitentext),
 //  5. Foto: <picture> und <source> entfallen, am <img> die Attribute src, loading, decoding (nur an img),
 //  6. Footer: Ziele impressum.html und datenschutz.html statt href="#" (nur im Footer),
-//  7. Platzhalter-Links: href="#termin" und href="#pdf" statt href="#" (nur an a.btn.ghost),
-//  8. Notizen <p id="termin"> und <p id="pdf"> (neue Texte laut PO): der Absatz selbst, sein Text und ein <span class="ph">
+//  7. Ziele statt href="#": "#termin" (Platzhalter) und der PDF-Dateiname aus profilPdf.datei der Konfiguration (nur an a.btn.ghost),
+//  8. Notiz <p id="termin"> (neuer Text laut PO): der Absatz selbst, sein Text und ein <span class="ph">
 //     bzw. <span class="ph ph-hell"> entfallen im Vergleich; jedes andere Element darin wird weiter verglichen (nur als <p>).
 // Die Kopfzeilen (title, description, lang) werden verglichen, weitere <head>-Elemente (Favicon, Stil) nicht.
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const STYLE_KLASSEN = new Map([
   ['margin-top:1rem', 'mt-1'],
@@ -42,8 +46,14 @@ export const GEAENDERT = [];
 
 const FEINSCHLIFF_MARKE = '/* Feinschliff T-002 */';
 const FOOTER_ZIELE = new Set(['impressum.html', 'datenschutz.html']);
-const NOTIZ_IDS = new Set(['termin', 'pdf']);
-const PLATZHALTER_ZIELE = new Set(['#termin', '#pdf']);
+const NOTIZ_IDS = new Set(['termin']);
+
+// T-003: der Knopf "Profil als PDF laden" zeigt auf die PDF. Der Dateiname kommt aus profilPdf.datei der Konfiguration
+// (Aufrufer: opt.pdfZiel; ohne Angabe die Konfiguration der Quelle), nicht aus einer Konstante.
+export function standardPdfZiel() {
+  const pfad = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'site.config.json');
+  return JSON.parse(fs.readFileSync(pfad, 'utf8')).profilPdf.datei;
+}
 
 const ENTITAETEN = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" };
 const entschluessle = (s) => s.replace(/&(?:amp|lt|gt|quot|#39);/g, (m) => ENTITAETEN[m]);
@@ -70,14 +80,14 @@ function kopfZeilen(html) {
   return [`KOPF lang=${lang}`, `KOPF title=${entschluessle(titel)}`, `KOPF description=${entschluessle(beschr)}`];
 }
 
-export function normalisiere(html) {
+export function normalisiere(html, { pdfZiel = standardPdfZiel() } = {}) {
   const aus = kopfZeilen(html);
   const body = /<body[^>]*>([\s\S]*)<\/body>/i.exec(html);
   if (!body) return [...aus, 'FEHLER kein <body>'];
   const text = body[1].replace(/<script\b[\s\S]*?<\/script>/gi, '');
   let adresseFolgt = false;
   let imFooter = false;
-  let imNotiz = false; // Ausnahme 8: Notiz-Absatz (id termin/pdf) bis </p>
+  let imNotiz = false; // Ausnahme 8: Notiz-Absatz (id termin) bis </p>
   for (const m of text.matchAll(/<!--[\s\S]*?-->|<\/?[a-zA-Z][^>]*>|[^<]+/g)) {
     const t = m[0];
     if (t.startsWith('<!--')) continue;
@@ -139,7 +149,7 @@ export function normalisiere(html) {
       attrs.delete('id');
     }
     const istBtnGhost = name === 'a' && klassen.includes('btn') && klassen.includes('ghost');
-    if (istBtnGhost && PLATZHALTER_ZIELE.has(attrs.get('href'))) attrs.set('href', '#'); // Ausnahme 7
+    if (istBtnGhost && (attrs.get('href') === '#termin' || attrs.get('href') === pdfZiel)) attrs.set('href', '#'); // Ausnahme 7
     if (imFooter && name === 'a' && FOOTER_ZIELE.has(attrs.get('href'))) attrs.set('href', '#'); // Ausnahme 6
     if (name === 'span' && attrs.get('id') === 'addr') adresseFolgt = true;
     if (klassen.length) attrs.set('class', [...new Set(klassen)].sort().join(' '));
@@ -180,21 +190,21 @@ function unterschied(a, b) {
 
 const mitErsetzungen = (tokens) => tokens.map((t) => TEXT_ERSETZUNGEN.get(t) ?? t);
 
-export function vergleicheSeite(mockupHtml, seiteHtml) {
-  const a = mitErsetzungen(normalisiere(mockupHtml));
-  const b = normalisiere(seiteHtml);
+export function vergleicheSeite(mockupHtml, seiteHtml, opt = {}) {
+  const a = mitErsetzungen(normalisiere(mockupHtml, opt));
+  const b = normalisiere(seiteHtml, opt);
   return { unterschiede: unterschied(a, b), tokens: a.length };
 }
 
 // Nur Texte: Textknoten, alt, aria-label, title (Attribut) sowie <title> und description. Streng, ohne Struktur.
-export function vergleicheTexte(mockupHtml, seiteHtml) {
+export function vergleicheTexte(mockupHtml, seiteHtml, opt = {}) {
   const texte = (tokens) => tokens.flatMap((t) => {
     if (!t.startsWith('<')) return [t];
     if (t.startsWith('</')) return [];
     return [...t.matchAll(/\s(?:alt|aria-label|title)="([^"]*)"/g)].map((m) => `[Attribut] ${m[1]}`);
   });
-  const a = texte(mitErsetzungen(normalisiere(mockupHtml)));
-  const b = texte(normalisiere(seiteHtml));
+  const a = texte(mitErsetzungen(normalisiere(mockupHtml, opt)));
+  const b = texte(normalisiere(seiteHtml, opt));
   return { unterschiede: unterschied(a, b), texte: a.length };
 }
 

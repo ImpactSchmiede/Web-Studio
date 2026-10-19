@@ -42,11 +42,11 @@ test('AK1: jeder gelbe Platzhalter des Mockups steht auch auf der Seite (ausser 
   }
 });
 
-test('AK1: Kontakt-Hinweis nach Vorgabe des PO (Gate 17:30), Terminlink-Notiz und PDF-Notiz als gelbe Platzhalter', () => {
+test('AK1: Kontakt-Hinweis nach Vorgabe des PO (Gate 17:30) und Terminlink-Notiz als gelbe Platzhalter; der PDF-Knopf zeigt auf die PDF (T-003)', () => {
   assert.match(index, /<span class="ph ph-hell">Platzhalter: Die Mailbox wird vor dem Livegang von außen getestet\.<\/span>/);
   assert.match(index, /<p class="note" id="termin"><span class="ph ph-hell">Der Terminlink folgt\.<\/span><\/p>/);
-  assert.match(index, /<span class="ph">Das Profil als PDF folgt\.<\/span>/);
-  assert.match(index, /<a class="btn ghost" href="#pdf">Profil als PDF laden<\/a>/);
+  assert.match(index, /<a class="btn ghost" href="profil-enrico-falk\.pdf">Profil als PDF laden<\/a>/);
+  assert.doesNotMatch(index, /Das Profil als PDF folgt/);
   assert.doesNotMatch(index, /vorläufig, ob eine eigene Seiten-Adresse/);
 });
 
@@ -66,9 +66,9 @@ test('Scope: keine Anschrift, USt-IdNr., Telefon oder Ziffernfolge >= 5 auf irge
 
 test('Platzhalterliste: aus de.json erzeugt, vollstaendig, mit Schluessel; Foto und Terminlink kommen aus der Konfiguration', () => {
   const l = platzhalterListe(inhalt, konfig);
-  assert.ok(l.length >= 11, `nur ${l.length}`);
+  assert.ok(l.length >= 10, `nur ${l.length}`);
   assert.ok(l.every((e) => e.stelle && e.text && ['gelb', 'konfig'].includes(e.art)));
-  assert.ok(l.some((e) => e.text === 'Das Profil als PDF folgt.'));
+  assert.ok(!l.some((e) => e.text === 'Das Profil als PDF folgt.'), 'PDF-Notiz entfaellt (T-003)');
   assert.ok(l.some((e) => e.text === 'Der Terminlink folgt.'));
   assert.ok(l.some((e) => /Mailbox/.test(e.text)));
   assert.ok(l.some((e) => e.art === 'konfig' && /foto/i.test(e.stelle)));
@@ -141,7 +141,7 @@ test('AK2: foto.png (Original mit Exif) liegt nie unter src/ oder dist/; src/bil
 });
 
 test('AK2: SVG-Datei, GIF und andere Endungen bleiben ausserhalb der Allowlist', () => {
-  assert.deepEqual([...konfig.erlaubteEndungen].sort(), ['.css', '.html', '.ico', '.jpg', '.js', '.png', '.txt', '.webp', '.woff2', '.xml']);
+  assert.deepEqual([...konfig.erlaubteEndungen].sort(), ['.css', '.html', '.ico', '.jpg', '.js', '.pdf', '.png', '.txt', '.webp', '.woff2', '.xml']);
 });
 
 // ---- AK 3: Favicon, 404, Platzhalterseiten
@@ -205,7 +205,7 @@ test('AK4: Adresse steht nur in site.config.json (und in keiner anderen Datei un
     return e.isDirectory() ? geh(p) : [p];
   });
   for (const f of [...geh(path.join(ROOT, 'src')), ...geh(path.join(ROOT, 'scripts'))]) {
-    if (/\.(woff2|png|jpg|webp|ico)$/.test(f) || f.endsWith('site.config.json')) continue;
+    if (/\.(woff2|png|jpg|webp|ico|pdf)$/.test(f) || f.endsWith('site.config.json')) continue; // das PDF enthaelt die Adresse (AK 1 T-003)
     const t = fs.readFileSync(f, 'utf8');
     for (const v of verboten) assert.doesNotMatch(t, v, `${f}: ${v}`);
   }
@@ -236,7 +236,7 @@ test('AK4: Termin-Knopf ohne URL verweist auf die gelbe Notiz #termin (id existi
   assert.equal(konfig.kontakt.terminUrl, '');
   assert.match(index, /<a class="btn ghost" href="#termin">Erstgespräch buchen<\/a>/);
   assert.equal(zaehle(index, /id="termin"/g), 1);
-  assert.equal(zaehle(index, /id="pdf"/g), 1);
+  assert.equal(zaehle(index, /id="pdf"/g), 0);
   assert.doesNotMatch(index, /href="#"[^>]*>Erstgespräch/);
 });
 

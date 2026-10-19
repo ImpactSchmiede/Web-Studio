@@ -32,4 +32,4 @@ Lighthouse lighthouse-zusatz-indexierbar-desktop: Leistung 100, Barrierefreiheit
 html-validate: 0 Meldung(en)
 
 Keine harten Befunde.
-Berichte: C:\Users\AI User\Projekte\Web-Studio\docs\batches\B-001\evidenz\T-002\pruefung
+Berichte: <repo>\docs\batches\B-001\evidenz\T-002\pruefung

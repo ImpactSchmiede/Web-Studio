@@ -1,0 +1,15 @@
+# npm run pruefen -- --ausgabe <Scratch> (Konsole, Auszug) und links.txt
+Lighthouse lighthouse-index-mobil: Leistung 99, Barrierefreiheit 100, Best Practices 100, SEO 66
+Lighthouse lighthouse-index-desktop: Leistung 100, Barrierefreiheit 100, Best Practices 100, SEO 66
+Lighthouse lighthouse-zusatz-indexierbar-mobil: Leistung 99, Barrierefreiheit 100, Best Practices 100, SEO 100
+Lighthouse lighthouse-zusatz-indexierbar-desktop: Leistung 100, Barrierefreiheit 100, Best Practices 100, SEO 100
+html-validate: 0 Meldung(en)
+BEFUND: Externer Link nicht erreichbar: https://impact-schmiede.de (Fehler: ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR)
+1 harte(r) Befund(e)
+exit 1
+
+Lokale Links, Anker und Lieferform: keine Befunde
+
+Externe Links (2), Fundstelle in Klammern:
+  -    https://impact-schmiede.de (404.html) Fehler: ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR
+  999  https://www.linkedin.com/in/enrico-falk-b8369517 (index.html) [LinkedIn blockt automatische Abrufe (999/403), von Hand pruefen]

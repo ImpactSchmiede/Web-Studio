@@ -3,14 +3,18 @@
 // kein Inline-CSS/-JS, keine Ereignis-Handler, keine externen Ladeziele, lokale Verweise existieren.
 // Linkpruefung ohne Abhaengigkeit: lokale <a href> (Datei vorhanden, #anker existiert als id in der Zieldatei), bloesses
 // href="#" nur am Namen im Kopf (a.name = Sprung nach oben), externe <a href> werden nur gesammelt (Ergebnis: externe), nicht geladen.
+// Jede .pdf wird mit pruefePdf geprueft (Metadaten, Schriften, Verweise, Aktionen, Seiten, Groesse); pdfErwartung {Title, Author} ist optional.
 // Sammelt alle Befunde (kein Abbruch beim ersten).
 import fs from 'node:fs';
 import path from 'node:path';
+import { pruefePdf } from './pdf.mjs';
 
 export const STANDARD = {
   maxBytes: 20 * 1024 * 1024,
   maxFiles: 500,
-  endungen: ['.html', '.css', '.js', '.woff2', '.txt', '.xml'],
+  // Endungsliste des PO VPS-Administration (Thread Web-Studio_freelancer-seite, 16:34)
+  endungen: ['.html', '.css', '.js', '.woff2', '.txt', '.xml', '.pdf', '.webp', '.jpg', '.png', '.ico'],
+  pdfMaxBytes: 1000000,
 };
 
 const PFLICHT = ['index.html', '404.html'];
@@ -95,6 +99,12 @@ export function checkDist(dir, opts = {}) {
   }
   if (dateien.length > o.maxFiles) fehler.push(`zu viele Dateien: ${dateien.length} (Limit ${o.maxFiles})`);
   if (summe > o.maxBytes) fehler.push(`Gesamtgroesse zu gross: ${summe} Byte (Limit ${o.maxBytes})`);
+
+  for (const d of dateien) {
+    if (path.extname(d.pfad).toLowerCase() !== '.pdf') continue;
+    const r = pruefePdf(fs.readFileSync(path.join(root, d.pfad)), { maxBytes: o.pdfMaxBytes, erwartung: o.pdfErwartung });
+    for (const f of r.fehler) fehler.push(`${d.pfad}: PDF: ${f}`);
+  }
 
   const verweise = []; // { von, ref }
   const anker = []; // { von, ref } (Linkziele mit #...)

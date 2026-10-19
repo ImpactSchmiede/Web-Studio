@@ -1,0 +1,27 @@
+
+> web-studio-freelancer-seite@0.1.0 build
+> node scripts/build.mjs
+
+dist gebaut: dist
+  1163  404.html
+  2035  bilder/apple-touch-icon.png
+ 23950  bilder/foto-vorlaeufig.jpg
+ 10278  bilder/foto-vorlaeufig.webp
+ 11608  css/site.css
+  1200  datenschutz.html
+   317  favicon.ico
+  4603  fonts/LICENSE-Atkinson-Hyperlegible.txt
+  4401  fonts/LICENSE-Bricolage-Grotesque.txt
+ 18292  fonts/atkinson-hyperlegible-latin-400-italic.woff2
+ 17208  fonts/atkinson-hyperlegible-latin-400-normal.woff2
+ 17524  fonts/atkinson-hyperlegible-latin-700-normal.woff2
+ 41344  fonts/bricolage-grotesque-latin-wght-normal.woff2
+  1196  impressum.html
+ 12498  index.html
+  1203  js/kontakt.js
+129507  profil-enrico-falk.pdf
+    26  robots.txt
+   155  sitemap.xml
+298508  Summe (19 Dateien)
+Profil-PDF aktuell (Stand 2026-10-19)
+Pruefung der Lieferform: gruen

@@ -1,5 +1,5 @@
 commit f06fc01d215c7434d6e9ad68087008dc64055e5d
-Author: Claude (AI User) <263194498+ImpactSchmiede@users.noreply.github.com>
+Author: Claude (<benutzer>) <263194498+ImpactSchmiede@users.noreply.github.com>
 Date:   Mon Oct 19 18:07:58 2026 +0200
 
     feat(T-002): Seite nach aktuellem Mockup, Foto, Favicon, Platzhalterseiten, Pruefwerkzeug

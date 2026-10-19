@@ -1,7 +1,7 @@
- Datentr„ger in Laufwerk C: ist Windows
+ Datentrï¿½ger in Laufwerk C: ist Windows
  Volumeseriennummer: DE81-BA15
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist
+ Verzeichnis von <repo>\dist
 
 19.10.2026  17:51    <DIR>          .
 19.10.2026  17:51    <DIR>          ..
@@ -18,7 +18,7 @@
 19.10.2026  17:51               155 sitemap.xml
                7 Datei(en),         16.619 Bytes
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist\bilder
+ Verzeichnis von <repo>\dist\bilder
 
 19.10.2026  17:51    <DIR>          .
 19.10.2026  17:51    <DIR>          ..
@@ -27,14 +27,14 @@
 19.10.2026  17:47            10.278 foto-vorlaeufig.webp
                3 Datei(en),         36.263 Bytes
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist\css
+ Verzeichnis von <repo>\dist\css
 
 19.10.2026  17:51    <DIR>          .
 19.10.2026  17:51    <DIR>          ..
 19.10.2026  17:45            11.613 site.css
                1 Datei(en),         11.613 Bytes
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist\fonts
+ Verzeichnis von <repo>\dist\fonts
 
 19.10.2026  17:51    <DIR>          .
 19.10.2026  17:51    <DIR>          ..
@@ -46,7 +46,7 @@
 19.10.2026  16:37             4.401 LICENSE-Bricolage-Grotesque.txt
                6 Datei(en),        103.372 Bytes
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist\js
+ Verzeichnis von <repo>\dist\js
 
 19.10.2026  17:51    <DIR>          .
 19.10.2026  17:51    <DIR>          ..

@@ -1,0 +1,51 @@
+QA T-003 PDF-Analyse (pypdf/pdfium/pdftotext, Kopie dist/profil-enrico-falk.pdf), 2026-10-19
+Seiten: 2
+Seite 1: 595.0 x 841.9 pt
+  XObject: []
+Seite 2: 595.0 x 841.9 pt
+  Annot /Link {'/Type': '/Action', '/S': '/URI', '/URI': 'mailto:kontakt@enricofalk.de'}
+  Annot /Link {'/Type': '/Action', '/S': '/URI', '/URI': 'https://enricofalk.de/'}
+  Annot /Link {'/Type': '/Action', '/S': '/URI', '/URI': 'https://www.linkedin.com/in/enrico-falk-b8369517'}
+  XObject: []
+Info: {'/Title': 'Enrico Falk – Profil', '/Author': 'Enrico Falk', '/CreationDate': 'D:20261019000000Z', '/ModDate': 'D:20261019000000Z'}
+Root keys: ['/Type', '/Pages', '/MarkInfo', '/StructTreeRoot', '/ViewerPreferences', '/Lang']
+Trailer keys: ['/Size', '/Root', '/Info']
+Font: ('/DAAAAA+AtkinsonHyperlegible-Regular', '/Type0', ('/FontFile2',))
+Font: ('/FAAAAA+AtkinsonHyperlegible-Bold', '/Type0', ('/FontFile2',))
+Font: ('/GAAAAA+AtkinsonHyperlegible-Italic', '/Type0', ('/FontFile2',))
+Font: ('None', '/Type3', ())
+b'<benutzer>': 0
+b'AIUSER': 0
+b'Users': 0
+b'C:\\': 0
+b'C:/': 0
+b'file:': 0
+b'Producer': 0
+b'Creator': 0
+b'Skia': 0
+b'Chrome': 0
+b'HeadlessChrome': 0
+b'/JS': 0
+b'JavaScript': 0
+b'/OpenAction': 0
+b'/AA': 1
+b'/Launch': 0
+b'/URI': 6
+b'/EmbeddedFile': 0
+b'Temp': 0
+b'scratch': 0
+b'localhost': 0
+b'127.0.0.1': 0
+b'http://': 0
+b'Enrico': 1
+b'Telefon': 0
+b'+49': 0
+b'USt': 0
+b'Stra': 0
+b'/Image': 6
+b'/DCTDecode': 0
+URI: b'mailto:kontakt@enricofalk.de'
+URI: b'https://enricofalk.de/'
+URI: b'https://www.linkedin.com/in/enrico-falk-b8369517'
+Hinweis: /AA-Treffer = Fontname AAAAAA+Bricolage, /Image = ProcSet-Eintraege, kein XObject/Bild
+Neu erzeugt in Arbeitsbaum-Kopie (npm run profil --stand 2026-10-19): bytegleich zu src/profil/profil-enrico-falk.pdf, quelle.json gleich

@@ -6,14 +6,14 @@ import { checkDist } from '../src/build/check.mjs';
 import { aendere, baue, kopie, schreibe, tmp } from './_hilfe.mjs';
 
 const { outDir: gut } = baue();
-const ENDUNGEN = ['.html', '.css', '.js', '.woff2', '.txt', '.xml', '.webp', '.jpg', '.png', '.ico'];
+const ENDUNGEN = ['.html', '.css', '.js', '.woff2', '.txt', '.xml', '.pdf', '.webp', '.jpg', '.png', '.ico'];
 
 const pruefe = (dir, opts = {}) => checkDist(dir, { endungen: ENDUNGEN, ...opts });
 
 test('checkDist ist gruen auf dem echten Build und liefert Dateiliste mit Groessen', () => {
   const r = pruefe(gut);
   assert.deepEqual(r.fehler, []);
-  assert.equal(r.dateien.length, 18);
+  assert.equal(r.dateien.length, 19);
   assert.ok(r.dateien.every((d) => d.pfad && d.bytes > 0));
   assert.equal(r.summe, r.dateien.reduce((s, d) => s + d.bytes, 0));
 });

@@ -6,9 +6,9 @@ d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc *atkinson-hyper
 140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0 *atkinson-hyperlegible-latin-700-normal.woff2
 a97804dc9fbe5fc972a08018c5eda4dab7ef2346f64c57e61419d05e6de4ea1c *bricolage-grotesque-latin-wght-normal.woff2
 ---
-e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18 */c/Users/AI User/Projekte/Web-Studio/dist/fonts/LICENSE-Atkinson-Hyperlegible.txt
-923f4ddf0fd39f9b7794ab0df7332f3d95dc43e8ad7ec2289d6d9e8491177f51 */c/Users/AI User/Projekte/Web-Studio/dist/fonts/LICENSE-Bricolage-Grotesque.txt
-bc8825fd435d4aa8e31449937826d583a7daaae15a83832c91b38375131ebf08 */c/Users/AI User/Projekte/Web-Studio/dist/fonts/atkinson-hyperlegible-latin-400-italic.woff2
-d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc */c/Users/AI User/Projekte/Web-Studio/dist/fonts/atkinson-hyperlegible-latin-400-normal.woff2
-140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0 */c/Users/AI User/Projekte/Web-Studio/dist/fonts/atkinson-hyperlegible-latin-700-normal.woff2
-a97804dc9fbe5fc972a08018c5eda4dab7ef2346f64c57e61419d05e6de4ea1c */c/Users/AI User/Projekte/Web-Studio/dist/fonts/bricolage-grotesque-latin-wght-normal.woff2
+e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18 *<repo>/dist/fonts/LICENSE-Atkinson-Hyperlegible.txt
+923f4ddf0fd39f9b7794ab0df7332f3d95dc43e8ad7ec2289d6d9e8491177f51 *<repo>/dist/fonts/LICENSE-Bricolage-Grotesque.txt
+bc8825fd435d4aa8e31449937826d583a7daaae15a83832c91b38375131ebf08 *<repo>/dist/fonts/atkinson-hyperlegible-latin-400-italic.woff2
+d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc *<repo>/dist/fonts/atkinson-hyperlegible-latin-400-normal.woff2
+140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0 *<repo>/dist/fonts/atkinson-hyperlegible-latin-700-normal.woff2
+a97804dc9fbe5fc972a08018c5eda4dab7ef2346f64c57e61419d05e6de4ea1c *<repo>/dist/fonts/bricolage-grotesque-latin-wght-normal.woff2

@@ -330,7 +330,7 @@ async function main() {
       `Versionen: ${['lighthouse', 'axe-core', 'html-validate', 'puppeteer-core'].map((n) => `${n} ${require(`${n}/package.json`).version}`).join(', ')}`,
     ];
     schreibe(opt.ausgabe, 'zusammenfassung.txt', `${[...kopf, '', ...log, '', hart ? `${hart} harte(r) Befund(e)` : 'Keine harten Befunde.'].join('\n')}\n`);
-    console.log([...kopf, '', ...log, '', hart ? `${hart} harte(r) Befund(e)` : 'Keine harten Befunde.', `Berichte: ${opt.ausgabe}`].join('\n'));
+    console.log([...kopf, '', ...log, '', hart ? `${hart} harte(r) Befund(e)` : 'Keine harten Befunde.', `Berichte: ${path.relative(ROOT, opt.ausgabe).startsWith('..') ? '<ausserhalb des Repos>' : path.relative(ROOT, opt.ausgabe).split(path.sep).join('/')}`].join('\n'));
     if (hart) process.exitCode = 1;
   } finally {
     for (const s of server) await s.close();

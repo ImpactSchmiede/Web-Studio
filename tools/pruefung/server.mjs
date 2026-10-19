@@ -16,6 +16,7 @@ const TYPEN = {
   '.js': 'text/javascript; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
   '.xml': 'application/xml; charset=utf-8',
+  '.pdf': 'application/pdf',
   '.woff2': 'font/woff2',
   '.webp': 'image/webp',
   '.jpg': 'image/jpeg',

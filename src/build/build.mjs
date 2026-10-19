@@ -4,11 +4,15 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { checkDist } from './check.mjs';
+import { profilAktuell } from './profil.mjs';
+import { pdfErwartung } from '../templates/profil.mjs';
 import { esc, pruefeUrl } from './text.mjs';
 import { seite } from '../templates/layout.mjs';
 import { startseite } from '../templates/index.mjs';
 import { fehlerseite } from '../templates/fehlerseite.mjs';
 import { rechtlicheSeite } from '../templates/rechtliches.mjs';
+
+export { profilAktuell };
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -32,7 +36,7 @@ const VERTRAG = {
     titel: S,
     fakten: [{ name: S, wert: S }],
     zertifikate: { titel: S, eintraege: [{ name: S, aussteller: S }], hinweis: S },
-    vermittler: { titel: S, felder: [{ name: S, wert: S }], pdf: S, pdfHinweis: S },
+    vermittler: { titel: S, felder: [{ name: S, wert: S }], pdf: S },
   },
   vorgehen: { titel: S, schritte: [{ titel: S, text: S }] },
   hintergrund: { foto: { alt: S }, titel: S, absaetze: [S] },
@@ -41,6 +45,7 @@ const VERTRAG = {
     hinweis: S, terminHinweis: S, antwort: S,
   },
   fuss: { text: S, impressum: S, datenschutz: S },
+  profilPdf: { positionierung: S, kontaktTitel: S, mail: S, web: S, fuss: S },
   fehlerseite: { titel: S, ueberschrift: S, text: S, zurueck: S, entwurf: S },
   rechtliches: {
     impressum: { seitentitel: S, titel: S, text: S },
@@ -102,6 +107,9 @@ function pruefeKonfig(k) {
   for (const m of ['breite', 'hoehe']) {
     if (!Number.isInteger(fo?.[m]) || fo[m] <= 0 || fo[m] > 512) p.push(`foto.${m} (1 bis 512)`);
   }
+  const pp = k?.profilPdf;
+  if (typeof pp?.datei !== 'string' || !/^[a-z0-9][a-z0-9-]*\.pdf$/.test(pp.datei)) p.push('profilPdf.datei (ASCII-Dateiname a-z 0-9 - mit Endung .pdf)');
+  if (!Number.isInteger(pp?.maxBytes) || pp.maxBytes <= 0 || pp.maxBytes > 1000000) p.push('profilPdf.maxBytes (1 bis 1000000)');
   if (p.length) throw new Error(`site.config.json ungueltig: ${p.join(', ')}`);
 }
 
@@ -157,7 +165,7 @@ export function build({ outDir, root = ROOT, inhalt, konfig } = {}) {
   if (probleme.length) throw new Error(`Inhalt unvollstaendig (src/content/de.json):\n - ${probleme.join('\n - ')}`);
 
   // Erst rendern (kann an unzulaessigen URLs scheitern), dann erst dist leeren und schreiben.
-  const opt = { adresse: adresseTeile(k.kontakt.adresse), terminUrl: k.kontakt.terminUrl, foto: k.foto };
+  const opt = { adresse: adresseTeile(k.kontakt.adresse), terminUrl: k.kontakt.terminUrl, foto: k.foto, pdf: k.profilPdf.datei };
   const index = seite({
     lang: k.sprache, titel: c.meta.titel, beschreibung: c.meta.beschreibung,
     skript: 'js/kontakt.js', body: startseite(c, opt),
@@ -176,6 +184,9 @@ export function build({ outDir, root = ROOT, inhalt, konfig } = {}) {
   }
   if (!bilder.includes('favicon.ico') || !bilder.includes('apple-touch-icon.png')) throw new Error('Favicon fehlt: src/bilder/favicon.ico oder apple-touch-icon.png');
 
+  const pdfQuelle = path.join(root, 'src/profil', k.profilPdf.datei);
+  if (!fs.existsSync(pdfQuelle)) throw new Error(`Profil-PDF fehlt: src/profil/${k.profilPdf.datei} (npm run profil)`);
+
   fs.rmSync(ziel, { recursive: true, force: true });
   fs.mkdirSync(path.join(ziel, 'css'), { recursive: true });
   fs.mkdirSync(path.join(ziel, 'js'), { recursive: true });
@@ -192,12 +203,16 @@ export function build({ outDir, root = ROOT, inhalt, konfig } = {}) {
   for (const f of fs.readdirSync(path.join(root, 'src/fonts'))) {
     fs.copyFileSync(path.join(root, 'src/fonts', f), path.join(ziel, 'fonts', f));
   }
+  fs.copyFileSync(pdfQuelle, path.join(ziel, k.profilPdf.datei));
   // Das Favicon liegt oben (Browser fragen /favicon.ico), alle anderen Bilder unter bilder/.
   for (const f of bilder) {
     fs.copyFileSync(path.join(bilderQuelle, f), path.join(ziel, f === 'favicon.ico' ? f : path.join('bilder', f)));
   }
 
-  const r = checkDist(ziel, { endungen: k.erlaubteEndungen, maxBytes: k.maxBytes, maxFiles: k.maxDateien });
+  const r = checkDist(ziel, {
+    endungen: k.erlaubteEndungen, maxBytes: k.maxBytes, maxFiles: k.maxDateien,
+    pdfMaxBytes: k.profilPdf.maxBytes, pdfErwartung: pdfErwartung(c),
+  });
   if (r.fehler.length) throw new Error(`dist-Pruefung fehlgeschlagen:\n - ${r.fehler.join('\n - ')}`);
   return { outDir: ziel, dateien: r.dateien, summe: r.summe };
 }

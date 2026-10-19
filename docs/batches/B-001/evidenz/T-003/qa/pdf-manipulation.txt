@@ -1,0 +1,24 @@
+QA T-003 Manipulierte PDF-Kopien: npm run check -- <Kopie von dist> (Scratch)
+[anhang-js]  - profil-enrico-falk.pdf: PDF: PDF-Struktur nicht lesbar: startxref/%%EOF am Dateiende fehlt oder Daten folgen dahinter (Chrome-Version pruefen) 
+[anhang-pfad]  - profil-enrico-falk.pdf: PDF: PDF-Struktur nicht lesbar: startxref/%%EOF am Dateiende fehlt oder Daten folgen dahinter (Chrome-Version pruefen) 
+[autor-benutzer]  - profil-enrico-falk.pdf: PDF: lokaler Pfad oder Kennung "<benutzername>" in der Datei (Zeichenkette in Objekt 350) 
+[chrome-roh]  - profil-enrico-falk.pdf: PDF: Info-Dictionary: /Creator nicht erlaubt (erlaubt: Title Author CreationDate ModDate)  - profil-enrico-falk.pdf: PDF: Info-Dictionary: /Producer nicht erlaubt (erlaubt: Title Author CreationDate ModDate) 
+[creator]  - profil-enrico-falk.pdf: PDF: Info-Dictionary: /Creator nicht erlaubt (erlaubt: Title Author CreationDate ModDate)  - profil-enrico-falk.pdf: PDF: lokaler Pfad oder Kennung "/users/" in der Datei (Zeichenkette in Objekt 350) 
+[filelink]  - profil-enrico-falk.pdf: PDF: URI nicht erlaubt (nur https: und mailto:): file:///C:/Users/<benutzer>/geheim.html  - profil-enrico-falk.pdf: PDF: lokaler Pfad oder Kennung "file:" in der Datei (Zeichenkette in Objekt 351) 
+[gross]  - profil-enrico-falk.pdf: PDF: Groesse 1229507 Byte ueber dem Limit 1000000  - profil-enrico-falk.pdf: PDF: PDF-Struktur nicht lesbar: startxref/%%EOF am Dateiende fehlt oder Daten folgen dahinter (Chrome-Version pruefen) 
+[httplink]  - profil-enrico-falk.pdf: PDF: URI nicht erlaubt (nur https: und mailto:): http://example.com/ 
+[javascript]  - profil-enrico-falk.pdf: PDF: verbotenes PDF-Element /JavaScript (Objekt 1)  - profil-enrico-falk.pdf: PDF: Aktion /S /JavaScript nicht erlaubt (Objekt 351; erlaubt: URI, GoTo) 
+[keinpdf]  - profil-enrico-falk.pdf: PDF: PDF-Struktur nicht lesbar: kein PDF-Kopf (%PDF-) am Dateianfang (Chrome-Version pruefen) 
+[kontrolle-pypdf] Pruefung der Lieferform: gruen 
+[original] Pruefung der Lieferform: gruen 
+[producer]  - profil-enrico-falk.pdf: PDF: Info-Dictionary: /Producer nicht erlaubt (erlaubt: Title Author CreationDate ModDate) 
+[titel] Pruefung der Lieferform: gruen 
+[titelpfad]  - profil-enrico-falk.pdf: PDF: lokaler Pfad oder Kennung "/users/" in der Datei (Zeichenkette in Objekt 350)  - profil-enrico-falk.pdf: PDF: lokaler Pfad oder Kennung "<benutzername>" in der Datei (Zeichenkette in Objekt 350) 
+[xmp]  - profil-enrico-falk.pdf: PDF: Katalog: /Metadata (XMP) nicht erlaubt  - profil-enrico-falk.pdf: PDF: verbotenes PDF-Element /Metadata (Objekt 1) 
+
+Build in Arbeitsbaum-Kopie mit manipulierter src-PDF bzw. geaenderter de.json:
+[build-dejson] Build fehlgeschlagen: Profil-PDF ist veraltet oder ungueltig: Inhalt, Adresse, profil.css, Schriften oder Stand haben sich seit der Erzeugung geaendert. Neu erzeugen: npm run profil
+[build-javascript] Build fehlgeschlagen: Profil-PDF ist veraltet oder ungueltig: die PDF-Datei passt nicht zu quelle.json (anderer Hash). Neu erzeugen: npm run profil
+[build-kontrolle-pypdf] Build fehlgeschlagen: Profil-PDF ist veraltet oder ungueltig: die PDF-Datei passt nicht zu quelle.json (anderer Hash). Neu erzeugen: npm run profil
+[build-producer] Build fehlgeschlagen: Profil-PDF ist veraltet oder ungueltig: die PDF-Datei passt nicht zu quelle.json (anderer Hash). Neu erzeugen: npm run profil
+[build-titel] Build fehlgeschlagen: Profil-PDF ist veraltet oder ungueltig: die PDF-Datei passt nicht zu quelle.json (anderer Hash). Neu erzeugen: npm run profil

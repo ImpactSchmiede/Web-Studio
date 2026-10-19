@@ -187,3 +187,47 @@ test('Chrome: beiAbbruch haengt SIGINT/SIGTERM-Handler an und entfernt sie wiede
   weg();
   assert.deepEqual([process.listenerCount('SIGINT'), process.listenerCount('SIGTERM')], vorher);
 });
+
+// ---- T-003: PDF ueber den Pruefserver, Profil-Werkzeug (ohne Chrome testbar)
+test('Server: PDF wird als application/pdf mit CSP und nosniff ausgeliefert, bytegleich', async () => {
+  const s = await startServer({ dir: outDir });
+  try {
+    const r = await hole(s.port, '/profil-enrico-falk.pdf');
+    assert.equal(r.status, 200);
+    assert.equal(r.header['content-type'], 'application/pdf');
+    assert.equal(r.header['content-security-policy'], "default-src 'self'");
+    assert.equal(r.header['x-content-type-options'], 'nosniff');
+    assert.ok(r.body.equals(fs.readFileSync(path.join(outDir, 'profil-enrico-falk.pdf'))));
+    assert.ok(r.body.subarray(0, 5).toString('latin1') === '%PDF-');
+  } finally {
+    await s.close();
+  }
+});
+
+test('Profil-Werkzeug: Argumente streng (--stand JJJJ-MM-TT, --seitenbilder Ordner, nichts anderes), Standard ist der heutige Tag in Berlin', async () => {
+  const { parseArgs } = await import('../tools/pruefung/profil.mjs');
+  const heute = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Berlin' });
+  assert.deepEqual(parseArgs([]), { stand: heute, seitenbilder: null, markierung: null });
+  assert.equal(parseArgs(['--stand', '2026-10-19']).stand, '2026-10-19');
+  assert.equal(parseArgs(['--seitenbilder', 'x']).seitenbilder, path.resolve('x'));
+  assert.equal(parseArgs(['--markierung', 'm.png']).markierung, path.resolve('m.png'));
+  for (const a of [['--stand'], ['--stand', 'gestern'], ['--stand', '2026-02-30'], ['--unbekannt'], ['--seitenbilder']]) {
+    assert.throws(() => parseArgs(a), /stand|Datum|Option|seitenbilder|fehlt/i, a.join(' '));
+  }
+});
+
+test('Profil-Werkzeug: Eingangsordner enthaelt nur index.html, css/profil.css und die vier woff2-Schriften; der Hash ist stabil', async () => {
+  const { schreibeEingang } = await import('../tools/pruefung/profil.mjs');
+  const { profilEingang } = await import('../src/build/profil.mjs');
+  const { ROOT, tmp } = await import('./_hilfe.mjs');
+  const dir = tmp();
+  const e = schreibeEingang(dir, { root: ROOT, stand: '2026-10-19' });
+  const alle = fs.readdirSync(dir, { recursive: true, withFileTypes: true }).filter((d) => d.isFile())
+    .map((d) => path.relative(dir, path.join(d.parentPath, d.name)).split(path.sep).join('/')).sort();
+  assert.deepEqual(alle, [
+    'css/profil.css', 'fonts/atkinson-hyperlegible-latin-400-italic.woff2', 'fonts/atkinson-hyperlegible-latin-400-normal.woff2',
+    'fonts/atkinson-hyperlegible-latin-700-normal.woff2', 'fonts/bricolage-grotesque-latin-wght-normal.woff2', 'index.html',
+  ]);
+  assert.equal(e.hash, profilEingang(ROOT, { stand: '2026-10-19' }).hash);
+  assert.notEqual(e.hash, profilEingang(ROOT, { stand: '2026-10-20' }).hash);
+});

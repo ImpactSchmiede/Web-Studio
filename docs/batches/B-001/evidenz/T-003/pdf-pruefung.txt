@@ -1,0 +1,69 @@
+Datei: src/profil/profil-enrico-falk.pdf
+Groesse: 129507 Byte (Limit 1000000), SHA-256 d38a0f227de9b75e60e3f777a4c39dd7fc50ef3ab476a9ab4962671c9d0e1949
+Seiten: 2 (A4, MediaBox je Seite siehe unten)
+  Seite Objekt 2: MediaBox [0,0,594.95996,841.91998]
+  Seite Objekt 14: MediaBox [0,0,594.95996,841.91998]
+
+PDF-Kopf: "%PDF-1.4", Objekte: 350, genau ein startxref/xref, Trailer-Schluessel: Size Root Info
+
+Info-Dictionary roh (Objekt 1):
+1 0 obj
+<</Title <FEFF0045006E007200690063006F002000460061006C006B00202013002000500072006F00660069006C> /Author (Enrico Falk) /CreationDate (D:20261019000000Z) /ModDate (D:20261019000000Z)>>
+Info decodiert:
+{"Title":"Enrico Falk – Profil","Author":"Enrico Falk","CreationDate":"D:20261019000000Z","ModDate":"D:20261019000000Z"}
+
+Kennungen in der ganzen Datei (Suche in Bytes, Gross/Klein egal):
+  HeadlessChrome  nicht vorhanden
+  Skia            nicht vorhanden
+  Mozilla         nicht vorhanden
+  Creator         nicht vorhanden
+  Producer        nicht vorhanden
+  /Metadata       nicht vorhanden
+  file:           nicht vorhanden
+  127.0.0.1       nicht vorhanden
+  localhost       nicht vorhanden
+  Users           nicht vorhanden
+  AppData         nicht vorhanden
+  /Subtype /Image nicht vorhanden
+  /JavaScript     nicht vorhanden
+  /JS             nicht vorhanden
+  /Launch         nicht vorhanden
+  /EmbeddedFile   nicht vorhanden
+  /OpenAction     nicht vorhanden
+  /AcroForm       nicht vorhanden
+  /Encrypt        nicht vorhanden
+  /Prev           nicht vorhanden
+  (hinweis: "/Image" allein trifft /ImageB /ImageC /ImageI im ProcSet jeder Seite, kein Bild; "/AA" trifft nur Namen wie /AAAAAA+Atkinson..., die Pruefung vergleicht ganze Namen)
+
+Schriften (alle eingebettet, alle mit ToUnicode):
+  Type3  Bricolage-Grotesque-96pt-ExtraBold-14pt-Bold  eingebettet=true toUnicode=true
+  Type3  Bricolage-Grotesque-96pt-ExtraBold-14pt-Bold  eingebettet=true toUnicode=true
+  Type3  Bricolage-Grotesque-96pt-ExtraBold-14pt-Bold  eingebettet=true toUnicode=true
+  Type0  AtkinsonHyperlegible-Regular  eingebettet=true toUnicode=true
+  Type3  Bricolage-Grotesque-96pt-ExtraBold-14pt-Bold  eingebettet=true toUnicode=true
+  Type0  AtkinsonHyperlegible-Bold  eingebettet=true toUnicode=true
+  Type0  AtkinsonHyperlegible-Italic  eingebettet=true toUnicode=true
+  Type3  Bricolage-Grotesque-96pt-ExtraBold-14pt-Bold  eingebettet=true toUnicode=true
+
+Verweise (/URI): mailto:kontakt@enricofalk.de  https://enricofalk.de/  https://www.linkedin.com/in/enrico-falk-b8369517
+
+pruefePdf (Titel/Autor exakt, 1000000 Byte, max. 2 Seiten): keine Befunde
+profilAktuell: {"aktuell":true,"stand":"2026-10-19"}
+quelle.json: {"stand":"2026-10-19","eingang":"044bd953cf044e438501d2985f34fa82121f2a0e8378c487061ed843bd5fbaef","pdf":"d38a0f227de9b75e60e3f777a4c39dd7fc50ef3ab476a9ab4962671c9d0e1949","chrome":"Chrome/155.0.8059.80"}
+
+Textauswahl (aus Inhaltsstroemen und ToUnicode gelesen), Auszug:
+  | Enrico Falk
+  | Agile Coach und Problemlöser
+  | Wenn es im Unternehmen hakt, löse ich das Problem, das
+  | wirklich da ist.
+  | Ich bin Enrico Falk, Agile Coach und Problemlöser. Ich schaue zuerst genau hin und setze mein Wissen dann
+  | gezielt ein, statt Ihnen ein Framework überzustülpen. Für Teams, Führung und Organisationen in Deutschland,
+  | Österreich und der Schweiz.
+  | Profil auf einen Blick
+  | Erfahrung
+  | rund 15 Jahre Agile Coaching und Organisationsentwicklung, davor Softwareentwicklung
+  | Region
+  | Deutschland, Österreich, Schweiz
+  | Schwerpunkte
+  | Coaching, Workshops und Trainings, Troubleshooting, Hands-on-Beratung, Change
+  ... (92 Textzeilen, Ersatzzeichen U+FFFD: keine)

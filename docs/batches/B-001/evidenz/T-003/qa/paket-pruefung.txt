@@ -1,0 +1,71 @@
+QA T-003 Paket: npm run paket -- --ersetzen; npm run paket:pruefen; System-tar
+total 309
+-rw-r--r-- 1 <benutzer> 197121     81 Oct 19 18:59 2026-10-19.sha256
+-rw-r--r-- 1 <benutzer> 197121 313856 Oct 19 18:59 2026-10-19.tar
+d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299  2026-10-19.tar
+--- GNU tar 1.35 -tvf
+-rw-r--r-- 0/0           12498 2026-10-19 02:00 index.html
+-rw-r--r-- 0/0            1163 2026-10-19 02:00 404.html
+-rw-r--r-- 0/0            2035 2026-10-19 02:00 bilder/apple-touch-icon.png
+-rw-r--r-- 0/0           23950 2026-10-19 02:00 bilder/foto-vorlaeufig.jpg
+-rw-r--r-- 0/0           10278 2026-10-19 02:00 bilder/foto-vorlaeufig.webp
+-rw-r--r-- 0/0           11608 2026-10-19 02:00 css/site.css
+-rw-r--r-- 0/0            1200 2026-10-19 02:00 datenschutz.html
+-rw-r--r-- 0/0             317 2026-10-19 02:00 favicon.ico
+-rw-r--r-- 0/0            4603 2026-10-19 02:00 fonts/LICENSE-Atkinson-Hyperlegible.txt
+-rw-r--r-- 0/0            4401 2026-10-19 02:00 fonts/LICENSE-Bricolage-Grotesque.txt
+-rw-r--r-- 0/0           18292 2026-10-19 02:00 fonts/atkinson-hyperlegible-latin-400-italic.woff2
+-rw-r--r-- 0/0           17208 2026-10-19 02:00 fonts/atkinson-hyperlegible-latin-400-normal.woff2
+-rw-r--r-- 0/0           17524 2026-10-19 02:00 fonts/atkinson-hyperlegible-latin-700-normal.woff2
+-rw-r--r-- 0/0           41344 2026-10-19 02:00 fonts/bricolage-grotesque-latin-wght-normal.woff2
+-rw-r--r-- 0/0            1196 2026-10-19 02:00 impressum.html
+-rw-r--r-- 0/0            1203 2026-10-19 02:00 js/kontakt.js
+-rw-r--r-- 0/0          129507 2026-10-19 02:00 profil-enrico-falk.pdf
+-rw-r--r-- 0/0              26 2026-10-19 02:00 robots.txt
+-rw-r--r-- 0/0             155 2026-10-19 02:00 sitemap.xml
+--- bsdtar 3.8.9 (Windows tar.exe) -tvf
+-rw-r--r--  0 0      0       12498 Okt 19 02:00 index.html
+-rw-r--r--  0 0      0        1163 Okt 19 02:00 404.html
+-rw-r--r--  0 0      0        2035 Okt 19 02:00 bilder/apple-touch-icon.png
+-rw-r--r--  0 0      0       23950 Okt 19 02:00 bilder/foto-vorlaeufig.jpg
+-rw-r--r--  0 0      0       10278 Okt 19 02:00 bilder/foto-vorlaeufig.webp
+-rw-r--r--  0 0      0       11608 Okt 19 02:00 css/site.css
+-rw-r--r--  0 0      0        1200 Okt 19 02:00 datenschutz.html
+-rw-r--r--  0 0      0         317 Okt 19 02:00 favicon.ico
+-rw-r--r--  0 0      0        4603 Okt 19 02:00 fonts/LICENSE-Atkinson-Hyperlegible.txt
+-rw-r--r--  0 0      0        4401 Okt 19 02:00 fonts/LICENSE-Bricolage-Grotesque.txt
+-rw-r--r--  0 0      0       18292 Okt 19 02:00 fonts/atkinson-hyperlegible-latin-400-italic.woff2
+-rw-r--r--  0 0      0       17208 Okt 19 02:00 fonts/atkinson-hyperlegible-latin-400-normal.woff2
+-rw-r--r--  0 0      0       17524 Okt 19 02:00 fonts/atkinson-hyperlegible-latin-700-normal.woff2
+-rw-r--r--  0 0      0       41344 Okt 19 02:00 fonts/bricolage-grotesque-latin-wght-normal.woff2
+-rw-r--r--  0 0      0        1196 Okt 19 02:00 impressum.html
+-rw-r--r--  0 0      0        1203 Okt 19 02:00 js/kontakt.js
+-rw-r--r--  0 0      0      129507 Okt 19 02:00 profil-enrico-falk.pdf
+-rw-r--r--  0 0      0          26 Okt 19 02:00 robots.txt
+-rw-r--r--  0 0      0         155 Okt 19 02:00 sitemap.xml
+--- Entpacken GNU/bsdtar in leere Ordner: diff -r gegen dist: identisch; sha256sum -c: OK; Zweitlauf bytegleich; ohne --ersetzen Exit 1; --datum 2026-13-45 abgelehnt
+--- Manipulierte Kopien: node scripts/paket-pruefen.mjs <kopie>
+[abgeschnitten] 3 Befund(e):  - Archivgroesse 311108 ist kein Vielfaches von 512 (abgeschnitten oder Daten angehaengt) 
+[absolut] 1 Befund(e):  - Eintrag 20 (/etc/boese.html): Name mit leerem, "." oder ".." Teil (absolut, Ordner oder Ausbruch): "/etc/boese.html" 
+[backslash] 1 Befund(e):  - Eintrag 20 (css\x.css): Name enthaelt Zeichen ausserhalb von [A-Za-z0-9._/-] (nur ASCII, kein Leerzeichen, kein Backslash, kein Doppelpunkt): "css\\x.css" 
+[duplikat] 1 Befund(e):  - Eintrag 20 (index.html): Name doppelt (auch ohne Gross-/Kleinschreibung) 
+[endung] 1 Befund(e):  - shell.php: Endung nicht erlaubt (.php; erlaubt: .html .css .js .woff2 .txt .xml .pdf .webp .jpg .png .ico) 
+[falscher-hash] 1 Befund(e):  - Hash stimmt nicht: Datei d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299, sha256-Datei 0000000000000000000000000000000000000000000000000000000000000000 
+[grossschreib-dup] 1 Befund(e):  - Eintrag 20 (Index.html): Name doppelt (auch ohne Gross-/Kleinschreibung) 
+[gzip] 18 Befund(e):  - Archivgroesse 222635 ist kein Vielfaches von 512 (abgeschnitten oder Daten angehaengt) 
+[hardlink] 2 Befund(e):  - Eintrag 20 (hl.html): Typ "1" nicht erlaubt (nur normale Dateien, Typ 0) 
+[kontrolle-neu-gepackt] Paketpruefung: gruen 
+[nachlauf] 2 Befund(e):  - Archivgroesse 314556 ist kein Vielfaches von 512 (abgeschnitten oder Daten angehaengt) 
+[pdf-producer] 1 Befund(e):  - profil-enrico-falk.pdf: PDF: Info-Dictionary: /Producer nicht erlaubt (erlaubt: Title Author CreationDate ModDate) 
+[punktpunkt] 1 Befund(e):  - Eintrag 20 (../boese.html): Name mit leerem, "." oder ".." Teil (absolut, Ordner oder Ausbruch): "../boese.html" 
+[reihenfolge] 1 Befund(e):  - Reihenfolge: index.html und 404.html muessen die ersten beiden Eintraege sein (gefunden: 404.html, bilder/apple-touch-icon.png) 
+[robots-offen] 1 Befund(e):  - robots.txt weicht von der Konfiguration ab (erwartet bei indexierbar=false: "User-agent: *\nDisallow: /\n") 
+[symlink] 2 Befund(e):  - Eintrag 20 (link.html): Typ "2" nicht erlaubt (nur normale Dateien, Typ 0) 
+[versteckt] 1 Befund(e):  - Eintrag 20 (.htaccess): Name mit verstecktem Teil: ".htaccess" 
+[verzeichnis] 2 Befund(e):  - Eintrag 20 (leer/): Name mit leerem, "." oder ".." Teil (absolut, Ordner oder Ausbruch): "leer/" 
+[windowsname] 1 Befund(e):  - Eintrag 20 (bilder/CON.png): Name ist unter Windows reserviert (CON.png): "bilder/CON.png" 
+[zugross] 2 Befund(e):  - Groesse der .tar 22343680 Byte ueber dem Limit 20971520 
+[zuviele] 2 Befund(e):  - zu viele Dateien: 519 (Limit 500) 
+[name] 2 Befund(e):  - Dateiname profil.tar: erwartet <JJJJ-MM-TT>.tar 
+[ohnesha] 1 Befund(e):  - 2026-10-19.sha256: sha256-Datei fehlt neben der .tar 
+[shaname] 1 Befund(e):  - 2026-10-19.sha256: sha256-Datei nennt den Dateinamen anders.tar, erwartet 2026-10-19.tar 

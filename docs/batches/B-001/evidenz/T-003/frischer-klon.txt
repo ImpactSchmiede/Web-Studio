@@ -1,0 +1,19 @@
+Klon ohne paket/ und dist/ (Kopie des Arbeitsbaums inkl. .git, ohne node_modules)
+$ npm run build  -> exit 0
+129507  profil-enrico-falk.pdf
+298508  Summe (19 Dateien)
+Profil-PDF aktuell (Stand 2026-10-19)
+Pruefung der Lieferform: gruen
+$ npm test  -> exit 0
+ℹ tests 369
+ℹ pass 368
+ℹ fail 0
+$ npm run paket -- --datum 2026-10-19  -> exit 0
+Paket: paket/2026-10-19.tar
+sha256: paket/2026-10-19.sha256
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+$ npm run paket:pruefen  -> exit 0
+Paket: paket/2026-10-19.tar
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen

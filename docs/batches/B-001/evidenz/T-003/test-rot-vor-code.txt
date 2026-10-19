@@ -1,0 +1,26 @@
+# Rot-Lauf vor dem Code (npm test, Tests und Hilfen geschrieben, src/ ohne pdf.mjs, paket.mjs, profil.mjs, ohne PDF)
+✖ test\build.test.mjs (276.7632ms)
+✖ test\check.test.mjs (126.6161ms)
+✖ test\compare.test.mjs (117.2522ms)
+✖ test\paket.test.mjs (99.4485ms)
+✖ test\pdf.test.mjs (115.0533ms)
+✖ test\profil.test.mjs (113.8499ms)
+✖ test\pruefwerkzeug.test.mjs (149.9882ms)
+✖ test\seite.test.mjs (121.6845ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 39
+ℹ fail 14
+✖ test\build.test.mjs (276.7632ms)
+✖ test\check.test.mjs (126.6161ms)
+✖ test\compare.test.mjs (117.2522ms)
+✖ test\paket.test.mjs (99.4485ms)
+✖ test\pdf.test.mjs (115.0533ms)
+✖ test\profil.test.mjs (113.8499ms)
+✖ test\pruefwerkzeug.test.mjs (149.9882ms)
+✖ test\seite.test.mjs (121.6845ms)
+exit 1
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'src\build\paket.mjs' imported from test\paket.test.mjs
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'src\build\pdf.mjs' imported from test\pdf.test.mjs
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'src\build\pdf.mjs' imported from test\profil.test.mjs

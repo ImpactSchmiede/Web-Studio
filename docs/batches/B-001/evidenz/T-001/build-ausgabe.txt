@@ -2,7 +2,7 @@
 > web-studio-freelancer-seite@0.1.0 build
 > node scripts/build.mjs
 
-dist gebaut: C:\Users\AI User\Projekte\Web-Studio\dist
+dist gebaut: <repo>\dist
  1099  404.html
  8156  css/site.css
  4603  fonts/LICENSE-Atkinson-Hyperlegible.txt

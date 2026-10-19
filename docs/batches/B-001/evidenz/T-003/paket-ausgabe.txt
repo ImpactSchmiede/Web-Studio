@@ -1,0 +1,21 @@
+
+> web-studio-freelancer-seite@0.1.0 paket
+> node scripts/paket.mjs --ersetzen
+
+Paket: paket/2026-10-19.tar
+sha256: paket/2026-10-19.sha256
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+
+--- dir paket (Name, Bytes, Datum)
+      81  2026-10-19T17:09:07.170Z  2026-10-19.sha256
+  313856  2026-10-19T17:09:07.170Z  2026-10-19.tar
+
+--- SHA-256 (node crypto)
+d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+
+--- Inhalt 2026-10-19.sha256
+d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299  2026-10-19.tar
+
+--- sha256sum -c (Git)
+2026-10-19.tar: OK

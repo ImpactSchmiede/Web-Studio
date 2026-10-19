@@ -16,10 +16,10 @@ f -rw-r--r-- 26 dist/robots.txt
 f -rw-r--r-- 155 dist/sitemap.xml
 --- dotfiles:
 --- non-regular:
- Datentr„ger in Laufwerk C: ist Windows
+ Datentrï¿½ger in Laufwerk C: ist Windows
  Volumeseriennummer: DE81-BA15
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist
+ Verzeichnis von <repo>\dist
 
 19.10.2026  17:04    <DIR>          .
 19.10.2026  17:04    <DIR>          ..
@@ -32,14 +32,14 @@ f -rw-r--r-- 155 dist/sitemap.xml
 19.10.2026  17:04               155 sitemap.xml
                4 Datei(en),         10.435 Bytes
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist\css
+ Verzeichnis von <repo>\dist\css
 
 19.10.2026  17:04    <DIR>          .
 19.10.2026  17:04    <DIR>          ..
 19.10.2026  16:37             8.156 site.css
                1 Datei(en),          8.156 Bytes
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist\fonts
+ Verzeichnis von <repo>\dist\fonts
 
 19.10.2026  17:04    <DIR>          .
 19.10.2026  17:04    <DIR>          ..
@@ -51,7 +51,7 @@ f -rw-r--r-- 155 dist/sitemap.xml
 19.10.2026  16:37             4.401 LICENSE-Bricolage-Grotesque.txt
                6 Datei(en),        103.372 Bytes
 
- Verzeichnis von C:\Users\AI User\Projekte\Web-Studio\dist\js
+ Verzeichnis von <repo>\dist\js
 
 19.10.2026  17:04    <DIR>          .
 19.10.2026  17:04    <DIR>          ..

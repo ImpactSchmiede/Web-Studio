@@ -121,3 +121,84 @@ test('Prueftool: --ausgabe ist Pflicht (kein Standardpfad), ohne Angabe Exit 2 u
   assert.doesNotMatch(q, /T-002/);
   assert.match(q, /--html/);
 });
+
+// ---- T-003
+test('T-003: package.json: nur die neuen Skripte profil, paket, paket:pruefen; keine Abhaengigkeit im Root', () => {
+  const p = JSON.parse(lesen('package.json'));
+  assert.equal(p.scripts.profil, 'node tools/pruefung/profil.mjs');
+  assert.equal(p.scripts.paket, 'node scripts/paket.mjs');
+  assert.equal(p.scripts['paket:pruefen'], 'node scripts/paket-pruefen.mjs');
+  assert.deepEqual(Object.keys(p.scripts).sort(), ['build', 'check', 'paket', 'paket:pruefen', 'platzhalter', 'profil', 'pruefen', 'test']);
+  assert.equal(p.dependencies, undefined);
+  assert.equal(p.devDependencies, undefined);
+  const t = JSON.parse(lesen('tools/pruefung/package.json'));
+  assert.deepEqual(t.devDependencies, { lighthouse: '13.5.0', 'axe-core': '4.14.0', 'html-validate': '11.16.2', 'puppeteer-core': '25.12.0' });
+});
+
+test('T-003: src/ und scripts/ importieren nur node:-Module oder relative Dateien (keine npm-Abhaengigkeit, nichts aus tools/)', () => {
+  const sammle = (rel) => fs.readdirSync(path.join(ROOT, rel), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? sammle(`${rel}/${e.name}`) : [`${rel}/${e.name}`]));
+  const quellen = [...sammle('src'), ...sammle('scripts')].filter((f) => f.endsWith('.mjs'));
+  assert.ok(quellen.length >= 15);
+  for (const f of quellen) {
+    for (const m of lesen(f).matchAll(/^(?:import\b[^'"\n;]*?|export\b[^'"\n;]*?\sfrom\s*)['"]([^'"]+)['"]/gm)) {
+      assert.match(m[1], /^(node:|\.\.?\/)/, `${f}: ${m[1]}`);
+      assert.doesNotMatch(m[1], /tools\//, `${f}: ${m[1]}`);
+    }
+  }
+});
+
+test('T-003: PROJEKT.md nennt profil, paket, paket:pruefen und paket/ im Abschnitt Befehle', () => {
+  const befehle = lesen('docs/PROJEKT.md').split(/^## /m).find((a) => a.startsWith('Befehle'));
+  assert.match(befehle, /npm run profil/);
+  assert.match(befehle, /npm run paket\b/);
+  assert.match(befehle, /npm run paket:pruefen/);
+  assert.match(befehle, /paket\//);
+  assert.match(befehle, /--datum/);
+  assert.match(befehle, /--stand/);
+  assert.match(befehle, /Port 841\d/);
+  assert.doesNotMatch(befehle, /kommt mit T-003/);
+});
+
+test('T-003: ENTSCHEIDUNGEN.md hat den Abschnitt T-003 (Seitenzahl, Klartext-Adresse, Positionierung, Titel, Schriften, Tar, Paketdefinition)', () => {
+  const t = lesen('docs/ENTSCHEIDUNGEN.md');
+  const a = t.split(/^## /m).find((x) => /T-003/.test(x.split('\n')[0]));
+  assert.ok(a, 'Abschnitt T-003 fehlt');
+  for (const w of [
+    '1 bis 2 Seiten', 'Konzept', 'Klartext', 'mailto', 'Agile Coach und Problemlöser', 'Enrico Falk \u2013 Profil', 'Entwurf, Stand', 'quelle.json',
+    'Type3', 'ToUnicode', 'Metadaten', 'ustar', 'mtime', 'Paketdefinition', 'paket:pruefen', 'profil', 'Gate', 'Chrome', 'Interview', 'Pakete',
+  ]) assert.ok(a.includes(w), `fehlt: ${w}`);
+});
+
+test('T-003: Referenzen pdf-chrome.md und ustar.md mit Quelle, Datum, Version und Restunsicherheit', () => {
+  for (const [datei, woerter] of [
+    ['docs/referenzen/pdf-chrome.md', ['Chrome 155', 'puppeteer-core 25.12', 'Type3', 'xref', 'Info', 'file:///', 'Restunsicherheit', '2026-10-19']],
+    ['docs/referenzen/ustar.md', ['POSIX', 'ustar', 'chksum', 'mtime', 'bsdtar', 'GNU tar 1.35', 'Restunsicherheit', '2026-10-19']],
+  ]) {
+    const t = lesen(datei);
+    for (const w of woerter) assert.ok(t.includes(w), `${datei}: ${w}`);
+    assert.match(t, /Quelle/);
+    assert.match(t, /Version/);
+  }
+});
+
+test('T-003: Werkzeug-README nennt npm run profil mit --stand, --seitenbilder und die Ports 8412 bis 8419', () => {
+  const t = lesen('tools/pruefung/README.md');
+  assert.match(t, /npm run profil/);
+  assert.match(t, /--stand/);
+  assert.match(t, /--seitenbilder/);
+  assert.match(t, /8412/);
+});
+
+// QA-3: keine lokalen Pfade oder Benutzernamen in den Evidenzdateien (docs/batches/**)
+test('QA-3: docs/batches/** (.txt, .md) enthaelt keinen lokalen Benutzernamen und keinen Profilpfad (Muster im Test)', () => {
+  const sammle = (rel) => fs.readdirSync(path.join(ROOT, rel), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? sammle(`${rel}/${e.name}`) : [`${rel}/${e.name}`]));
+  const dateien = sammle('docs/batches').filter((f) => /\.(txt|md)$/.test(f));
+  assert.ok(dateien.length >= 20, `nur ${dateien.length} Dateien`);
+  const treffer = [];
+  for (const f of dateien) {
+    lesen(f).split('\n').forEach((z, i) => {
+      if (/AI User|AIUSER~1|AI-User|AI%20User/i.test(z)) treffer.push(`${f}:${i + 1}`);
+    });
+  }
+  assert.deepEqual(treffer, []);
+});

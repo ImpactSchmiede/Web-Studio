@@ -85,15 +85,18 @@ test('Ausnahme Footer-Ziele: impressum.html/datenschutz.html nur im Footer', () 
   assert.ok(vergleicheSeite(mockup, index.replace('href="datenschutz.html"', 'href="anders.html"')).unterschiede.length > 0);
 });
 
-test('Ausnahme Termin und PDF: href #termin/#pdf nur an btn ghost, Notizen id=termin/id=pdf nur als <p>', () => {
+test('Ausnahme 7 und 8 (Termin, PDF): #termin und der PDF-Dateiname nur an btn ghost, Notiz id=termin nur als <p>; keine Notiz #pdf mehr', () => {
   assert.match(index, /<a class="btn ghost" href="#termin">/);
-  assert.match(index, /<a class="btn ghost" href="#pdf">/);
-  assert.match(index, /<p class="[^"]*" id="pdf"><span class="ph">Das Profil als PDF folgt\.<\/span><\/p>/);
+  assert.match(index, /<a class="btn ghost" href="profil-enrico-falk\.pdf">/);
+  assert.doesNotMatch(index, /id="pdf"/);
   assert.match(index, /<p class="note" id="termin"><span class="ph ph-hell">Der Terminlink folgt\.<\/span><\/p>/);
+  assert.deepEqual(vergleicheSeite(mockup, index).unterschiede, []);
   assert.ok(vergleicheSeite(mockup, index.replace('class="name" href="#"', 'class="name" href="#termin"')).unterschiede.length > 0);
-  assert.ok(vergleicheSeite(mockup, index.replace('class="name" href="#"', 'class="name" href="#pdf"')).unterschiede.length > 0);
+  assert.ok(vergleicheSeite(mockup, index.replace('class="name" href="#"', 'class="name" href="profil-enrico-falk.pdf"')).unterschiede.length > 0);
+  assert.ok(vergleicheSeite(mockup, index.replace('href="profil-enrico-falk.pdf"', 'href="anderes.pdf"')).unterschiede.length > 0, 'nur der konfigurierte Dateiname ist erlaubt');
+  assert.ok(vergleicheSeite(mockup, index.replace('href="profil-enrico-falk.pdf"', 'href="#pdf"')).unterschiede.length > 0, '#pdf ist keine Ausnahme mehr');
   assert.ok(vergleicheSeite(mockup, index.replace('<h2>Von Spielen', '<h2 id="termin">Von Spielen')).unterschiede.length > 0);
-  assert.ok(vergleicheSeite(mockup, index.replace('<span class="ph">Das Profil als PDF folgt.</span>', '<span class="ph">Anderer Text</span>')).unterschiede.length === 0, 'Notiz-Text selbst ist frei (neuer Text laut PO)');
+  assert.ok(vergleicheSeite(mockup, index.replace('<h2>Von Spielen', '<h2 id="pdf">Von Spielen')).unterschiede.length > 0);
 });
 
 test('CSS: jede Mockup-Regel steckt in site.css (Reihenfolge, Schriftpfad ../fonts/), Zusatzregeln nur fuer neue Klassen', () => {
@@ -190,17 +193,28 @@ ${s}
   assert.ok(lookInvarianten(mockup, nach('@media print{.contact{--bg:#000000}}')).length > 0);
 });
 
-test('Ausnahme 8 (Notizen): nur Textknoten und span.ph in p#termin/p#pdf entfallen, andere Elemente werden weiter verglichen', () => {
-  const pdf = '<p class="mt-06" id="pdf"><span class="ph">Das Profil als PDF folgt.</span></p>';
-  assert.ok(index.includes(pdf));
-  const mit = (inneres) => index.replace(pdf, `<p class="mt-06" id="pdf">${inneres}</p>`);
-  assert.deepEqual(vergleicheSeite(mockup, mit('<span class="ph">Anderer Text</span>')).unterschiede, []);
+test('Ausnahme 8 (Notiz): nur Textknoten und span.ph in p#termin entfallen, andere Elemente werden weiter verglichen; p#pdf ist keine Ausnahme mehr', () => {
+  const termin = '<p class="note" id="termin"><span class="ph ph-hell">Der Terminlink folgt.</span></p>';
+  assert.ok(index.includes(termin));
+  const mit = (inneres) => index.replace(termin, `<p class="note" id="termin">${inneres}</p>`);
   assert.deepEqual(vergleicheSeite(mockup, mit('<span class="ph ph-hell">Anderer Text</span>')).unterschiede, []);
+  assert.deepEqual(vergleicheSeite(mockup, mit('<span class="ph">Anderer Text</span>')).unterschiede, []);
   assert.ok(vergleicheSeite(mockup, mit('<span class="ph">x</span><a href="https://fremd.example">y</a>')).unterschiede.some((u) => u.includes('<a ')));
   assert.ok(vergleicheSeite(mockup, mit('<b>x</b>')).unterschiede.some((u) => u.includes('<b>')));
   assert.ok(vergleicheSeite(mockup, mit('<span class="anders">x</span>')).unterschiede.length > 0);
-  const termin = '<p class="note" id="termin"><span class="ph ph-hell">Der Terminlink folgt.</span></p>';
-  assert.ok(index.includes(termin));
   assert.ok(vergleicheSeite(mockup, index.replace(termin, '<p class="note" id="termin"><img alt="x"></p>')).unterschiede.some((u) => u.includes('<img')));
   assert.ok(vergleicheTexte(mockup, mit('<span class="ph">Anderer Text</span>')).unterschiede.length === 0);
+  const pdfNotiz = '<p class="mt-06" id="pdf"><span class="ph">Das Profil als PDF folgt.</span></p>';
+  assert.ok(vergleicheSeite(mockup, index.replace('<footer>', `${pdfNotiz}<footer>`)).unterschiede.length > 0, 'p#pdf wird wieder verglichen');
+});
+
+test('m8: das PDF-Ziel der Ausnahme 7 kommt aus profilPdf.datei der Konfiguration, nicht aus einer Konstante', () => {
+  const konfig = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/site.config.json'), 'utf8'));
+  assert.deepEqual(vergleicheSeite(mockup, index, { pdfZiel: konfig.profilPdf.datei }).unterschiede, []);
+  assert.deepEqual(vergleicheSeite(mockup, index).unterschiede, [], 'Standard: Konfiguration der Quelle');
+  const anders = index.replace(`href="${konfig.profilPdf.datei}"`, 'href="mein-profil.pdf"');
+  assert.ok(vergleicheSeite(mockup, anders).unterschiede.length > 0, 'anderer Name ohne Angabe');
+  assert.deepEqual(vergleicheSeite(mockup, anders, { pdfZiel: 'mein-profil.pdf' }).unterschiede, []);
+  assert.ok(vergleicheSeite(mockup, index, { pdfZiel: 'mein-profil.pdf' }).unterschiede.length > 0, 'alter Name nach Umbenennung');
+  assert.ok(!fs.readFileSync(path.join(ROOT, 'src/build/compare.mjs'), 'utf8').includes("'profil-enrico-falk.pdf'"), 'kein fest eingetragener Dateiname');
 });

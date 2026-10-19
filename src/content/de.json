@@ -125,8 +125,7 @@
         { "name": "Einsatzrollen", "wert": "Coaching, Workshops, Trainings, Troubleshooting und Hands-on-Beratung. Auf Wunsch auch operative Rollen. Profile nach Absprache." },
         { "name": "Antwort", "wert": "innerhalb von 24 Stunden" }
       ],
-      "pdf": "Profil als PDF laden",
-      "pdfHinweis": "{ph:Das Profil als PDF folgt.}"
+      "pdf": "Profil als PDF laden"
     }
   },
   "vorgehen": {
@@ -176,6 +175,13 @@
     "text": "Enrico Falk. Zusammenarbeit mit Organisationen auch als [Impact Schmiede](https://impact-schmiede.de).",
     "impressum": "Impressum",
     "datenschutz": "Datenschutz"
+  },
+  "profilPdf": {
+    "positionierung": "Agile Coach und Problemlöser",
+    "kontaktTitel": "Kontakt",
+    "mail": "E-Mail",
+    "web": "Web",
+    "fuss": "Entwurf, Stand {datum}"
   },
   "fehlerseite": {
     "titel": "Seite nicht gefunden (Entwurf)",

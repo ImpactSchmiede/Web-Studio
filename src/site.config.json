@@ -11,7 +11,11 @@
     "breite": 512,
     "hoehe": 512
   },
-  "erlaubteEndungen": [".html", ".css", ".js", ".woff2", ".txt", ".xml", ".webp", ".jpg", ".png", ".ico"],
+  "profilPdf": {
+    "datei": "profil-enrico-falk.pdf",
+    "maxBytes": 1000000
+  },
+  "erlaubteEndungen": [".html", ".css", ".js", ".woff2", ".txt", ".xml", ".pdf", ".webp", ".jpg", ".png", ".ico"],
   "maxBytes": 20971520,
   "maxDateien": 500
 }

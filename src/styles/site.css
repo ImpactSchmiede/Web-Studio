@@ -157,7 +157,7 @@ p,dd,li{text-wrap:pretty}
 .contact .addr{overflow-wrap:anywhere;word-break:normal}
 
 /* Abstaende und Ziele: Sprungziele nicht an den Rand kleben, Fusszeile mit grosser Trefferflaeche */
-section[id],#pdf,#termin{scroll-margin-top:1rem}
+section[id],#termin{scroll-margin-top:1rem}
 .photo picture{display:block}
 footer a{display:inline-block;padding:.4rem 0}
 .certs small{display:block;margin-top:.1rem}

@@ -85,7 +85,7 @@
 ✖ Linkpruefung: absoluter Verweis auf / und /seite.html wird aufgeloest (25.4012ms)
 ✖ Linkpruefung: href="#" an einem anderen Element als dem Namen im Kopf wird gemeldet (9.6809ms)
 ✖ Linkpruefung: externe Links werden gesammelt (einmalig, mit Fundstelle), aber nicht geladen (1.4329ms)
-file:///C:/Users/AI%20User/Projekte/Web-Studio/test/compare.test.mjs:5
+<repo>/test/compare.test.mjs:5
 import { GEAENDERT, lookInvarianten, vergleicheCss, vergleicheSeite, vergleicheTexte } from '../src/build/compare.mjs';
          ^^^^^^^^^
 SyntaxError: The requested module '../src/build/compare.mjs' does not provide an export named 'GEAENDERT'
@@ -108,7 +108,7 @@ node:internal/modules/esm/resolve:271
     throw new ERR_MODULE_NOT_FOUND(
           ^
 
-Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\AI User\Projekte\Web-Studio\tools\pruefung\server.mjs' imported from C:\Users\AI User\Projekte\Web-Studio\test\pruefwerkzeug.test.mjs
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '<repo>\tools\pruefung\server.mjs' imported from <repo>\test\pruefwerkzeug.test.mjs
     at finalizeResolution (node:internal/modules/esm/resolve:271:11)
     at moduleResolve (node:internal/modules/esm/resolve:865:10)
     at defaultResolve (node:internal/modules/esm/resolve:992:11)
@@ -120,7 +120,7 @@ Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\AI User\Projekte\Web-
     at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
     at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
   code: 'ERR_MODULE_NOT_FOUND',
-  url: 'file:///C:/Users/AI%20User/Projekte/Web-Studio/tools/pruefung/server.mjs'
+  url: '<repo>/tools/pruefung/server.mjs'
 }
 
 Node.js v24.19.0
@@ -129,7 +129,7 @@ node:internal/modules/esm/resolve:271
     throw new ERR_MODULE_NOT_FOUND(
           ^
 
-Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\AI User\Projekte\Web-Studio\src\build\platzhalter.mjs' imported from C:\Users\AI User\Projekte\Web-Studio\test\seite.test.mjs
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '<repo>\src\build\platzhalter.mjs' imported from <repo>\test\seite.test.mjs
     at finalizeResolution (node:internal/modules/esm/resolve:271:11)
     at moduleResolve (node:internal/modules/esm/resolve:865:10)
     at defaultResolve (node:internal/modules/esm/resolve:992:11)
@@ -141,7 +141,7 @@ Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\AI User\Projekte\Web-
     at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
     at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
   code: 'ERR_MODULE_NOT_FOUND',
-  url: 'file:///C:/Users/AI%20User/Projekte/Web-Studio/src/build/platzhalter.mjs'
+  url: '<repo>/src/build/platzhalter.mjs'
 }
 
 Node.js v24.19.0
@@ -209,7 +209,7 @@ test at test\build.test.mjs:26:1
       'sitemap.xml'
     ]
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:27:10)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:27:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.start (node:internal/test_runner/test:1242:17)
@@ -224,10 +224,10 @@ test at test\build.test.mjs:26:1
 
 test at test\build.test.mjs:54:1
 ✖ AK4: robots.txt sperrt alles, kein noindex-Meta (0.7668ms)
-  Error: ENOENT: no such file or directory, open 'C:\Users\AIUSER~1\AppData\Local\Temp\ws-AsBU5V\dist\impressum.html'
+  Error: ENOENT: no such file or directory, open '<temp>\ws-AsBU5V\dist\impressum.html'
       at Object.readFileSync (node:fs:484:20)
-      at lies (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/_hilfe.mjs:35:13)
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:57:25)
+      at lies (<repo>/test/_hilfe.mjs:35:13)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:57:25)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -237,16 +237,16 @@ test at test\build.test.mjs:54:1
     errno: -4058,
     code: 'ENOENT',
     syscall: 'open',
-    path: 'C:\\Users\\AIUSER~1\\AppData\\Local\\Temp\\ws-AsBU5V\\dist\\impressum.html'
+    path: '<temp>\\ws-AsBU5V\\dist\\impressum.html'
   }
 
 test at test\build.test.mjs:92:1
 ✖ Bilder in dist sind hash-gleich zu src/bilder (Build kopiert nur, Favicon liegt oben) (0.3424ms)
-  Error: ENOENT: no such file or directory, open 'C:\Users\AIUSER~1\AppData\Local\Temp\ws-AsBU5V\dist\bilder\foto-vorlaeufig.webp'
+  Error: ENOENT: no such file or directory, open '<temp>\ws-AsBU5V\dist\bilder\foto-vorlaeufig.webp'
       at Object.openSync (node:fs:622:18)
       at Object.readFileSync (node:fs:488:35)
-      at sha (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:12:58)
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:94:18)
+      at sha (<repo>/test/build.test.mjs:12:58)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:94:18)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -256,7 +256,7 @@ test at test\build.test.mjs:92:1
     errno: -4058,
     code: 'ENOENT',
     syscall: 'open',
-    path: 'C:\\Users\\AIUSER~1\\AppData\\Local\\Temp\\ws-AsBU5V\\dist\\bilder\\foto-vorlaeufig.webp'
+    path: '<temp>\\ws-AsBU5V\\dist\\bilder\\foto-vorlaeufig.webp'
   }
 
 test at test\build.test.mjs:100:1
@@ -265,7 +265,7 @@ test at test\build.test.mjs:100:1
   
     assert.ok(dateienT.length >= 4)
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:103:10)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:103:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -283,7 +283,7 @@ test at test\build.test.mjs:100:1
 test at test\build.test.mjs:119:1
 ✖ AK3: fehlender Schluessel bricht den Build mit Schluesselnamen ab (15.3158ms)
   AssertionError [ERR_ASSERTION]: Missing expected exception.
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:128:10)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:128:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -301,7 +301,7 @@ test at test\build.test.mjs:119:1
 test at test\build.test.mjs:216:1
 ✖ Konfiguration: Pflichtfelder fuer Kontakt und Foto werden geprueft (10.9629ms)
   AssertionError [ERR_ASSERTION]: Missing expected exception.
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:225:12)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:225:12)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -319,7 +319,7 @@ test at test\build.test.mjs:216:1
 test at test\build.test.mjs:229:1
 ✖ node --check fuer jede Quelldatei (auch tools/) (1.2476ms)
   AssertionError [ERR_ASSERTION]: pruefen.mjs
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:241:71)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:241:71)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -342,7 +342,7 @@ test at test\build.test.mjs:248:1
   + undefined
   - 'node tools/pruefung/pruefen.mjs'
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:255:10)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:255:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -363,7 +363,7 @@ test at test\build.test.mjs:258:1
   
     assert.ok(fs.existsSync(path.join(dir, '.htmlvalidate.json')))
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:278:10)
+      at TestContext.<anonymous> (<repo>/test/build.test.mjs:278:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -384,7 +384,7 @@ test at test\check.test.mjs:13:1
   
   12 !== 18
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:16:10)
+      at TestContext.<anonymous> (<repo>/test/check.test.mjs:16:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.start (node:internal/test_runner/test:1242:17)
@@ -400,7 +400,7 @@ test at test\check.test.mjs:13:1
 test at test\check.test.mjs:153:1
 ✖ Linkpruefung: toter Anker (#gibts-nicht) wird gemeldet (10.8998ms)
   AssertionError [ERR_ASSERTION]
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:157:10)
+      at TestContext.<anonymous> (<repo>/test/check.test.mjs:157:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -418,7 +418,7 @@ test at test\check.test.mjs:153:1
 test at test\check.test.mjs:160:1
 ✖ Linkpruefung: Anker in anderer Datei muss dort existieren (10.7401ms)
   AssertionError [ERR_ASSERTION]
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:164:10)
+      at TestContext.<anonymous> (<repo>/test/check.test.mjs:164:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -435,9 +435,9 @@ test at test\check.test.mjs:160:1
 
 test at test\check.test.mjs:168:1
 ✖ Linkpruefung: fehlende .html-Datei wird gemeldet (9.0291ms)
-  Error: ENOENT: no such file or directory, lstat 'C:\Users\AIUSER~1\AppData\Local\Temp\ws-nb4YCU\dist\impressum.html'
+  Error: ENOENT: no such file or directory, lstat '<temp>\ws-nb4YCU\dist\impressum.html'
       at Object.rmSync (node:fs:1282:16)
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:170:6)
+      at TestContext.<anonymous> (<repo>/test/check.test.mjs:170:6)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -447,7 +447,7 @@ test at test\check.test.mjs:168:1
     errno: -4058,
     code: 'ENOENT',
     syscall: 'lstat',
-    path: 'C:\\Users\\AIUSER~1\\AppData\\Local\\Temp\\ws-nb4YCU\\dist\\impressum.html'
+    path: '<temp>\\ws-nb4YCU\\dist\\impressum.html'
   }
 
 test at test\check.test.mjs:175:1
@@ -456,7 +456,7 @@ test at test\check.test.mjs:175:1
   
     assert.ok(pruefe(k).fehler.some((f) => /gibts-nicht/.test(f)))
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:181:10)
+      at TestContext.<anonymous> (<repo>/test/check.test.mjs:181:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -474,7 +474,7 @@ test at test\check.test.mjs:175:1
 test at test\check.test.mjs:184:1
 ✖ Linkpruefung: href="#" an einem anderen Element als dem Namen im Kopf wird gemeldet (9.6809ms)
   AssertionError [ERR_ASSERTION]
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:188:10)
+      at TestContext.<anonymous> (<repo>/test/check.test.mjs:188:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -492,7 +492,7 @@ test at test\check.test.mjs:184:1
 test at test\check.test.mjs:194:1
 ✖ Linkpruefung: externe Links werden gesammelt (einmalig, mit Fundstelle), aber nicht geladen (1.4329ms)
   TypeError: Cannot read properties of undefined (reading 'map')
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:196:26)
+      at TestContext.<anonymous> (<repo>/test/check.test.mjs:196:26)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -515,7 +515,7 @@ test at test\docs.test.mjs:49:1
     '*.woff2 binary\n' +
     '*.png binary\n'
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/docs.test.mjs:51:10)
+      at TestContext.<anonymous> (<repo>/test/docs.test.mjs:51:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -546,7 +546,7 @@ test at test\docs.test.mjs:56:1
     '- Texte ändern: `src/content/de.json` · Aussehen: `src/styles/site.css` · Entscheidungen: `docs/ENTSCHEIDUNGEN.md`\n' +
     '\n'
   
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/docs.test.mjs:58:10)
+      at TestContext.<anonymous> (<repo>/test/docs.test.mjs:58:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
@@ -564,7 +564,7 @@ test at test\docs.test.mjs:56:1
 test at test\docs.test.mjs:64:1
 ✖ T-002: ENTSCHEIDUNGEN.md hat den Abschnitt zum Pruefwerkzeug mit Versionen, Bildweg, Adress-Konstante, Look-Invarianten und Regel-Begruendungen (0.4452ms)
   AssertionError [ERR_ASSERTION]: Abschnitt T-002 fehlt
-      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/docs.test.mjs:67:10)
+      at TestContext.<anonymous> (<repo>/test/docs.test.mjs:67:10)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:960:18)

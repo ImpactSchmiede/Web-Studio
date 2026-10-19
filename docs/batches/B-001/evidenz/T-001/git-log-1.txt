@@ -1,5 +1,5 @@
 commit d286e16312cf24a8258ce1ce5a97c02148f2531a
-Author: Claude (AI User) <263194498+ImpactSchmiede@users.noreply.github.com>
+Author: Claude (<benutzer>) <263194498+ImpactSchmiede@users.noreply.github.com>
 Date:   Mon Oct 19 17:13:58 2026 +0200
 
     feat(T-001): Stack-Entscheidung und Build-Geruest der Freelancer-Seite

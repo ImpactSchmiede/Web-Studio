@@ -99,7 +99,7 @@ function beispiele(c) {
   ].join('\n');
 }
 
-function profil(c) {
+function profil(c, pdf) {
   const p = c.profil;
   const fakten = p.fakten.map((f) => `<dt>${t(f.name)}</dt><dd>${t(f.wert)}</dd>`).join('');
   const zertifikate = p.zertifikate.eintraege.map((z) => `    <li><b>${t(z.name)}</b><small>${t(z.aussteller)}</small></li>`);
@@ -120,8 +120,7 @@ function profil(c) {
     ' <div class="agency">',
     `  <h3>${t(p.vermittler.titel)}</h3>`,
     `  <dl>${felder}</dl>`,
-    `  <p class="mt-12"><a class="btn ghost" href="#pdf">${t(p.vermittler.pdf)}</a></p>`,
-    `  <p class="mt-06" id="pdf">${t(p.vermittler.pdfHinweis)}</p>`,
+    `  <p class="mt-12"><a class="btn ghost" href="${esc(pdf)}">${t(p.vermittler.pdf)}</a></p>`,
     ' </div>',
     '</div></section>',
   ].join('\n');
@@ -181,7 +180,7 @@ function kontakt(c, adresse, terminUrl) {
     .join('\n');
 }
 
-// opt: { adresse: { lokal, domain, rueckfall }, terminUrl, foto: { datei, breite, hoehe } } (aus site.config.json abgeleitet)
+// opt: { adresse: { lokal, domain, rueckfall }, terminUrl, foto: { datei, breite, hoehe }, pdf: Dateiname des Profil-PDF } (aus site.config.json abgeleitet)
 export function startseite(c, opt) {
   return [
     banner(c),
@@ -195,7 +194,7 @@ export function startseite(c, opt) {
     '',
     beispiele(c),
     '',
-    profil(c),
+    profil(c, opt.pdf),
     '',
     vorgehen(c),
     '',

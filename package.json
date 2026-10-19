@@ -10,7 +10,10 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
+    "paket": "node scripts/paket.mjs",
+    "paket:pruefen": "node scripts/paket-pruefen.mjs",
     "platzhalter": "node scripts/platzhalter.mjs",
+    "profil": "node tools/pruefung/profil.mjs",
     "pruefen": "node tools/pruefung/pruefen.mjs",
     "test": "node --test \"test/*.test.mjs\""
   }

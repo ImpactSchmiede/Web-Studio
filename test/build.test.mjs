@@ -41,6 +41,7 @@ test('AK4: dist enthaelt genau die Pflichtdateien, nur normale Dateien', () => {
     'impressum.html',
     'index.html',
     'js/kontakt.js',
+    'profil-enrico-falk.pdf',
     'robots.txt',
     'sitemap.xml',
   ]);

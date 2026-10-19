@@ -1,0 +1,61 @@
+@font-face{font-family:"Bricolage Grotesque";src:url(../fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(../fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(../fonts/atkinson-hyperlegible-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(../fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2");font-weight:700;font-style:normal}
+/* Druck-Layout Profil-PDF (T-003): Tokens und Schriften wie site.css (helle Palette), nur Flaechen und Linien, kein Schatten, keine Transparenz-Eigenschaft, kein Verlauf. */
+:root{--surface:#FFFFFF;--ink:#15222D;--muted:#475A68;--blue:#1B4B66;--line:#C3D1DA;--amber:#E3A62B;--ph:rgba(227,166,43,.22)}
+@page{size:A4;margin:14mm 16mm 14mm}
+*{box-sizing:border-box}
+html{font-size:10.4pt}
+body{margin:0;background:var(--surface);color:var(--ink);font:400 1rem/1.45 "Atkinson Hyperlegible",sans-serif;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;line-height:1.12;margin:0;letter-spacing:-.015em;font-weight:700;break-after:avoid}
+p{margin:0}
+dl{margin:0}
+dd{margin:0}
+ul{list-style:none;margin:0;padding:0}
+a{color:var(--blue);text-underline-offset:.2em}
+.ph{background:var(--ph);border-radius:3px;padding:0 .25em;font-style:italic;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+
+.kopf{padding-bottom:.9rem;border-bottom:4px solid var(--amber)}
+h1{font-size:2.5rem;letter-spacing:-.025em}
+.pos{font:650 1.3rem/1.2 "Bricolage Grotesque",sans-serif;color:var(--blue);margin-top:.25rem}
+.claim{font:700 1.15rem/1.25 "Bricolage Grotesque",sans-serif;margin-top:.9rem;max-width:36rem}
+.lead{color:var(--muted);margin-top:.5rem}
+
+section{margin-top:1.3rem}
+h2{font-size:1.3rem;margin-bottom:.45rem}
+
+.fakten{display:grid;grid-template-columns:max-content 1fr;gap:.3rem 1.2rem}
+.fakten dt{font-weight:700}
+.fakten dd{color:var(--muted)}
+
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:0 1.6rem}
+.certs li{padding:.3rem 0;border-top:1px solid var(--line);line-height:1.3;break-inside:avoid}
+.certs b{display:block}
+.certs small{display:block;color:var(--muted);font-size:.9rem}
+.certs li.hinweis{grid-column:1 / -1;border-bottom:0;color:var(--muted)}
+
+.agency{padding:.9rem 1.1rem;border:2px solid var(--ink);border-radius:10px;break-inside:avoid}
+.agency h2{margin-bottom:.5rem}
+.agency dl{display:grid;grid-template-columns:max-content 1fr;gap:.25rem 1.2rem}
+.agency dt{font-weight:700}
+.agency dd{color:var(--muted)}
+
+.cases{display:grid;gap:.8rem}
+.case{border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:10px;padding:.8rem 1rem;break-inside:avoid}
+.case h3{font-size:1.1rem}
+.case .tag{color:var(--muted);font-size:.9rem;margin:.1rem 0 .5rem}
+.case dl{display:grid;grid-template-columns:8.5rem 1fr;gap:.2rem 1rem}
+.case dt{font-weight:700}
+.case dd{color:var(--muted)}
+.hinweis{margin-top:.6rem;color:var(--muted);font-size:.95rem}
+
+.kontakt{padding:.9rem 1.1rem;border:2px solid var(--ink);border-radius:10px;break-inside:avoid}
+.kontakt h2{margin-bottom:.4rem}
+.kontakt ul{display:flex;flex-wrap:wrap;gap:.3rem 2rem}
+.kontakt .l{font-weight:700;margin-right:.6rem}
+.kontakt a{font-weight:700}
+
+.blatt{position:relative;height:262mm;break-after:page}
+.blatt:last-child{break-after:auto}
+.fuss{position:absolute;left:0;right:0;bottom:0;font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.3rem}

@@ -1,0 +1,59 @@
+--- npm run paket:pruefen -- paket/2026-10-19.tar
+> web-studio-freelancer-seite@0.1.0 paket:pruefen
+> node scripts/paket-pruefen.mjs paket/2026-10-19.tar
+
+Paket: paket/2026-10-19.tar
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+
+exit 0
+
+--- Gegenprobe mit System-tar (cwd = paket/, relativer Name; GNU tar deutet C:... als Host)
+## C:/Windows/System32/tar.exe
+bsdtar 3.8.9 - libarchive 3.8.9 zlib/1.2.13.1-motley liblzma/5.8.3 bz2lib/1.0.8 libzstd/1.5.7 cng/2.0 libb2/bundled 
+-tf Exit 0, Eintraege:
+index.html
+404.html
+bilder/apple-touch-icon.png
+bilder/foto-vorlaeufig.jpg
+bilder/foto-vorlaeufig.webp
+css/site.css
+datenschutz.html
+favicon.ico
+fonts/LICENSE-Atkinson-Hyperlegible.txt
+fonts/LICENSE-Bricolage-Grotesque.txt
+fonts/atkinson-hyperlegible-latin-400-italic.woff2
+fonts/atkinson-hyperlegible-latin-400-normal.woff2
+fonts/atkinson-hyperlegible-latin-700-normal.woff2
+fonts/bricolage-grotesque-latin-wght-normal.woff2
+impressum.html
+js/kontakt.js
+profil-enrico-falk.pdf
+robots.txt
+sitemap.xml
+-xf Exit 0, 19 Dateien entpackt, Vergleich mit dist/: alle bytegleich
+
+## C:/Program Files/Git/usr/bin/tar.exe
+tar (GNU tar) 1.35
+-tf Exit 0, Eintraege:
+index.html
+404.html
+bilder/apple-touch-icon.png
+bilder/foto-vorlaeufig.jpg
+bilder/foto-vorlaeufig.webp
+css/site.css
+datenschutz.html
+favicon.ico
+fonts/LICENSE-Atkinson-Hyperlegible.txt
+fonts/LICENSE-Bricolage-Grotesque.txt
+fonts/atkinson-hyperlegible-latin-400-italic.woff2
+fonts/atkinson-hyperlegible-latin-400-normal.woff2
+fonts/atkinson-hyperlegible-latin-700-normal.woff2
+fonts/bricolage-grotesque-latin-wght-normal.woff2
+impressum.html
+js/kontakt.js
+profil-enrico-falk.pdf
+robots.txt
+sitemap.xml
+-xf Exit 0, 19 Dateien entpackt, Vergleich mit dist/: alle bytegleich
+
