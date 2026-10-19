@@ -1,0 +1,1 @@
+Keine Konsolenfehler, Warnungen, CSP-Verletzungen, fehlgeschlagenen oder fehlerhaften Anfragen (ausser dem erwarteten 404 der Fehlerseite).

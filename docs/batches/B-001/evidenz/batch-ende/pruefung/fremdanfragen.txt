@@ -1,0 +1,1 @@
+Keine Anfragen an andere Hosts als 127.0.0.1 (Seiten per Puppeteer, Lighthouse-Netzwerkliste). Die Linkpruefung der externen Links ruft die Ziele bewusst ab (links.txt).

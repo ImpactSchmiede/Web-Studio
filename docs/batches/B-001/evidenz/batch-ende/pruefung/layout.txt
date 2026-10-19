@@ -1,0 +1,16 @@
+ok  index.html hell 1280         scrollWidth 1280 / Fenster 1280
+ok  index.html hell 390          scrollWidth 390 / Fenster 390
+ok  index.html dunkel 1280       scrollWidth 1280 / Fenster 1280
+ok  index.html dunkel 390        scrollWidth 390 / Fenster 390
+ok  impressum.html hell 1280     scrollWidth 1280 / Fenster 1280
+ok  impressum.html hell 390      scrollWidth 390 / Fenster 390
+ok  impressum.html dunkel 1280   scrollWidth 1280 / Fenster 1280
+ok  impressum.html dunkel 390    scrollWidth 390 / Fenster 390
+ok  datenschutz.html hell 1280   scrollWidth 1280 / Fenster 1280
+ok  datenschutz.html hell 390    scrollWidth 390 / Fenster 390
+ok  datenschutz.html dunkel 1280 scrollWidth 1280 / Fenster 1280
+ok  datenschutz.html dunkel 390  scrollWidth 390 / Fenster 390
+ok  404.html hell 1280           scrollWidth 1280 / Fenster 1280
+ok  404.html hell 390            scrollWidth 390 / Fenster 390
+ok  404.html dunkel 1280         scrollWidth 1280 / Fenster 1280
+ok  404.html dunkel 390          scrollWidth 390 / Fenster 390

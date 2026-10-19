@@ -1,0 +1,11 @@
+Regression B-001, Stand 587c8cb docs: HF-001 Testsuite unter Linux (Leck-Pruefung portabel), Windows, Node v24.19.0
+ℹ tests 387
+ℹ pass 386
+ℹ fail 0
+ℹ skipped 1
+Pruefung der Lieferform: gruen
+Pruefung der Lieferform: gruen
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+Paketpruefung: gruen
+pruefen exit 0
