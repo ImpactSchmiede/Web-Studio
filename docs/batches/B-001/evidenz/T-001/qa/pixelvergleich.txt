@@ -1,0 +1,4 @@
+1280px dist vs mockup-1637: abweichende Pixel: 16784 von 5648640
+1280px dist vs mockup-aktuell: Groesse verschieden: dist 1280x4413 / 1280x5486
+390px dist vs mockup-1637: abweichende Pixel: 13194 von 2731950
+390px dist vs mockup-aktuell: Groesse verschieden: dist 390x7005 / 390x8998

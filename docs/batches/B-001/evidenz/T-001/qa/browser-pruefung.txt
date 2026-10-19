@@ -1,0 +1,40 @@
+== dist index, JS an
+Konsole/CSP: ["{\"entry\":{\"source\":\"network\",\"level\":\"error\",\"text\":\"Failed to load resource: the server responded with a status of 404 (Not Found)\",\"timestamp\":1792422400459.732,\"url\":\"http://127.0.0.1:8460/favicon.ico\",\"networkRequestId\":\"26028.10\"}}"]
+fonts: ["Bricolage Grotesque 200 800 normal loaded","Atkinson Hyperlegible 400 normal loaded","Atkinson Hyperlegible 400 italic loaded","Atkinson Hyperlegible 700 normal loaded"]
+Ressourcen: ["http://127.0.0.1:8460/css/site.css","http://127.0.0.1:8460/js/kontakt.js","http://127.0.0.1:8460/fonts/bricolage-grotesque-latin-wght-normal.woff2","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-400-normal.woff2","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-700-normal.woff2","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-400-italic.woff2","http://127.0.0.1:8460/favicon.ico"]
+addr: kontakt@enricofalk.de
+mail href: mailto:kontakt@enricofalk.de?subject=Anfrage%20Agile%20Coaching sichtbar: [true,true]
+copy click -> ["Adresse kopiert.","kontakt@enricofalk.de"]
+screenshot dist-1280.png 1280x4454
+screenshot dist-390.png 390x7046
+== Mockup
+Konsole: []
+screenshot mockup-1280.png 1280x5486
+screenshot mockup-390.png 390x8998
+Text identisch (mit JS): false
+== dist index, JS aus
+Konsole: []
+Ressourcen (ohne JS): ["http://127.0.0.1:8460/css/site.css","http://127.0.0.1:8460/js/kontakt.js","http://127.0.0.1:8460/fonts/bricolage-grotesque-latin-wght-normal.woff2","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-400-normal.woff2","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-700-normal.woff2","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-400-italic.woff2"]
+addr: kontakt [at] enricofalk.de
+mail/copy hidden-Attr: [true,true] display: ["none","none"] Hoehe: [0,0]
+screenshot dist-1280-ohneJS.png 1280x4388
+screenshot dist-390-ohneJS.png 390x6875
+== 404 tief
+Konsole: ["{\"entry\":{\"source\":\"network\",\"level\":\"error\",\"text\":\"Failed to load resource: the server responded with a status of 404 (Not Found)\",\"timestamp\":1792422411322.009,\"url\":\"http://127.0.0.1:8460/a/b/c/nichtda.html\",\"networkRequestId\":\"5B453ECB7199C259130DA1A1A6B6D179\"}}"]
+404 Stil geladen: [1,118,"\"Atkinson Hyperlegible\", system-ui, sans-serif","rgb(21, 34, 45)"]
+404 fonts: ["Bricolage Grotesque 200 800","Atkinson Hyperlegible 400","Atkinson Hyperlegible 400","Atkinson Hyperlegible 700"]
+404 Ressourcen: ["http://127.0.0.1:8460/css/site.css 200","http://127.0.0.1:8460/fonts/bricolage-grotesque-latin-wght-normal.woff2 200","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-400-normal.woff2 200","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-700-normal.woff2 200","http://127.0.0.1:8460/fonts/atkinson-hyperlegible-latin-400-italic.woff2 200"]
+404 Text: Entwurf vom 19.10.2026.
+Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angaben:
+so sieht das aus
+Enrico Falk
+Diese Seite gibt es nicht.
+
+Vielleicht ist der Link veraltet oder die Adresse falsch geschrieben.
+
+Zur Startseite
+Enrico Falk. Zusammenarbeit mit Organisationen auch als Impact Schmiede.
+Impressum
+Datenschutz
+screenshot 404-tief-1280.png 1280x800
+screenshot 404-tief-390.png 390x800

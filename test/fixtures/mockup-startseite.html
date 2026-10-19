@@ -1,0 +1,237 @@
+<!-- Fixture: unveraenderte Kopie von Meine Ablage/Web-Studio/Freelancer-Seite/Mockups/Mockup_Startseite.html, Stand 2026-10-19 (Co-PO-Fassung nach Anpassung SAFe/SPC), SHA-256 der Originaldatei e226eb8e46cfc5240aa0a90676190c6a226714eba9e6f73bc98f8b148972686a. Nur diese erste Zeile ist hinzugefuegt. -->
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enrico Falk, Agile Coach (Mockup-Entwurf)</title>
+<meta name="description" content="Enrico Falk begleitet Teams, Führung und Organisationen in Deutschland, Österreich und der Schweiz, wenn Veränderung ins Stocken gerät.">
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(fonts/atkinson-hyperlegible-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
+:root{--bg:#EDF2F5;--surface:#FFFFFF;--ink:#15222D;--muted:#475A68;--blue:#1B4B66;--line:#C3D1DA;--amber:#E3A62B;--amber-ink:#15222D;--ph:rgba(227,166,43,.22);--r:14px}
+@media (prefers-color-scheme:dark){:root{--bg:#0F1A22;--surface:#162630;--ink:#E9EFF3;--muted:#A3B4C0;--blue:#86BAD8;--line:#2B3E4A;--ph:rgba(227,166,43,.18)}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Atkinson Hyperlegible",system-ui,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--blue);text-underline-offset:.2em}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.12;margin:0;letter-spacing:-.015em;font-weight:700}
+h1{font-size:clamp(2.15rem,1.2rem + 4.6vw,3.7rem);letter-spacing:-.025em;max-width:16ch}
+h2{font-size:clamp(1.65rem,1.1rem + 2.2vw,2.35rem);max-width:22ch}
+h3{font-size:1.3rem;font-weight:650}
+p{margin:0 0 1em;max-width:62ch}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:clamp(3rem,6vw,5.5rem) 0}
+.entwurf{background:var(--ink);color:var(--bg);font-size:.9rem;padding:.6rem 0}
+.entwurf .wrap{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.ph{background:var(--ph);border-radius:4px;padding:0 .3em;font-style:italic}
+header.top{padding:1.1rem 0}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.name{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.2rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}
+nav a{color:var(--ink);text-decoration:none;font-size:.98rem}
+nav a:hover{text-decoration:underline}
+.btn{display:inline-block;font:700 1rem/1 "Atkinson Hyperlegible",sans-serif;padding:.95rem 1.4rem;border-radius:10px;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn.primary{background:var(--amber);color:var(--amber-ink)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.hero{padding-top:clamp(1.5rem,4vw,3.5rem)}
+.hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero p.lead{font-size:1.25rem;margin-top:1.4rem;color:var(--muted)}
+.cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.8rem}
+.gauge{width:100%;height:auto;display:block}
+.gauge .lane{fill:var(--surface);stroke:var(--line)}
+.gauge .item{fill:var(--blue);opacity:.85}
+.gauge .hot{fill:var(--amber)}
+.gauge .thread{stroke:var(--amber);stroke-width:2;stroke-dasharray:4 5}
+.gauge text{fill:var(--muted);font:700 13px "Atkinson Hyperlegible",sans-serif}
+.gauge .item,.gauge .hot{animation:rein .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*70ms + 200ms)}
+@keyframes rein{from{transform:translateX(-26px);opacity:0}to{opacity:.85;transform:none}}
+.gauge .hot{--o:1}
+.rows{margin-top:2.2rem;display:grid;gap:0}
+.row{display:grid;grid-template-columns:200px 1fr;gap:2rem;padding:1.8rem 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.alt{display:flex;gap:.9rem;align-items:flex-start}
+.alt b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem}
+.alt small{display:block;color:var(--muted);font-size:.9rem;line-height:1.35}
+.lv{display:flex;flex-direction:column;gap:3px;margin-top:.25rem}
+.lv i{display:block;width:26px;height:6px;border-radius:3px;background:var(--line)}
+.lv i.on{background:var(--amber)}
+.methods{color:var(--muted);font-size:.95rem;margin:.2rem 0 0}
+.also{margin-top:1.6rem;padding:1.3rem 1.5rem;border-radius:var(--r);background:var(--surface);max-width:70ch}
+.also h3{margin-bottom:.4rem}
+.profile{background:var(--surface)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:2rem}
+dl{margin:0}
+dt{font-weight:700;margin-top:1.1rem}
+dt:first-child{margin-top:0}
+dd{margin:.15rem 0 0;color:var(--muted)}
+.certs{list-style:none;margin:0;padding:0}
+.certs li{padding:.8rem 0;border-top:1px solid var(--line)}
+.certs li:last-child{border-bottom:1px solid var(--line)}
+.certs b{display:block}
+.agency{margin-top:2rem;padding:1.5rem;border:2px solid var(--ink);border-radius:var(--r);background:var(--bg)}
+.agency dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1.2rem;margin-top:.8rem}
+.agency dt,.agency dd{margin:0}
+.steps{margin:2rem 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;counter-reset:s}
+.steps li{counter-increment:s;padding-top:1rem;border-top:4px solid var(--amber)}
+.steps li::before{content:counter(s);font:700 1.4rem "Bricolage Grotesque",sans-serif;display:block;margin-bottom:.3rem}
+.steps h3{font-size:1.15rem;margin-bottom:.4rem}
+.steps p{font-size:.98rem;color:var(--muted)}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.photo{aspect-ratio:4/5;border-radius:var(--r);background:var(--ph);border:2px dashed var(--amber);display:grid;place-items:center;text-align:center;color:var(--muted);padding:1rem;max-width:380px}
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:1.6rem}
+.case{border:2px dashed var(--line);border-radius:var(--r);padding:1.2rem;color:var(--muted)}
+.case dl{display:grid;grid-template-columns:max-content 1fr;gap:.3rem .9rem;margin-top:.6rem}
+.case dt,.case dd{margin:0}
+.contact{background:var(--ink);color:var(--bg)}
+.contact h2{max-width:20ch}
+.contact a{color:inherit}
+.contact .mail{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center;margin:1.6rem 0 1rem}
+.contact .addr{font:700 1.35rem "Bricolage Grotesque",sans-serif;word-break:break-all}
+.contact .btn.ghost{border-color:var(--bg);color:var(--bg)}
+.contact .btn.ghost:hover{background:var(--bg);color:var(--ink)}
+.contact .note{color:#C5D2DB;font-size:.98rem}
+footer{padding:2rem 0 5rem;font-size:.95rem;color:var(--muted)}
+footer .wrap{display:flex;gap:1rem 2rem;flex-wrap:wrap;justify-content:space-between}
+footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.4rem;flex-wrap:wrap}
+.bar{display:none}
+@media (max-width:860px){
+ .hero .grid,.cols,.story,.cases{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ .row{grid-template-columns:1fr;gap:.9rem}
+ nav ul li:not(:last-child){display:none}
+}
+@media (max-width:560px){
+ .steps{grid-template-columns:1fr}
+ .bar{display:block;position:fixed;left:0;right:0;bottom:0;padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom));background:var(--surface);box-shadow:0 -1px 0 var(--line);z-index:5}
+ .bar .btn{display:block;text-align:center;width:100%}
+ .wrap{padding:0 16px}
+ .agency dl,.case dl{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.gauge .item,.gauge .hot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="entwurf"><div class="wrap"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angaben:</span><span class="ph">so sieht das aus</span></div></div>
+
+<header class="top"><div class="wrap">
+ <a class="name" href="#">Enrico Falk</a>
+ <nav aria-label="Hauptnavigation"><ul>
+  <li><a href="#hilfe">Wobei ich helfe</a></li><li><a href="#profil">Profil</a></li><li><a href="#vorgehen">So arbeite ich</a></li><li><a class="btn primary" href="#kontakt">Kontakt</a></li>
+ </ul></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap grid">
+ <div>
+  <h1>Wenn Veränderung im Unternehmen stockt, bringe ich sie wieder in Bewegung.</h1>
+  <p class="lead">Ich bin Enrico Falk, Agile Coach. Ich begleite Teams, Führung und ganze Organisationen in Deutschland, Österreich und der Schweiz.</p>
+  <div class="cta"><a class="btn primary" href="#kontakt">Gespräch anfragen</a><a class="btn ghost" href="#profil">Profil ansehen</a></div>
+ </div>
+ <svg class="gauge" viewBox="0 0 440 340" role="img" aria-label="Drei Flughöhen: Strategie, Zusammenspiel und Team. Dieselbe Arbeit ist auf allen drei Ebenen sichtbar.">
+  <rect class="lane" x="1" y="1" width="438" height="98" rx="12"/><rect class="lane" x="1" y="121" width="438" height="98" rx="12"/><rect class="lane" x="1" y="241" width="438" height="98" rx="12"/>
+  <text x="18" y="24">Strategie</text><text x="18" y="144">Zusammenspiel</text><text x="18" y="264">Team</text>
+  <g>
+   <rect class="item" style="--i:0" x="150" y="38" width="96" height="40" rx="6"/><rect class="hot" style="--i:1" x="262" y="38" width="96" height="40" rx="6"/><rect class="item" style="--i:2" x="374" y="38" width="46" height="40" rx="6"/>
+   <rect class="item" style="--i:3" x="150" y="158" width="52" height="40" rx="6"/><rect class="item" style="--i:4" x="212" y="158" width="52" height="40" rx="6"/><rect class="hot" style="--i:5" x="274" y="158" width="52" height="40" rx="6"/><rect class="item" style="--i:6" x="336" y="158" width="52" height="40" rx="6"/>
+   <rect class="item" style="--i:7" x="150" y="280" width="28" height="40" rx="5"/><rect class="item" style="--i:8" x="186" y="280" width="28" height="40" rx="5"/><rect class="item" style="--i:9" x="222" y="280" width="28" height="40" rx="5"/><rect class="hot" style="--i:10" x="258" y="280" width="28" height="40" rx="5"/><rect class="item" style="--i:11" x="294" y="280" width="28" height="40" rx="5"/><rect class="item" style="--i:12" x="330" y="280" width="28" height="40" rx="5"/><rect class="item" style="--i:13" x="366" y="280" width="28" height="40" rx="5"/>
+   <path class="thread" d="M310 78 V158 M300 198 V280"/>
+  </g>
+ </svg>
+</div></section>
+
+<section id="hilfe"><div class="wrap">
+ <h2>Auf jeder Flughöhe hakt etwas anderes.</h2>
+ <p style="margin-top:1rem">Ich arbeite dort, wo es bei Ihnen klemmt, und halte die Verbindung zu den anderen Ebenen.</p>
+ <div class="rows">
+  <div class="row"><div class="alt"><span class="lv" aria-hidden="true"><i class="on"></i><i></i><i></i></span><div><b>Strategie</b><small>Führung und Portfolio</small></div></div>
+   <div><h3>Die Strategie steht, aber sie kommt im Unternehmen nicht an.</h3><p style="margin-top:.6rem">Ich verbinde Ziele mit der Arbeit der Teams, damit Prioritäten sichtbar sind und von allen getragen werden.</p><p class="methods">OKRs, SAFe Portfolio, Flight Levels</p></div></div>
+  <div class="row"><div class="alt"><span class="lv" aria-hidden="true"><i></i><i class="on"></i><i></i></span><div><b>Zusammenspiel</b><small>Mehrere Teams, ein Ergebnis</small></div></div>
+   <div><h3>Viele Teams arbeiten, aber nichts wird schneller fertig.</h3><p style="margin-top:.6rem">Ich mache Abhängigkeiten und Wartezeiten sichtbar und gestalte mit Ihnen, wie die Teams zusammenarbeiten.</p><p class="methods">SAFe, Flight Levels</p></div></div>
+  <div class="row"><div class="alt"><span class="lv" aria-hidden="true"><i></i><i></i><i class="on"></i></span><div><b>Team</b><small>Alltag und Zusammenarbeit</small></div></div>
+   <div><h3>Das Team gibt sein Bestes, aber der Alltag hakt.</h3><p style="margin-top:.6rem">Ich coache Teams oder übernehme zeitlich begrenzt die Rolle als Scrum Master, bis das Team die Verbesserung selbst trägt.</p><p class="methods">Scrum, Coaching</p></div></div>
+ </div>
+ <div class="also"><h3>Auf jeder Höhe gilt: Menschen mitnehmen.</h3><p style="margin:0">Veränderung scheitert selten am Plan, meistens an der Akzeptanz. Dafür arbeite ich mit bewährten Veränderungsmodellen wie ADKAR und Kotter. Für Organisationen und Teams biete ich das auch unter dem Label <a href="https://impact-schmiede.de">Impact Schmiede</a> an.</p></div>
+</div></section>
+
+<section id="profil" class="profile"><div class="wrap">
+ <h2>Profil auf einen Blick</h2>
+ <div class="cols">
+  <dl>
+   <dt>Erfahrung</dt><dd>rund 15 Jahre in Organisationsentwicklung und Agile Coaching</dd>
+   <dt>Region</dt><dd>Deutschland, Österreich, Schweiz</dd>
+   <dt>Rollen</dt><dd>Agile Coach, Scrum Master, Berater für skalierte Agilität</dd>
+   <dt>Ansätze</dt><dd>SAFe, Flight Levels, OKRs, ADKAR, ADAPT, Kotter</dd>
+  </dl>
+  <div>
+   <h3 style="margin-bottom:.8rem">Zertifikate</h3>
+   <ul class="certs">
+    <li><b>CAL-ETO</b><span class="ph">Name, Aussteller und ein Erklärsatz folgen</span></li>
+    <li><b>FL2D</b><span class="ph">Name, Aussteller und ein Erklärsatz folgen</span></li>
+    <li><b>SPC</b>SAFe Program Consultant <span class="ph">Verifikationslink folgt</span></li>
+   </ul>
+  </div>
+ </div>
+ <div class="agency">
+  <h3>Für Vermittlerinnen und Vermittler</h3>
+  <dl><dt>Verfügbar ab</dt><dd><span class="ph">folgt</span></dd><dt>Einsatzform</dt><dd><span class="ph">folgt (remote, vor Ort, hybrid)</span></dd><dt>Sprachen</dt><dd><span class="ph">folgt</span></dd><dt>Branchen</dt><dd><span class="ph">folgt</span></dd></dl>
+  <p style="margin:1.2rem 0 0"><a class="btn ghost" href="#">Profil als PDF laden</a></p>
+ </div>
+</div></section>
+
+<section id="vorgehen"><div class="wrap">
+ <h2>So arbeite ich mit Ihnen.</h2>
+ <ol class="steps">
+  <li><h3>Zuhören</h3><p>Im Erstgespräch schildern Sie die Lage. Ich frage nach, bis das eigentliche Problem klar ist. <span class="ph">Dauer und Form folgen</span></p></li>
+  <li><h3>Ziel festlegen</h3><p>Wir legen gemeinsam fest, woran Sie in einigen Wochen merken, dass es besser läuft, und wo wir anfangen.</p></li>
+  <li><h3>Begleiten</h3><p>Ich arbeite mit Teams und Führung vor Ort oder remote und stärke, was schon funktioniert.</p></li>
+  <li><h3>Überlassen</h3><p>Wir prüfen die Wirkung. Wenn Ihre Leute es selbst tragen, ziehe ich mich zurück.</p></li>
+ </ol>
+</div></section>
+
+<section id="hintergrund" class="profile"><div class="wrap story">
+ <div class="photo"><div><strong>Foto</strong><br>Platzhalter, bis Enrico ein Foto in den Ordner „Foto“ legt.</div></div>
+ <div>
+  <h2>Von Spielen zu Organisationen.</h2>
+  <p style="margin-top:1rem">Bevor ich Unternehmen begleitet habe, habe ich jahrelang in der Spieleentwicklung gearbeitet. Dort sieht man jeden Tag, wie Teams mit Unsicherheit umgehen, früh etwas zeigen und aus Rückmeldungen lernen.</p>
+  <p>Diese Haltung nehme ich in Organisationen mit. <span class="ph">Entwurf, Enrico prüft und ergänzt</span></p>
+  <h3 style="margin-top:2rem">Aus meiner Arbeit</h3>
+  <div class="cases">
+   <div class="case"><strong>Beispiel 1</strong><dl><dt>Ausgangslage</dt><dd>folgt</dd><dt>Meine Rolle</dt><dd>folgt</dd><dt>Veränderung</dt><dd>folgt</dd></dl></div>
+   <div class="case"><strong>Beispiel 2</strong><dl><dt>Ausgangslage</dt><dd>folgt</dd><dt>Meine Rolle</dt><dd>folgt</dd><dt>Veränderung</dt><dd>folgt</dd></dl></div>
+  </div>
+ </div>
+</div></section>
+
+<section id="kontakt" class="contact"><div class="wrap">
+ <h2>Schreiben Sie mir kurz, worum es geht.</h2>
+ <div class="mail">
+  <span class="addr" id="addr">kontakt@enricofalk.de</span>
+  <a class="btn primary" href="mailto:kontakt@enricofalk.de?subject=Anfrage%20Agile%20Coaching">E-Mail schreiben</a>
+  <button class="btn ghost" type="button" id="copy">Adresse kopieren</button>
+ </div>
+ <p class="note" id="copied" aria-live="polite"></p>
+ <p class="note"><span class="ph" style="color:#F3E3BC">Platzhalter: Die Adresse nennt Enrico. Antwortzeit und Ablauf des Erstgesprächs folgen, wenn sie feststehen.</span></p>
+ <p class="note">Sie erreichen mich auch auf <a href="https://www.linkedin.com/">LinkedIn</a>.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div>Enrico Falk. Zusammenarbeit mit Organisationen auch als <a href="https://impact-schmiede.de">Impact Schmiede</a>.</div>
+ <ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li></ul>
+</div></footer>
+
+<div class="bar"><a class="btn primary" href="#kontakt">Gespräch anfragen</a></div>
+<script>
+document.getElementById("copy").addEventListener("click",function(){
+ var t=document.getElementById("addr").textContent,m=document.getElementById("copied");
+ (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){m.textContent="Adresse kopiert."},function(){m.textContent="Kopieren nicht möglich. Bitte markieren Sie die Adresse."});
+});
+</script>
+</body>
+</html>

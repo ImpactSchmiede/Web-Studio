@@ -1,0 +1,9 @@
+commit 2c75f65eabdd28a4c14c44f331616ffff72d6ed7
+Author: Claude (AI User) <263194498+ImpactSchmiede@users.noreply.github.com>
+Date:   Mon Oct 19 13:39:23 2026 +0200
+
+    chore: Projekt aus Vorlage angelegt
+    
+    Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+    
+    Claude-Session: https://claude.ai/code/session_01F5Ee6pXBuNMaNupo54cHmG

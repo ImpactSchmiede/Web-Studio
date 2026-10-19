@@ -1,0 +1,12 @@
+Kopie: vor Build Altdateien dist/.htaccess und dist/alt.php angelegt
+build exit 0
+123142  Summe (12 Dateien)
+Pruefung der Lieferform: gruen
+danach:
+404.html
+css
+fonts
+index.html
+js
+robots.txt
+sitemap.xml

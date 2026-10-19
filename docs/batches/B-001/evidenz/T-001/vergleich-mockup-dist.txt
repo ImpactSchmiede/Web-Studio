@@ -1,0 +1,5 @@
+Vergleichsbasis: aktuelles Mockup_Startseite.html, SHA-256 e226eb8e46cfc5240aa0a90676190c6a226714eba9e6f73bc98f8b148972686a
+Struktur/Text (normalisiert, 514 Token): 0 Unterschiede
+CSS: 105 Mockup-Regeln gefunden, 22 erlaubte Zusatzregeln, 0 Befunde
+Screenshot 1280px: mockup ab69cde1df978941 dist ab69cde1df978941 -> IDENTISCH
+Screenshot 390px: mockup 982e852a81c5960f dist 982e852a81c5960f -> IDENTISCH

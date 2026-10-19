@@ -1,0 +1,22 @@
+## <style
+## style=
+## <script ohne src
+(Befehl korrigiert, siehe unten)
+## on*=
+## javascript:
+## src/href/url mit http
+404.html:23:href="https://impact-schmiede.de"
+index.html:51:href="https://impact-schmiede.de"
+index.html:107:href="https://www.linkedin.com/"
+index.html:112:href="https://impact-schmiede.de"
+## css url/import
+1:url(../fonts/bricolage-grotesque-latin-wght-normal.woff2)
+2:url(../fonts/atkinson-hyperlegible-latin-400-normal.woff2)
+3:url(../fonts/atkinson-hyperlegible-latin-400-italic.woff2)
+4:url(../fonts/atkinson-hyperlegible-latin-700-normal.woff2)
+## mailto/@ im HTML
+## alle <script-Tags
+index.html:9:<script src="js/kontakt.js" defer>
+## SVG <style>/<script> in svg
+404.html:0
+index.html:1

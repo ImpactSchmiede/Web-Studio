@@ -1,0 +1,8 @@
+{
+  "sprache": "de",
+  "baseUrl": "https://enricofalk.de/",
+  "indexierbar": false,
+  "erlaubteEndungen": [".html", ".css", ".js", ".woff2", ".txt", ".xml"],
+  "maxBytes": 20971520,
+  "maxDateien": 500
+}

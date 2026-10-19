@@ -1,0 +1,15 @@
+{
+  "name": "web-studio-freelancer-seite",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Statische Freelancer-Seite (enricofalk.de): Build-Skript ohne Fremdpakete, Ausgabe in dist/",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test \"test/*.test.mjs\""
+  }
+}

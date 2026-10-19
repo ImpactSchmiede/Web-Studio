@@ -1,0 +1,19 @@
+
+> web-studio-freelancer-seite@0.1.0 build
+> node scripts/build.mjs
+
+dist gebaut: C:\Users\AI User\Projekte\Web-Studio\dist
+ 1099  404.html
+ 8156  css/site.css
+ 4603  fonts/LICENSE-Atkinson-Hyperlegible.txt
+ 4401  fonts/LICENSE-Bricolage-Grotesque.txt
+18292  fonts/atkinson-hyperlegible-latin-400-italic.woff2
+17208  fonts/atkinson-hyperlegible-latin-400-normal.woff2
+17524  fonts/atkinson-hyperlegible-latin-700-normal.woff2
+41344  fonts/bricolage-grotesque-latin-wght-normal.woff2
+ 9155  index.html
+ 1203  js/kontakt.js
+   26  robots.txt
+  155  sitemap.xml
+123166  Summe (12 Dateien)
+Pruefung der Lieferform: gruen

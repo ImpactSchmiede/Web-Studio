@@ -1,0 +1,8 @@
+Kopie: Text 'Auf jeder Flughöhe hakt etwas anderes.' -> 'QA-TEST Überschrift geändert' sowie 'Diese Seite gibt es nicht.' -> 'QA-TEST 404'
+  155  sitemap.xml
+123142  Summe (12 Dateien)
+Pruefung der Lieferform: gruen
+exit 0
+dist/index.html:QA-TEST Überschrift geändert
+dist/404.html:QA-TEST 404
+alter Text noch da: 0
