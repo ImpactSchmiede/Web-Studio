@@ -1,0 +1,14 @@
+commit bf4dc6b4a74adf171d198b3d531afd09d179e162
+Author: Claude (<benutzer>) 
+Date:   Mon Oct 19 19:30:51 2026 +0200
+
+    fix: Leck-Pruefung las Benutzernamen aus der Umgebung, Tests nur auf dem Erzeuger-Rechner gruen (HF-001)
+    
+    pruefePdf nimmt Benutzer- und Rechnername optional (opt.kennungen); Tests
+    nutzen feste Werte mit und ohne Leerzeichen. Kennungen nur als ganzes Wort,
+    ohne Fehlalarm bei PDF-Strukturnamen (root, info ...) und erwartetem
+    Titel/Autor/erlaubten Verweisen; Hinweise in npm run check. Seite, PDF und
+    Paket unveraendert (SHA-256 d05bb94d...).
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_011FPyMW1Lnj71cYrRKar6Zc
