@@ -1,9 +1,14 @@
-commit 2c75f65eabdd28a4c14c44f331616ffff72d6ed7
+commit d286e16312cf24a8258ce1ce5a97c02148f2531a
 Author: Claude (AI User) <263194498+ImpactSchmiede@users.noreply.github.com>
-Date:   Mon Oct 19 13:39:23 2026 +0200
+Date:   Mon Oct 19 17:13:58 2026 +0200
 
-    chore: Projekt aus Vorlage angelegt
+    feat(T-001): Stack-Entscheidung und Build-Geruest der Freelancer-Seite
     
-    Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+    Node-Build ohne Abhaengigkeiten: Texte in src/content/de.json, Layout in
+    Templates, site.css und kontakt.js als eigene Dateien (CSP default-src 'self').
+    npm run build erzeugt dist/ (index, 404, robots, sitemap, fonts + Lizenzen)
+    und prueft die Lieferform; npm test (node --test). Konzept committet,
+    Entscheidung in docs/ENTSCHEIDUNGEN.md, Evidenz unter docs/batches/B-001.
     
-    Claude-Session: https://claude.ai/code/session_01F5Ee6pXBuNMaNupo54cHmG
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    Claude-Session: https://claude.ai/code/session_011FPyMW1Lnj71cYrRKar6Zc
