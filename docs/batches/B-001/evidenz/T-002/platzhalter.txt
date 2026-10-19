@@ -1,0 +1,17 @@
+
+> web-studio-freelancer-seite@0.1.0 platzhalter
+> node scripts/platzhalter.mjs
+
+ 1. [gelb] de.json beispiele.hinweis: Entwurf aus dem Lebenslauf. Enrico prüft Anonymisierung und Formulierungen, bevor etwas öffentlich wird.
+ 2. [gelb] de.json profil.zertifikate.hinweis: Erklärsätze und Verifikationslinks folgen, wenn vorhanden
+ 3. [gelb] de.json profil.vermittler.pdfHinweis: Das Profil als PDF folgt.
+ 4. [gelb] de.json vorgehen.schritte[0].text: Dauer folgt
+ 5. [gelb] de.json hintergrund.absaetze[1]: Entwurf aus dem Lebenslauf, Enrico prüft und ergänzt
+ 6. [gelb] de.json kontakt.hinweis: Platzhalter: Die Mailbox wird vor dem Livegang von außen getestet.
+ 7. [gelb] de.json kontakt.terminHinweis: Der Terminlink folgt.
+ 8. [gelb] de.json rechtliches.impressum.text: in Arbeit
+ 9. [gelb] de.json rechtliches.datenschutz.text: in Arbeit
+10. [konfig] site.config.json foto.datei (foto-vorlaeufig): Foto ist vorläufig (Foto von 2019, höchstens 512 px, nicht gelb markiert). Veröffentlichung erst nach Enricos Ja, Austausch später.
+11. [konfig] site.config.json kontakt.terminUrl: Terminlink noch leer: der Knopf „Erstgespräch buchen“ führt auf die gelbe Notiz #termin.
+
+11 Platzhalter (9 gelb markiert in der Seite, 2 aus der Konfiguration)

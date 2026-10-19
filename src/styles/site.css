@@ -10,7 +10,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Atk
 a{color:var(--blue);text-underline-offset:.2em}
 a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
 h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.12;margin:0;letter-spacing:-.015em;font-weight:700}
-h1{font-size:clamp(2.15rem,1.2rem + 4.6vw,3.7rem);letter-spacing:-.025em;max-width:16ch}
+h1{font-size:clamp(2.05rem,1.1rem + 4.2vw,3.4rem);letter-spacing:-.025em;max-width:19ch}
 h2{font-size:clamp(1.65rem,1.1rem + 2.2vw,2.35rem);max-width:22ch}
 h3{font-size:1.3rem;font-weight:650}
 p{margin:0 0 1em;max-width:62ch}
@@ -62,9 +62,10 @@ dt{font-weight:700;margin-top:1.1rem}
 dt:first-child{margin-top:0}
 dd{margin:.15rem 0 0;color:var(--muted)}
 .certs{list-style:none;margin:0;padding:0}
-.certs li{padding:.8rem 0;border-top:1px solid var(--line)}
+.certs li{padding:.6rem 0;border-top:1px solid var(--line);line-height:1.4}
 .certs li:last-child{border-bottom:1px solid var(--line)}
 .certs b{display:block}
+.certs small{color:var(--muted);font-size:.92rem}
 .agency{margin-top:2rem;padding:1.5rem;border:2px solid var(--ink);border-radius:var(--r);background:var(--bg)}
 .agency dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1.2rem;margin-top:.8rem}
 .agency dt,.agency dd{margin:0}
@@ -73,12 +74,17 @@ dd{margin:.15rem 0 0;color:var(--muted)}
 .steps li::before{content:counter(s);font:700 1.4rem "Bricolage Grotesque",sans-serif;display:block;margin-bottom:.3rem}
 .steps h3{font-size:1.15rem;margin-bottom:.4rem}
 .steps p{font-size:.98rem;color:var(--muted)}
-.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
-.photo{aspect-ratio:4/5;border-radius:var(--r);background:var(--ph);border:2px dashed var(--amber);display:grid;place-items:center;text-align:center;color:var(--muted);padding:1rem;max-width:380px}
-.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:1.6rem}
-.case{border:2px dashed var(--line);border-radius:var(--r);padding:1.2rem;color:var(--muted)}
-.case dl{display:grid;grid-template-columns:max-content 1fr;gap:.3rem .9rem;margin-top:.6rem}
-.case dt,.case dd{margin:0}
+.story{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.photo{margin:0;max-width:380px}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r)}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+.case{border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--r);padding:1.3rem;background:var(--surface)}
+.case h3{font-size:1.15rem;margin-bottom:.2rem}
+.case .tag{color:var(--muted);font-size:.9rem;margin:0 0 .8rem}
+.case dd{color:var(--muted)}
+.case dl{margin:0}
+.case dt{margin-top:.8rem;font-size:.95rem}
+.case dd{margin:.1rem 0 0;font-size:.98rem;line-height:1.5}
 .contact{background:var(--ink);color:var(--bg)}
 .contact h2{max-width:20ch}
 .contact a{color:inherit}
@@ -102,10 +108,10 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.4rem;flex-wrap:w
  .bar{display:block;position:fixed;left:0;right:0;bottom:0;padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom));background:var(--surface);box-shadow:0 -1px 0 var(--line);z-index:5}
  .bar .btn{display:block;text-align:center;width:100%}
  .wrap{padding:0 16px}
- .agency dl,.case dl{grid-template-columns:1fr}
+ .agency dl{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.gauge .item,.gauge .hot{animation:none}html{scroll-behavior:auto}}
-/* Zusatzregeln T-001: ersetzen die Inline-Stile des Mockups (CSP default-src 'self'), Werte unveraendert. Oberhalb steht das Mockup-CSS woertlich. */
+/* Zusatzregeln T-001/T-002: ersetzen die Inline-Stile des Mockups (CSP default-src 'self'), Werte unveraendert. Oberhalb steht das Mockup-CSS woertlich. */
 .d0{--i:0}
 .d1{--i:1}
 .d2{--i:2}
@@ -126,5 +132,68 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.4rem;flex-wrap:w
 .mb-08{margin-bottom:.8rem}
 .mt-2{margin-top:2rem}
 .mt-12{margin:1.2rem 0 0}
+.mt-14{margin-top:1.4rem}
+.fs-095{font-size:.95rem}
+.c-muted{color:var(--muted)}
 .ph-hell{color:#F3E3BC}
 [hidden]{display:none!important}
+/* Feinschliff T-002 */
+/* Nur Details: Fokus, Hover, Typografie, Abstaende, Dark Mode, Druck, kleine Bildschirme. Keine neuen Farben (nur Palette des Mockups), keine neuen Schriften, keine Texte, keine Uebergaenge. Die Einstiegsanimation der Grafik bleibt die einzige Bewegung. */
+:root{color-scheme:light dark}
+
+/* Fokus: amberfarbener Ring bleibt, dazu ein Ring in Tintenfarbe (auf Hell ist Amber allein zu schwach, mindestens 3:1). Im Kontaktbereich (Gegenfarbe als Grund) ist es die Hintergrundfarbe. */
+a:focus-visible,button:focus-visible,.name:focus-visible,nav a:focus-visible,footer a:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px var(--amber)}
+.btn:focus-visible{border-radius:10px}
+.contact a:focus-visible,.contact button:focus-visible{outline-color:var(--bg)}
+
+/* Hover: Textlinks kraeftiger unterstrichen, Knopf in der Navigation nie unterstrichen, kein transition. */
+main a:not(.btn):hover,footer a:hover{text-decoration-thickness:.14em}
+.name:hover{text-decoration:underline}
+nav a.btn:hover{text-decoration:none}
+
+/* Typografie */
+h1,h2,h3{text-wrap:balance;overflow-wrap:break-word}
+p,dd,li{text-wrap:pretty}
+.contact .addr{overflow-wrap:anywhere;word-break:normal}
+
+/* Abstaende und Ziele: Sprungziele nicht an den Rand kleben, Fusszeile mit grosser Trefferflaeche */
+section[id],#pdf,#termin{scroll-margin-top:1rem}
+.photo picture{display:block}
+footer a{display:inline-block;padding:.4rem 0}
+.certs small{display:block;margin-top:.1rem}
+.case .tag{margin-top:.1rem}
+
+/* Dark Mode: im Kontakt liegt der Grund hell (--ink), darum dunkle Schrift mit Farben der Palette (Kontrast mindestens 4,5:1) */
+@media (prefers-color-scheme:dark){
+ .contact .note{color:#475A68}
+ .contact .ph-hell{color:var(--bg)}
+}
+
+/* Handy 390 px: Fliesstext trennen, lange Woerter umbrechen (nicht Ueberschriften und Name) */
+@media (max-width:560px){
+ p,dd,li,.note,.methods{hyphens:auto;overflow-wrap:break-word}
+ .cases{gap:1rem}
+ .case{padding:1.1rem}
+}
+
+/* Druck: helle Palette, Entwurfsbanner und gelbe Platzhalter bleiben sichtbar, Bedienelemente entfallen */
+@media print{
+ :root{color-scheme:light;--bg:#EDF2F5;--surface:#FFFFFF;--ink:#15222D;--muted:#475A68;--blue:#1B4B66;--line:#C3D1DA;--ph:rgba(227,166,43,.22)}
+ html{scroll-behavior:auto}
+ body{background:none;color:var(--ink);font-size:11pt;line-height:1.5}
+ .bar,nav,.cta,.contact .btn,#copied{display:none!important}
+ .entwurf{background:none;color:var(--ink);border:2px solid var(--ink);padding:.4rem 0;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .ph{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .profile,.agency,.case,.also{background:none}
+ .contact{background:none;color:var(--ink);border-top:2px solid var(--ink)}
+ .contact .note{color:var(--muted)}
+ .contact .ph-hell{color:var(--ink)}
+ .contact a{color:var(--blue)}
+ section{padding:1.2rem 0}
+ h2,h3{break-after:avoid}
+ .case,.row,.certs li,.also,.agency,.steps li,.photo{break-inside:avoid}
+ .photo{max-width:200px}
+ .gauge .item,.gauge .hot{animation:none}
+ footer{padding-bottom:0}
+ a[href^="https:"]::after{content:" (" attr(href) ")";font-size:.85em;overflow-wrap:anywhere;color:var(--muted)}
+}

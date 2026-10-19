@@ -1,0 +1,50 @@
+index.html hell 1280         Verstoesse: {"moderate":1}  zu pruefen: 1
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+index.html hell 390          Verstoesse: {"moderate":1}  zu pruefen: 1
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+      .bar    Some page content is not contained by landmarks
+index.html dunkel 1280       Verstoesse: {"moderate":1}  zu pruefen: 1
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+index.html dunkel 390        Verstoesse: {"moderate":1}  zu pruefen: 1
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+      .bar    Some page content is not contained by landmarks
+impressum.html hell 1280     Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+impressum.html hell 390      Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+impressum.html dunkel 1280   Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+impressum.html dunkel 390    Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+datenschutz.html hell 1280   Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+datenschutz.html hell 390    Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+datenschutz.html dunkel 1280 Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+datenschutz.html dunkel 390  Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+404.html hell 1280           Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+404.html hell 390            Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+404.html dunkel 1280         Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks
+404.html dunkel 390          Verstoesse: {"moderate":1}  zu pruefen: 0
+   [moderate] region: All page content should be contained by landmarks
+      .entwurf    Some page content is not contained by landmarks

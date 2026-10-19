@@ -2,7 +2,16 @@
   "sprache": "de",
   "baseUrl": "https://enricofalk.de/",
   "indexierbar": false,
-  "erlaubteEndungen": [".html", ".css", ".js", ".woff2", ".txt", ".xml"],
+  "kontakt": {
+    "adresse": "kontakt@enricofalk.de",
+    "terminUrl": ""
+  },
+  "foto": {
+    "datei": "foto-vorlaeufig",
+    "breite": 512,
+    "hoehe": 512
+  },
+  "erlaubteEndungen": [".html", ".css", ".js", ".woff2", ".txt", ".xml", ".webp", ".jpg", ".png", ".ico"],
   "maxBytes": 20971520,
   "maxDateien": 500
 }

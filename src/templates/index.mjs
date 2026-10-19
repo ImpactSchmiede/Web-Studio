@@ -1,5 +1,5 @@
 // Startseite. Struktur und Klassen wie im Mockup, Texte aus dem Inhalt (de.json).
-// Inline-Stile des Mockups sind Klassen: --i:N -> dN, Abstaende -> mt-*, mb-*, m0, ph-hell.
+// Inline-Stile des Mockups sind Klassen: --i:N -> dN, Abstaende -> mt-*, mb-*, m0, ph-hell, fs-095, c-muted.
 import { esc, renderText as t } from '../build/text.mjs';
 import { banner, fuss } from './layout.mjs';
 
@@ -36,7 +36,7 @@ function kopf(c) {
     '<header class="top"><div class="wrap">',
     ` <a class="name" href="#">${t(c.kopf.name)}</a>`,
     ` <nav aria-label="${esc(c.kopf.navigation)}"><ul>`,
-    `  <li><a href="#hilfe">${t(c.kopf.hilfe)}</a></li><li><a href="#profil">${t(c.kopf.profil)}</a></li><li><a href="#vorgehen">${t(c.kopf.vorgehen)}</a></li><li><a class="btn primary" href="#kontakt">${t(c.kopf.kontakt)}</a></li>`,
+    `  <li><a href="#hilfe">${t(c.kopf.hilfe)}</a></li><li><a href="#beispiele">${t(c.kopf.beispiele)}</a></li><li><a href="#profil">${t(c.kopf.profil)}</a></li><li><a href="#vorgehen">${t(c.kopf.vorgehen)}</a></li><li><a class="btn primary" href="#kontakt">${t(c.kopf.kontakt)}</a></li>`,
     ' </ul></nav>',
     '</div></header>',
   ].join('\n');
@@ -78,10 +78,31 @@ function hilfe(c) {
   ].join('\n');
 }
 
+function beispiele(c) {
+  const b = c.beispiele;
+  const fall = (e) => {
+    const paare = b.felder.map((f, i) => `<dt>${t(f)}</dt><dd>${t(e.werte[i])}</dd>`);
+    return [
+      `  <article class="case"><h3>${t(e.titel)}</h3><p class="tag">${t(e.tag)}</p><dl>`,
+      `   ${paare.join('\n   ')}</dl></article>`,
+    ].join('\n');
+  };
+  return [
+    '<section id="beispiele"><div class="wrap">',
+    ` <h2>${t(b.titel)}</h2>`,
+    ` <p class="mt-1">${t(b.einleitung)}</p>`,
+    ' <div class="cases">',
+    ...b.eintraege.map(fall),
+    ' </div>',
+    ` <p class="mt-14 fs-095 c-muted">${t(b.hinweis)}</p>`,
+    '</div></section>',
+  ].join('\n');
+}
+
 function profil(c) {
   const p = c.profil;
   const fakten = p.fakten.map((f) => `<dt>${t(f.name)}</dt><dd>${t(f.wert)}</dd>`).join('');
-  const zertifikate = p.zertifikate.eintraege.map((z) => `    <li><b>${t(z.name)}</b>${t(z.text)}</li>`);
+  const zertifikate = p.zertifikate.eintraege.map((z) => `    <li><b>${t(z.name)}</b><small>${t(z.aussteller)}</small></li>`);
   const felder = p.vermittler.felder.map((f) => `<dt>${t(f.name)}</dt><dd>${t(f.wert)}</dd>`).join('');
   return [
     '<section id="profil" class="profile"><div class="wrap">',
@@ -92,13 +113,15 @@ function profil(c) {
     `   <h3 class="mb-08">${t(p.zertifikate.titel)}</h3>`,
     '   <ul class="certs">',
     ...zertifikate,
+    `    <li>${t(p.zertifikate.hinweis)}</li>`,
     '   </ul>',
     '  </div>',
     ' </div>',
     ' <div class="agency">',
     `  <h3>${t(p.vermittler.titel)}</h3>`,
     `  <dl>${felder}</dl>`,
-    `  <p class="mt-12"><a class="btn ghost" href="#">${t(p.vermittler.pdf)}</a></p>`,
+    `  <p class="mt-12"><a class="btn ghost" href="#pdf">${t(p.vermittler.pdf)}</a></p>`,
+    `  <p class="mt-06" id="pdf">${t(p.vermittler.pdfHinweis)}</p>`,
     ' </div>',
     '</div></section>',
   ].join('\n');
@@ -117,47 +140,49 @@ function vorgehen(c) {
   ].join('\n');
 }
 
-function hintergrund(c) {
+// Foto: WebP mit JPG-Rueckfall, Breite und Hoehe aus der Konfiguration (kein Layoutsprung), Datei ohne Metadaten.
+function hintergrund(c, foto) {
   const h = c.hintergrund;
   const [erster, ...weitere] = h.absaetze;
-  const fall = (e) => {
-    const paare = h.beispiele.felder.map((f, i) => `<dt>${t(f)}</dt><dd>${t(e.werte[i])}</dd>`).join('');
-    return `   <div class="case"><strong>${t(e.titel)}</strong><dl>${paare}</dl></div>`;
-  };
+  const bild = `bilder/${foto.datei}`;
   return [
     '<section id="hintergrund" class="profile"><div class="wrap story">',
-    ` <div class="photo"><div><strong>${t(h.foto.titel)}</strong><br>${t(h.foto.text)}</div></div>`,
+    ` <figure class="photo"><picture><source type="image/webp" srcset="${esc(bild)}.webp"><img src="${esc(bild)}.jpg" width="${foto.breite}" height="${foto.hoehe}" alt="${esc(h.foto.alt)}" loading="lazy" decoding="async"></picture></figure>`,
     ' <div>',
     `  <h2>${t(h.titel)}</h2>`,
     `  <p class="mt-1">${t(erster)}</p>`,
     ...weitere.map((a) => `  <p>${t(a)}</p>`),
-    `  <h3 class="mt-2">${t(h.beispiele.titel)}</h3>`,
-    '  <div class="cases">',
-    ...h.beispiele.eintraege.map(fall),
-    '  </div>',
-    ' </div>',
+    '</div>',
     '</div></section>',
   ].join('\n');
 }
 
-function kontakt(c) {
+// Termin: ohne URL fuehrt der Knopf auf die gelbe Notiz #termin (kein toter Link), mit URL ist es ein gewoehnlicher Link.
+function kontakt(c, adresse, terminUrl) {
   const k = c.kontakt;
+  const termin = terminUrl
+    ? `<a class="btn ghost" href="${esc(terminUrl)}" rel="noopener">${t(k.terminknopf)}</a>`
+    : `<a class="btn ghost" href="#termin">${t(k.terminknopf)}</a>`;
   return [
     '<section id="kontakt" class="contact"><div class="wrap">',
     ` <h2>${t(k.titel)}</h2>`,
     ' <div class="mail">',
-    `  <span class="addr" id="addr" data-l="${esc(k.lokal)}" data-d="${esc(k.domain)}" data-s="${esc(k.betreff)}">${t(k.rueckfall)}</span>`,
+    `  <span class="addr" id="addr" data-l="${esc(adresse.lokal)}" data-d="${esc(adresse.domain)}" data-s="${esc(k.betreff)}">${esc(adresse.rueckfall)}</span>`,
     `  <a class="btn primary" id="mail" hidden>${t(k.mailknopf)}</a>`,
-    `  <button class="btn ghost" type="button" id="copy" data-ok="${esc(k.kopiert)}" data-fehler="${esc(k.kopierfehler)}" hidden>${t(k.kopierknopf)}</button>`,
+    `  ${termin}<button class="btn ghost" type="button" id="copy" data-ok="${esc(k.kopiert)}" data-fehler="${esc(k.kopierfehler)}" hidden>${t(k.kopierknopf)}</button>`,
     ' </div>',
     ' <p class="note" id="copied" aria-live="polite"></p>',
     ` <p class="note">${t(k.hinweis)}</p>`,
-    ` <p class="note">${t(k.linkedin)}</p>`,
+    terminUrl ? null : ` <p class="note" id="termin">${t(k.terminHinweis)}</p>`,
+    ` <p class="note">${t(k.antwort)}</p>`,
     '</div></section>',
-  ].join('\n');
+  ]
+    .filter((z) => z !== null)
+    .join('\n');
 }
 
-export function startseite(c) {
+// opt: { adresse: { lokal, domain, rueckfall }, terminUrl, foto: { datei, breite, hoehe } } (aus site.config.json abgeleitet)
+export function startseite(c, opt) {
   return [
     banner(c),
     '',
@@ -168,13 +193,15 @@ export function startseite(c) {
     '',
     hilfe(c),
     '',
+    beispiele(c),
+    '',
     profil(c),
     '',
     vorgehen(c),
     '',
-    hintergrund(c),
+    hintergrund(c, opt.foto),
     '',
-    kontakt(c),
+    kontakt(c, opt.adresse, opt.terminUrl),
     '</main>',
     '',
     fuss(c),

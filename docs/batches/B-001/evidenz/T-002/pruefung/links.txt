@@ -1,0 +1,5 @@
+Lokale Links, Anker und Lieferform: keine Befunde
+
+Externe Links (2), Fundstelle in Klammern:
+  200  https://impact-schmiede.de (404.html) weitergeleitet nach https://impact-schmiede.de/
+  999  https://www.linkedin.com/in/enrico-falk-b8369517 (index.html) [LinkedIn blockt automatische Abrufe (999/403), von Hand pruefen]

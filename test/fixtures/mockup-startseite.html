@@ -1,11 +1,11 @@
-<!-- Fixture: unveraenderte Kopie von Meine Ablage/Web-Studio/Freelancer-Seite/Mockups/Mockup_Startseite.html, Stand 2026-10-19 (Co-PO-Fassung nach Anpassung SAFe/SPC), SHA-256 der Originaldatei e226eb8e46cfc5240aa0a90676190c6a226714eba9e6f73bc98f8b148972686a. Nur diese erste Zeile ist hinzugefuegt. -->
+<!-- Fixture: unveraenderte Kopie von Meine Ablage/Web-Studio/Freelancer-Seite/Mockups/Mockup_Startseite.html, Stand 2026-10-19 16:58 (Co-PO-Fassung mit Aus-der-Praxis, Foto, Zertifikaten), SHA-256 der Originaldatei 5204cdf364707edfe80766e8b3d6dee9a3c5336180297bf3fd7778044a11fa02. Nur diese erste Zeile ist hinzugefuegt. -->
 <!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Enrico Falk, Agile Coach (Mockup-Entwurf)</title>
-<meta name="description" content="Enrico Falk begleitet Teams, Führung und Organisationen in Deutschland, Österreich und der Schweiz, wenn Veränderung ins Stocken gerät.">
+<title>Enrico Falk, Agile Coach und Problemlöser (Mockup-Entwurf)</title>
+<meta name="description" content="Enrico Falk, Agile Coach und Problemlöser: Er analysiert, was im Unternehmen wirklich hakt, und löst es gemeinsam mit Teams und Führung in Deutschland, Österreich und der Schweiz.">
 <style>
 @font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
 @font-face{font-family:"Atkinson Hyperlegible";src:url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
@@ -19,7 +19,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Atk
 a{color:var(--blue);text-underline-offset:.2em}
 a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
 h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.12;margin:0;letter-spacing:-.015em;font-weight:700}
-h1{font-size:clamp(2.15rem,1.2rem + 4.6vw,3.7rem);letter-spacing:-.025em;max-width:16ch}
+h1{font-size:clamp(2.05rem,1.1rem + 4.2vw,3.4rem);letter-spacing:-.025em;max-width:19ch}
 h2{font-size:clamp(1.65rem,1.1rem + 2.2vw,2.35rem);max-width:22ch}
 h3{font-size:1.3rem;font-weight:650}
 p{margin:0 0 1em;max-width:62ch}
@@ -71,9 +71,10 @@ dt{font-weight:700;margin-top:1.1rem}
 dt:first-child{margin-top:0}
 dd{margin:.15rem 0 0;color:var(--muted)}
 .certs{list-style:none;margin:0;padding:0}
-.certs li{padding:.8rem 0;border-top:1px solid var(--line)}
+.certs li{padding:.6rem 0;border-top:1px solid var(--line);line-height:1.4}
 .certs li:last-child{border-bottom:1px solid var(--line)}
 .certs b{display:block}
+.certs small{color:var(--muted);font-size:.92rem}
 .agency{margin-top:2rem;padding:1.5rem;border:2px solid var(--ink);border-radius:var(--r);background:var(--bg)}
 .agency dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1.2rem;margin-top:.8rem}
 .agency dt,.agency dd{margin:0}
@@ -82,12 +83,17 @@ dd{margin:.15rem 0 0;color:var(--muted)}
 .steps li::before{content:counter(s);font:700 1.4rem "Bricolage Grotesque",sans-serif;display:block;margin-bottom:.3rem}
 .steps h3{font-size:1.15rem;margin-bottom:.4rem}
 .steps p{font-size:.98rem;color:var(--muted)}
-.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
-.photo{aspect-ratio:4/5;border-radius:var(--r);background:var(--ph);border:2px dashed var(--amber);display:grid;place-items:center;text-align:center;color:var(--muted);padding:1rem;max-width:380px}
-.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:1.6rem}
-.case{border:2px dashed var(--line);border-radius:var(--r);padding:1.2rem;color:var(--muted)}
-.case dl{display:grid;grid-template-columns:max-content 1fr;gap:.3rem .9rem;margin-top:.6rem}
-.case dt,.case dd{margin:0}
+.story{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.photo{margin:0;max-width:380px}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r)}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem}
+.case{border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--r);padding:1.3rem;background:var(--surface)}
+.case h3{font-size:1.15rem;margin-bottom:.2rem}
+.case .tag{color:var(--muted);font-size:.9rem;margin:0 0 .8rem}
+.case dd{color:var(--muted)}
+.case dl{margin:0}
+.case dt{margin-top:.8rem;font-size:.95rem}
+.case dd{margin:.1rem 0 0;font-size:.98rem;line-height:1.5}
 .contact{background:var(--ink);color:var(--bg)}
 .contact h2{max-width:20ch}
 .contact a{color:inherit}
@@ -111,7 +117,7 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.4rem;flex-wrap:w
  .bar{display:block;position:fixed;left:0;right:0;bottom:0;padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom));background:var(--surface);box-shadow:0 -1px 0 var(--line);z-index:5}
  .bar .btn{display:block;text-align:center;width:100%}
  .wrap{padding:0 16px}
- .agency dl,.case dl{grid-template-columns:1fr}
+ .agency dl{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.gauge .item,.gauge .hot{animation:none}html{scroll-behavior:auto}}
 </style>
@@ -122,15 +128,15 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.4rem;flex-wrap:w
 <header class="top"><div class="wrap">
  <a class="name" href="#">Enrico Falk</a>
  <nav aria-label="Hauptnavigation"><ul>
-  <li><a href="#hilfe">Wobei ich helfe</a></li><li><a href="#profil">Profil</a></li><li><a href="#vorgehen">So arbeite ich</a></li><li><a class="btn primary" href="#kontakt">Kontakt</a></li>
+  <li><a href="#hilfe">Wobei ich helfe</a></li><li><a href="#beispiele">Aus der Praxis</a></li><li><a href="#profil">Profil</a></li><li><a href="#vorgehen">So arbeite ich</a></li><li><a class="btn primary" href="#kontakt">Kontakt</a></li>
  </ul></nav>
 </div></header>
 
 <main>
 <section class="hero"><div class="wrap grid">
  <div>
-  <h1>Wenn Veränderung im Unternehmen stockt, bringe ich sie wieder in Bewegung.</h1>
-  <p class="lead">Ich bin Enrico Falk, Agile Coach. Ich begleite Teams, Führung und ganze Organisationen in Deutschland, Österreich und der Schweiz.</p>
+  <h1>Wenn es im Unternehmen hakt, löse ich das Problem, das wirklich da ist.</h1>
+  <p class="lead">Ich bin Enrico Falk, Agile Coach und Problemlöser. Ich schaue zuerst genau hin und setze mein Wissen dann gezielt ein, statt Ihnen ein Framework überzustülpen. Für Teams, Führung und Organisationen in Deutschland, Österreich und der Schweiz.</p>
   <div class="cta"><a class="btn primary" href="#kontakt">Gespräch anfragen</a><a class="btn ghost" href="#profil">Profil ansehen</a></div>
  </div>
  <svg class="gauge" viewBox="0 0 440 340" role="img" aria-label="Drei Flughöhen: Strategie, Zusammenspiel und Team. Dieselbe Arbeit ist auf allen drei Ebenen sichtbar.">
@@ -147,39 +153,65 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.4rem;flex-wrap:w
 
 <section id="hilfe"><div class="wrap">
  <h2>Auf jeder Flughöhe hakt etwas anderes.</h2>
- <p style="margin-top:1rem">Ich arbeite dort, wo es bei Ihnen klemmt, und halte die Verbindung zu den anderen Ebenen.</p>
+ <p style="margin-top:1rem">Ich arbeite dort, wo es bei Ihnen klemmt, und halte die Verbindung zu den anderen Ebenen. Welches Framework dazu passt, entscheidet die Lage, nicht ein Rezept.</p>
  <div class="rows">
   <div class="row"><div class="alt"><span class="lv" aria-hidden="true"><i class="on"></i><i></i><i></i></span><div><b>Strategie</b><small>Führung und Portfolio</small></div></div>
-   <div><h3>Die Strategie steht, aber sie kommt im Unternehmen nicht an.</h3><p style="margin-top:.6rem">Ich verbinde Ziele mit der Arbeit der Teams, damit Prioritäten sichtbar sind und von allen getragen werden.</p><p class="methods">OKRs, SAFe Portfolio, Flight Levels</p></div></div>
+   <div><h3>Die Strategie steht, aber sie kommt im Unternehmen nicht an.</h3><p style="margin-top:.6rem">Ich verbinde Ziele mit der Arbeit der Teams, damit Prioritäten sichtbar sind und von allen getragen werden.</p><p class="methods">OKRs, Flight Levels, Portfolio-Steuerung</p></div></div>
   <div class="row"><div class="alt"><span class="lv" aria-hidden="true"><i></i><i class="on"></i><i></i></span><div><b>Zusammenspiel</b><small>Mehrere Teams, ein Ergebnis</small></div></div>
-   <div><h3>Viele Teams arbeiten, aber nichts wird schneller fertig.</h3><p style="margin-top:.6rem">Ich mache Abhängigkeiten und Wartezeiten sichtbar und gestalte mit Ihnen, wie die Teams zusammenarbeiten.</p><p class="methods">SAFe, Flight Levels</p></div></div>
+   <div><h3>Viele Teams arbeiten, aber nichts wird schneller fertig.</h3><p style="margin-top:.6rem">Ich mache Abhängigkeiten und Wartezeiten sichtbar und gestalte mit Ihnen, wie die Teams zusammenarbeiten.</p><p class="methods">Flight Levels, SAFe, LeSS</p></div></div>
   <div class="row"><div class="alt"><span class="lv" aria-hidden="true"><i></i><i></i><i class="on"></i></span><div><b>Team</b><small>Alltag und Zusammenarbeit</small></div></div>
-   <div><h3>Das Team gibt sein Bestes, aber der Alltag hakt.</h3><p style="margin-top:.6rem">Ich coache Teams oder übernehme zeitlich begrenzt die Rolle als Scrum Master, bis das Team die Verbesserung selbst trägt.</p><p class="methods">Scrum, Coaching</p></div></div>
+   <div><h3>Das Team gibt sein Bestes, aber der Alltag hakt.</h3><p style="margin-top:.6rem">Ich arbeite hands-on mit Teams und Product Ownern, finde die Ursache und befähige Ihre Leute, die Verbesserung selbst zu tragen.</p><p class="methods">Coaching, Workshops, Scrum, Kanban</p></div></div>
  </div>
  <div class="also"><h3>Auf jeder Höhe gilt: Menschen mitnehmen.</h3><p style="margin:0">Veränderung scheitert selten am Plan, meistens an der Akzeptanz. Dafür arbeite ich mit bewährten Veränderungsmodellen wie ADKAR und Kotter. Für Organisationen und Teams biete ich das auch unter dem Label <a href="https://impact-schmiede.de">Impact Schmiede</a> an.</p></div>
+</div></section>
+
+<section id="beispiele"><div class="wrap">
+ <h2>Aus der Praxis, anonymisiert.</h2>
+ <p style="margin-top:1rem">Drei Situationen aus meiner Arbeit. Namen der Unternehmen nenne ich nicht.</p>
+ <div class="cases">
+  <article class="case"><h3>Ein Prozess, der nur dem Namen nach Scrum war</h3><p class="tag">Luftfahrt-Software, Großprojekt eines Hauptkunden</p><dl>
+   <dt>Ausgangslage</dt><dd>Das Projekt lief unter dem Etikett Scrum, die Ergebnisse waren instabil.</dd>
+   <dt>Meine Rolle</dt><dd>Agile Coach und Troubleshooter.</dd>
+   <dt>Was sich geändert hat</dt><dd>Ich habe den Prozess geprüft, die Ursachen benannt, ein Transformationsteam aufgebaut und drei interdisziplinäre Teams neu zusammengestellt.</dd></dl></article>
+  <article class="case"><h3>Zwölf Teams an drei Standorten, strenge Sicherheitsnormen</h3><p class="tag">Bahntechnik, Embedded Software</p><dl>
+   <dt>Ausgangslage</dt><dd>Mehr als 15 Projekte, verteilte Teams, Abstimmung zwischen agilen und nicht agilen Abteilungen.</dd>
+   <dt>Meine Rolle</dt><dd>Agile Coach, Mitgestaltung der Transformation.</dd>
+   <dt>Was sich geändert hat</dt><dd>Zentrales Backlog-Management, ein Verbesserungsprozess nach PDCA und interne Coaches, die die Transformation selbst weitertragen.</dd></dl></article>
+  <article class="case"><h3>Mehr als 15 Teams, ein gemeinsamer Kurs</h3><p class="tag">Energiesektor, reguliertes Umfeld</p><dl>
+   <dt>Ausgangslage</dt><dd>Viele Teams in einem Cluster, Ausrichtung und Zusammenarbeit über Teamgrenzen waren ausbaufähig.</dd>
+   <dt>Meine Rolle</dt><dd>Agile Coach für Product Owner und Führungskräfte.</dd>
+   <dt>Was sich geändert hat</dt><dd>Gemeinsame Planungs- und Rückblickformate, OKRs als Zielsystem und Lernpfade für über 60 Scrum Master und Coaches.</dd></dl></article>
+ </div>
+ <p style="margin-top:1.4rem;font-size:.95rem;color:var(--muted)"><span class="ph">Entwurf aus dem Lebenslauf. Enrico prüft Anonymisierung und Formulierungen, bevor etwas öffentlich wird.</span></p>
 </div></section>
 
 <section id="profil" class="profile"><div class="wrap">
  <h2>Profil auf einen Blick</h2>
  <div class="cols">
   <dl>
-   <dt>Erfahrung</dt><dd>rund 15 Jahre in Organisationsentwicklung und Agile Coaching</dd>
+   <dt>Erfahrung</dt><dd>rund 15 Jahre Agile Coaching und Organisationsentwicklung, davor Softwareentwicklung</dd>
    <dt>Region</dt><dd>Deutschland, Österreich, Schweiz</dd>
-   <dt>Rollen</dt><dd>Agile Coach, Scrum Master, Berater für skalierte Agilität</dd>
-   <dt>Ansätze</dt><dd>SAFe, Flight Levels, OKRs, ADKAR, ADAPT, Kotter</dd>
+   <dt>Schwerpunkte</dt><dd>Coaching, Workshops und Trainings, Troubleshooting, Hands-on-Beratung, Change Management</dd>
+   <dt>Ansätze</dt><dd>Flight Levels, OKRs, ADKAR, Kotter, LeSS, SAFe, Design Thinking</dd>
   </dl>
   <div>
    <h3 style="margin-bottom:.8rem">Zertifikate</h3>
    <ul class="certs">
-    <li><b>CAL-ETO</b><span class="ph">Name, Aussteller und ein Erklärsatz folgen</span></li>
-    <li><b>FL2D</b><span class="ph">Name, Aussteller und ein Erklärsatz folgen</span></li>
-    <li><b>SPC</b>SAFe Program Consultant <span class="ph">Verifikationslink folgt</span></li>
+    <li><b>Diplom-Informatiker (FH)</b><small>TFH Berlin, heute BHT Berlin</small></li>
+    <li><b>Certified Agile Leadership (CAL-ETO)</b><small>Scrum Alliance</small></li>
+    <li><b>Certified Flight Levels Designer (FL2D)</b><small>LEANability</small></li>
+    <li><b>Certified Scrum Professional (CSP)</b><small>Scrum Alliance</small></li>
+    <li><b>Certified LeSS Practitioner (CLP)</b><small>The LeSS Company B.V.</small></li>
+    <li><b>Design Thinking Practitioner</b><small>Design Thinking Coach Academy</small></li>
+    <li><b>SAFe 6 Practice Consultant (SPC)</b><small>Scaled Agile, Inc.</small></li>
+    <li><b>Certified Scrum Master (CSM)</b><small>Scrum Alliance</small></li>
+    <li><span class="ph">Erklärsätze und Verifikationslinks folgen, wenn vorhanden</span></li>
    </ul>
   </div>
  </div>
  <div class="agency">
   <h3>Für Vermittlerinnen und Vermittler</h3>
-  <dl><dt>Verfügbar ab</dt><dd><span class="ph">folgt</span></dd><dt>Einsatzform</dt><dd><span class="ph">folgt (remote, vor Ort, hybrid)</span></dd><dt>Sprachen</dt><dd><span class="ph">folgt</span></dd><dt>Branchen</dt><dd><span class="ph">folgt</span></dd></dl>
+  <dl><dt>Verfügbar ab</dt><dd>auf Anfrage</dd><dt>Einsatzform</dt><dd>remote und vor Ort, nach Vereinbarung</dd><dt>Sprachen</dt><dd>Deutsch, Englisch</dd><dt>Branchen</dt><dd>Energie, öffentlicher Sektor, Bahn, Banken und FinTech, Luft- und Raumfahrt, Software und Games</dd><dt>Einsatzrollen</dt><dd>Coaching, Workshops, Trainings, Troubleshooting und Hands-on-Beratung. Auf Wunsch auch operative Rollen. Profile nach Absprache.</dd><dt>Antwort</dt><dd>innerhalb von 24 Stunden</dd></dl>
   <p style="margin:1.2rem 0 0"><a class="btn ghost" href="#">Profil als PDF laden</a></p>
  </div>
 </div></section>
@@ -187,37 +219,32 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;gap:1.4rem;flex-wrap:w
 <section id="vorgehen"><div class="wrap">
  <h2>So arbeite ich mit Ihnen.</h2>
  <ol class="steps">
-  <li><h3>Zuhören</h3><p>Im Erstgespräch schildern Sie die Lage. Ich frage nach, bis das eigentliche Problem klar ist. <span class="ph">Dauer und Form folgen</span></p></li>
+  <li><h3>Verstehen</h3><p>Im Erstgespräch schildern Sie die Lage. Ich frage nach, bis das eigentliche Problem klar ist, und bringe noch keine Lösung mit. Das Gespräch ist unverbindlich. <span class="ph">Dauer folgt</span></p></li>
   <li><h3>Ziel festlegen</h3><p>Wir legen gemeinsam fest, woran Sie in einigen Wochen merken, dass es besser läuft, und wo wir anfangen.</p></li>
-  <li><h3>Begleiten</h3><p>Ich arbeite mit Teams und Führung vor Ort oder remote und stärke, was schon funktioniert.</p></li>
+  <li><h3>Anpacken</h3><p>Ich arbeite mit Teams und Führung vor Ort oder remote und nutze genau die Werkzeuge, die zu Ihrem Problem passen. Was schon funktioniert, bleibt.</p></li>
   <li><h3>Überlassen</h3><p>Wir prüfen die Wirkung. Wenn Ihre Leute es selbst tragen, ziehe ich mich zurück.</p></li>
  </ol>
 </div></section>
 
 <section id="hintergrund" class="profile"><div class="wrap story">
- <div class="photo"><div><strong>Foto</strong><br>Platzhalter, bis Enrico ein Foto in den Ordner „Foto“ legt.</div></div>
+ <figure class="photo"><img src="foto.png" width="512" height="512" alt="Porträt von Enrico Falk"></figure>
  <div>
   <h2>Von Spielen zu Organisationen.</h2>
-  <p style="margin-top:1rem">Bevor ich Unternehmen begleitet habe, habe ich jahrelang in der Spieleentwicklung gearbeitet. Dort sieht man jeden Tag, wie Teams mit Unsicherheit umgehen, früh etwas zeigen und aus Rückmeldungen lernen.</p>
-  <p>Diese Haltung nehme ich in Organisationen mit. <span class="ph">Entwurf, Enrico prüft und ergänzt</span></p>
-  <h3 style="margin-top:2rem">Aus meiner Arbeit</h3>
-  <div class="cases">
-   <div class="case"><strong>Beispiel 1</strong><dl><dt>Ausgangslage</dt><dd>folgt</dd><dt>Meine Rolle</dt><dd>folgt</dd><dt>Veränderung</dt><dd>folgt</dd></dl></div>
-   <div class="case"><strong>Beispiel 2</strong><dl><dt>Ausgangslage</dt><dd>folgt</dd><dt>Meine Rolle</dt><dd>folgt</dd><dt>Veränderung</dt><dd>folgt</dd></dl></div>
-  </div>
- </div>
+  <p style="margin-top:1rem">Ich habe als Programmierer und Game Designer angefangen und später ein eigenes Spielestudio geleitet. In der Spieleentwicklung zählt, was im Alltag eines Teams wirklich funktioniert, Theorie allein überzeugt dort niemanden.</p>
+  <p>Diese Haltung nehme ich mit: erst verstehen, dann gestalten und früh etwas zeigen. <span class="ph">Entwurf aus dem Lebenslauf, Enrico prüft und ergänzt</span></p>
+</div>
 </div></section>
 
 <section id="kontakt" class="contact"><div class="wrap">
  <h2>Schreiben Sie mir kurz, worum es geht.</h2>
  <div class="mail">
-  <span class="addr" id="addr">kontakt@enricofalk.de</span>
-  <a class="btn primary" href="mailto:kontakt@enricofalk.de?subject=Anfrage%20Agile%20Coaching">E-Mail schreiben</a>
-  <button class="btn ghost" type="button" id="copy">Adresse kopieren</button>
+  <span class="addr" id="addr">info@impact-schmiede.de</span>
+  <a class="btn primary" href="mailto:info@impact-schmiede.de?subject=Anfrage%20Agile%20Coaching">E-Mail schreiben</a>
+  <a class="btn ghost" href="#">Erstgespräch buchen</a><button class="btn ghost" type="button" id="copy">Adresse kopieren</button>
  </div>
  <p class="note" id="copied" aria-live="polite"></p>
- <p class="note"><span class="ph" style="color:#F3E3BC">Platzhalter: Die Adresse nennt Enrico. Antwortzeit und Ablauf des Erstgesprächs folgen, wenn sie feststehen.</span></p>
- <p class="note">Sie erreichen mich auch auf <a href="https://www.linkedin.com/">LinkedIn</a>.</p>
+ <p class="note"><span class="ph" style="color:#F3E3BC">Platzhalter: Die Adresse ist vorläufig, ob eine eigene Seiten-Adresse kommt, ist offen. Der Terminlink folgt.</span></p>
+ <p class="note">Ich antworte innerhalb von 24 Stunden. Sie erreichen mich auch auf <a href="https://www.linkedin.com/in/enrico-falk-b8369517">LinkedIn</a>.</p>
 </div></section>
 </main>
 

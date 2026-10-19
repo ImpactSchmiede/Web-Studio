@@ -1,0 +1,460 @@
+[
+  {
+    "kennung": "index.html hell 1280",
+    "seite": "index.html",
+    "schema": "hell",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "hilfe": "Elements must meet minimum color contrast ratio thresholds",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": "text[y=\"24\"]",
+            "html": "<text x=\"18\" y=\"24\">Strategie</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"144\"]",
+            "html": "<text x=\"18\" y=\"144\">Zusammenspiel</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"264\"]",
+            "html": "<text x=\"18\" y=\"264\">Team</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kennung": "index.html hell 390",
+    "seite": "index.html",
+    "schema": "hell",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          },
+          {
+            "ziel": ".bar",
+            "html": "<div class=\"bar\"><a class=\"btn primary\" href=\"#kontakt\">Gespräch anfragen</a></div>",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "hilfe": "Elements must meet minimum color contrast ratio thresholds",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": "text[y=\"24\"]",
+            "html": "<text x=\"18\" y=\"24\">Strategie</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"144\"]",
+            "html": "<text x=\"18\" y=\"144\">Zusammenspiel</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"264\"]",
+            "html": "<text x=\"18\" y=\"264\">Team</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kennung": "index.html dunkel 1280",
+    "seite": "index.html",
+    "schema": "dunkel",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "hilfe": "Elements must meet minimum color contrast ratio thresholds",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": "text[y=\"24\"]",
+            "html": "<text x=\"18\" y=\"24\">Strategie</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"144\"]",
+            "html": "<text x=\"18\" y=\"144\">Zusammenspiel</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"264\"]",
+            "html": "<text x=\"18\" y=\"264\">Team</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kennung": "index.html dunkel 390",
+    "seite": "index.html",
+    "schema": "dunkel",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          },
+          {
+            "ziel": ".bar",
+            "html": "<div class=\"bar\"><a class=\"btn primary\" href=\"#kontakt\">Gespräch anfragen</a></div>",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "hilfe": "Elements must meet minimum color contrast ratio thresholds",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": "text[y=\"24\"]",
+            "html": "<text x=\"18\" y=\"24\">Strategie</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"144\"]",
+            "html": "<text x=\"18\" y=\"144\">Zusammenspiel</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "ziel": "text[y=\"264\"]",
+            "html": "<text x=\"18\" y=\"264\">Team</text>",
+            "hinweis": "  Element's background color could not be determined because it is overlapped by another element"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kennung": "impressum.html hell 1280",
+    "seite": "impressum.html",
+    "schema": "hell",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "impressum.html hell 390",
+    "seite": "impressum.html",
+    "schema": "hell",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "impressum.html dunkel 1280",
+    "seite": "impressum.html",
+    "schema": "dunkel",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "impressum.html dunkel 390",
+    "seite": "impressum.html",
+    "schema": "dunkel",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "datenschutz.html hell 1280",
+    "seite": "datenschutz.html",
+    "schema": "hell",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "datenschutz.html hell 390",
+    "seite": "datenschutz.html",
+    "schema": "hell",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "datenschutz.html dunkel 1280",
+    "seite": "datenschutz.html",
+    "schema": "dunkel",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "datenschutz.html dunkel 390",
+    "seite": "datenschutz.html",
+    "schema": "dunkel",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Die Texte sind Vorschläge. Gelb hinterlegte Stellen warten auf deine Angabe",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "404.html hell 1280",
+    "seite": "404.html",
+    "schema": "hell",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Diese Seite ist Teil des Entwurfs.</span></div></div>",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "404.html hell 390",
+    "seite": "404.html",
+    "schema": "hell",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Diese Seite ist Teil des Entwurfs.</span></div></div>",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "404.html dunkel 1280",
+    "seite": "404.html",
+    "schema": "dunkel",
+    "breite": "1280",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Diese Seite ist Teil des Entwurfs.</span></div></div>",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  },
+  {
+    "kennung": "404.html dunkel 390",
+    "seite": "404.html",
+    "schema": "dunkel",
+    "breite": "390",
+    "verstoesse": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "hilfe": "All page content should be contained by landmarks",
+        "url": "https://dequeuniversity.com/rules/axe/4.14/region?application=axeAPI",
+        "knoten": [
+          {
+            "ziel": ".entwurf",
+            "html": "<div class=\"entwurf\"><div class=\"wrap\"><strong>Entwurf vom 19.10.2026.</strong><span>Diese Seite ist Teil des Entwurfs.</span></div></div>",
+            "hinweis": "  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "pruefen": []
+  }
+]

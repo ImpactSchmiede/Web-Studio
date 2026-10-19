@@ -6,14 +6,14 @@ import { checkDist } from '../src/build/check.mjs';
 import { aendere, baue, kopie, schreibe, tmp } from './_hilfe.mjs';
 
 const { outDir: gut } = baue();
-const ENDUNGEN = ['.html', '.css', '.js', '.woff2', '.txt', '.xml'];
+const ENDUNGEN = ['.html', '.css', '.js', '.woff2', '.txt', '.xml', '.webp', '.jpg', '.png', '.ico'];
 
 const pruefe = (dir, opts = {}) => checkDist(dir, { endungen: ENDUNGEN, ...opts });
 
 test('checkDist ist gruen auf dem echten Build und liefert Dateiliste mit Groessen', () => {
   const r = pruefe(gut);
   assert.deepEqual(r.fehler, []);
-  assert.equal(r.dateien.length, 12);
+  assert.equal(r.dateien.length, 18);
   assert.ok(r.dateien.every((d) => d.pfad && d.bytes > 0));
   assert.equal(r.summe, r.dateien.reduce((s, d) => s + d.bytes, 0));
 });
@@ -142,4 +142,60 @@ test('checkDist loest lokale Referenzen relativ zur jeweiligen Datei auf (404 ab
   fs.rmSync(path.join(d, 'fonts'), { recursive: true });
   const r = pruefe(d);
   assert.ok(r.fehler.some((f) => /fonts\//.test(f) && /fehlt/.test(f)), r.fehler.join(' | '));
+});
+
+// ---- Linkpruefung (AK 6): lokale Ziele und Anker, bloesses href="#" nur am Namen, externe Links nur sammeln
+test('Linkpruefung: der echte Build hat keine toten lokalen Links oder Anker', () => {
+  const r = pruefe(gut);
+  assert.deepEqual(r.fehler, []);
+});
+
+test('Linkpruefung: toter Anker (#gibts-nicht) wird gemeldet', () => {
+  const d = kopie(gut);
+  anIndex('<a href="#gibts-nicht">x</a>')(d);
+  const r = pruefe(d);
+  assert.ok(r.fehler.some((f) => /Anker/.test(f) && /gibts-nicht/.test(f)), r.fehler.join(' | '));
+});
+
+test('Linkpruefung: Anker in anderer Datei muss dort existieren', () => {
+  const d = kopie(gut);
+  anIndex('<a href="impressum.html#nope">x</a><a href="impressum.html">ok</a>')(d);
+  const r = pruefe(d);
+  assert.ok(r.fehler.some((f) => /Anker/.test(f) && /impressum.html#nope/.test(f)), r.fehler.join(' | '));
+  assert.equal(r.fehler.filter((f) => /Anker/.test(f)).length, 1);
+});
+
+test('Linkpruefung: fehlende .html-Datei wird gemeldet', () => {
+  const d = kopie(gut);
+  fs.rmSync(path.join(d, 'impressum.html'));
+  const r = pruefe(d);
+  assert.ok(r.fehler.some((f) => /impressum.html/.test(f) && /fehlt/.test(f)), r.fehler.join(' | '));
+});
+
+test('Linkpruefung: absoluter Verweis auf / und /seite.html wird aufgeloest', () => {
+  const d = kopie(gut);
+  anIndex('<a href="/">a</a><a href="/impressum.html">b</a><a href="/index.html#hilfe">c</a>')(d);
+  assert.deepEqual(pruefe(d).fehler, []);
+  const k = kopie(gut);
+  anIndex('<a href="/gibts-nicht.html">x</a>')(k);
+  assert.ok(pruefe(k).fehler.some((f) => /gibts-nicht/.test(f)));
+});
+
+test('Linkpruefung: href="#" an einem anderen Element als dem Namen im Kopf wird gemeldet', () => {
+  const d = kopie(gut);
+  anIndex('<a class="btn" href="#">x</a>')(d);
+  const r = pruefe(d);
+  assert.ok(r.fehler.some((f) => /href="#"/.test(f)), r.fehler.join(' | '));
+  const ok = kopie(gut);
+  aendere(ok, 'impressum.html', (h) => h.replace('<a class="name" href="index.html">', '<a class="name" href="#">'));
+  assert.deepEqual(pruefe(ok).fehler.filter((f) => /href="#"/.test(f)), []);
+});
+
+test('Linkpruefung: externe Links werden gesammelt (einmalig, mit Fundstelle), aber nicht geladen', () => {
+  const r = pruefe(gut);
+  const urls = r.externe.map((e) => e.url);
+  assert.ok(urls.includes('https://impact-schmiede.de'));
+  assert.ok(urls.includes('https://www.linkedin.com/in/enrico-falk-b8369517'));
+  assert.equal(new Set(urls).size, urls.length, 'doppelt');
+  assert.ok(r.externe.every((e) => e.von.endsWith('.html')));
 });

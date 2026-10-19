@@ -1,0 +1,61 @@
+{
+  "lighthouse": "13.5.0",
+  "url": "http://127.0.0.1:8410/index.html",
+  "formFactor": "mobile",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "werte": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66
+  },
+  "befunde": [
+    {
+      "id": "first-contentful-paint",
+      "titel": "First Contentful Paint",
+      "score": 0.93,
+      "anzeige": "1.7 s"
+    },
+    {
+      "id": "largest-contentful-paint",
+      "titel": "Largest Contentful Paint",
+      "score": 0.99,
+      "anzeige": "1.7 s"
+    },
+    {
+      "id": "is-crawlable",
+      "titel": "Page is blocked from indexing",
+      "score": 0,
+      "anzeige": null
+    },
+    {
+      "id": "document-latency-insight",
+      "titel": "Document request latency",
+      "score": 0.5,
+      "anzeige": "Est savings of 8 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "titel": "Network dependency tree",
+      "score": 0,
+      "anzeige": null
+    },
+    {
+      "id": "render-blocking-insight",
+      "titel": "Render-blocking requests",
+      "score": 0,
+      "anzeige": "Est savings of 890 ms"
+    }
+  ],
+  "warnungen": [],
+  "netzwerk": [
+    "http://127.0.0.1:8410/index.html",
+    "http://127.0.0.1:8410/css/site.css",
+    "http://127.0.0.1:8410/js/kontakt.js",
+    "http://127.0.0.1:8410/fonts/bricolage-grotesque-latin-wght-normal.woff2",
+    "http://127.0.0.1:8410/fonts/atkinson-hyperlegible-latin-400-normal.woff2",
+    "http://127.0.0.1:8410/fonts/atkinson-hyperlegible-latin-700-normal.woff2",
+    "http://127.0.0.1:8410/fonts/atkinson-hyperlegible-latin-400-italic.woff2",
+    "http://127.0.0.1:8410/favicon.ico"
+  ]
+}

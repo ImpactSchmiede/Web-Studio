@@ -1,0 +1,21 @@
+Abhaengigkeiten Pruefwerkzeug T-002 (Gate-Unterlage, Plan Fassung 2)
+Stand 2026-10-19 17:28, Node v24.19.0, npm 11.17.0, Windows
+Verfahren: Scratch-Ordner ausserhalb des Repos, nur
+  npm install --package-lock-only --ignore-scripts
+mit .npmrc (ignore-scripts=true, save-exact=true, fund=false). Es wurde kein node_modules angelegt.
+
+Direkte devDependencies (exakt):
+  lighthouse 13.5.0 (18.09.2026), axe-core 4.14.0 (05.10.2026),
+  html-validate 11.16.2 (04.10.2026), puppeteer-core 25.12.0 (23.09.2026)
+
+Lockfile:
+  Pakete gesamt: 121 (alle dev, keine im Build/dist)
+  davon @sentry/* und @opentelemetry/*: 14 (regulaere Abhaengigkeit von lighthouse, Fehlerbericht bleibt aus)
+  Pakete mit Install-Skript: keine
+  Mehrfachversionen relevant: ws 8.22.0 und 7.5.13 (>= 7.5.10, ok); puppeteer-core nur 25.12.0; axe-core nur 4.14.0
+  configstore 7.1.0 (von lighthouse; schreibt nur bei CLI-Nutzung ins Benutzerprofil, darum Lighthouse nur programmatisch)
+  chrome-launcher 1.2.2
+  Lizenzen: MIT 82, Apache-2.0 22, ISC 8, BSD-3-Clause 5, BSD-2-Clause 1, 0BSD 1, MPL-2.0 1, (MIT OR CC0-1.0) 1
+
+npm audit (Kurzfassung):
+  found 0 vulnerabilities (info 0, low 0, moderate 0, high 0, critical 0; 121 Abhaengigkeiten)

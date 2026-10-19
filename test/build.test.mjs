@@ -26,13 +26,19 @@ const { outDir } = baue();
 test('AK4: dist enthaelt genau die Pflichtdateien, nur normale Dateien', () => {
   assert.deepEqual(dateien(outDir), [
     '404.html',
+    'bilder/apple-touch-icon.png',
+    'bilder/foto-vorlaeufig.jpg',
+    'bilder/foto-vorlaeufig.webp',
     'css/site.css',
+    'datenschutz.html',
+    'favicon.ico',
     'fonts/LICENSE-Atkinson-Hyperlegible.txt',
     'fonts/LICENSE-Bricolage-Grotesque.txt',
     'fonts/atkinson-hyperlegible-latin-400-italic.woff2',
     'fonts/atkinson-hyperlegible-latin-400-normal.woff2',
     'fonts/atkinson-hyperlegible-latin-700-normal.woff2',
     'fonts/bricolage-grotesque-latin-wght-normal.woff2',
+    'impressum.html',
     'index.html',
     'js/kontakt.js',
     'robots.txt',
@@ -47,8 +53,9 @@ test('AK4: dist enthaelt genau die Pflichtdateien, nur normale Dateien', () => {
 
 test('AK4: robots.txt sperrt alles, kein noindex-Meta', () => {
   assert.equal(lies(outDir, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
-  assert.doesNotMatch(lies(outDir, 'index.html'), /noindex/i);
-  assert.doesNotMatch(lies(outDir, '404.html'), /noindex/i);
+  for (const s of ['index.html', '404.html', 'impressum.html', 'datenschutz.html']) {
+    assert.doesNotMatch(lies(outDir, s), /noindex/i, s);
+  }
 });
 
 test('AK4: robots.txt bei indexierbar=true erlaubt und nennt die Sitemap', () => {
@@ -82,10 +89,18 @@ test('AK5: Schriften und Lizenzen sind hash-gleich zur Quelle, Lizenzen nennen d
   }
 });
 
+test('Bilder in dist sind hash-gleich zu src/bilder (Build kopiert nur, Favicon liegt oben)', () => {
+  for (const f of ['foto-vorlaeufig.webp', 'foto-vorlaeufig.jpg', 'apple-touch-icon.png']) {
+    assert.equal(sha(path.join(outDir, 'bilder', f)), sha(path.join(ROOT, 'src/bilder', f)), f);
+  }
+  assert.equal(sha(path.join(outDir, 'favicon.ico')), sha(path.join(ROOT, 'src/bilder/favicon.ico')));
+  assert.ok(!fs.existsSync(path.join(outDir, 'bilder/favicon.ico')));
+});
+
 test('AK3: kein Inhaltstext (>= 12 Zeichen) steht in den Templates', () => {
   const dir = path.join(ROOT, 'src/templates');
   const dateienT = fs.readdirSync(dir).filter((f) => f.endsWith('.mjs'));
-  assert.ok(dateienT.length >= 2);
+  assert.ok(dateienT.length >= 4);
   const quelltext = dateienT.map((f) => fs.readFileSync(path.join(dir, f), 'utf8')).join('\n');
   const treffer = strings(inhalt)
     .filter(([, s]) => s.length >= 12 && quelltext.includes(s))
@@ -98,7 +113,7 @@ test('AK3: geaenderter Text erscheint in der Ausgabe, maskiert', () => {
   c.hero.titel = 'Ganz neuer Titel <b>&</b>';
   const { outDir: o } = baue({ inhalt: c });
   assert.match(lies(o, 'index.html'), /Ganz neuer Titel &lt;b&gt;&amp;&lt;\/b&gt;/);
-  assert.doesNotMatch(lies(o, 'index.html'), /Wenn Veränderung im Unternehmen stockt/);
+  assert.doesNotMatch(lies(o, 'index.html'), /Wenn es im Unternehmen hakt/);
 });
 
 test('AK3: fehlender Schluessel bricht den Build mit Schluesselnamen ab', () => {
@@ -108,6 +123,18 @@ test('AK3: fehlender Schluessel bricht den Build mit Schluesselnamen ab', () => 
   const d = klon();
   d.hilfe.zeilen[1].titel = 5;
   assert.throws(() => baue({ inhalt: d }), /hilfe\.zeilen\[1\]\.titel/);
+  const e = klon();
+  delete e.fehlerseite.entwurf;
+  assert.throws(() => baue({ inhalt: e }), /fehlerseite\.entwurf/);
+  const f = klon();
+  f.beispiele.eintraege[1].werte.pop();
+  assert.throws(() => baue({ inhalt: f }), /beispiele\.eintraege\[1\]\.werte/);
+  const g = klon();
+  g.profil.zertifikate.eintraege = [];
+  assert.throws(() => baue({ inhalt: g }), /profil\.zertifikate\.eintraege/);
+  const h = klon();
+  delete h.rechtliches.impressum.text;
+  assert.throws(() => baue({ inhalt: h }), /rechtliches\.impressum\.text/);
 });
 
 test('AK3: unzulaessige URL im Inhalt bricht den Build ab', () => {
@@ -163,7 +190,7 @@ test('AK7: HTML ohne Klartext-Adresse und ohne mailto, Rueckfalltext vorhanden',
   const h = lies(outDir, 'index.html');
   assert.doesNotMatch(h, /mailto:/i);
   assert.doesNotMatch(h, /[A-Za-z0-9._+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}/);
-  assert.ok(h.includes(inhalt.kontakt.rueckfall));
+  assert.ok(h.includes('kontakt [at] enricofalk.de'));
   assert.match(h, /id="mail"[^>]*\shidden/);
   assert.match(h, /id="copy"[^>]*\shidden/);
   const js = lies(outDir, 'js/kontakt.js');
@@ -186,28 +213,79 @@ test('404: Entwurfsbanner, absolutes CSS, kein Skript, Links auf /', () => {
   assert.match(h, /href="\/"/);
 });
 
-test('node --check fuer jede Quelldatei', () => {
+test('Konfiguration: Pflichtfelder fuer Kontakt und Foto werden geprueft', () => {
+  const k = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/site.config.json'), 'utf8'));
+  for (const kaputt of [
+    { ...k, kontakt: undefined },
+    { ...k, kontakt: { adresse: 'a@b.de' } },
+    { ...k, foto: undefined },
+    { ...k, foto: { ...k.foto, breite: 513 } },
+    { ...k, foto: { ...k.foto, datei: '../x' } },
+  ]) {
+    assert.throws(() => baue({ konfig: kaputt }), /site\.config\.json ungueltig/);
+  }
+});
+
+test('node --check fuer jede Quelldatei (auch tools/)', () => {
   const liste = [];
   const geh = (d) => {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       const p = path.join(d, e.name);
-      if (e.isDirectory()) geh(p);
-      else if (/\.(mjs|js)$/.test(e.name)) liste.push(p);
+      if (e.isDirectory()) {
+        if (e.name !== 'node_modules') geh(p);
+      } else if (/\.(mjs|js)$/.test(e.name)) liste.push(p);
     }
   };
-  for (const d of ['src', 'scripts', 'test']) geh(path.join(ROOT, d));
-  assert.ok(liste.length >= 10);
+  for (const d of ['src', 'scripts', 'test', 'tools']) geh(path.join(ROOT, d));
+  assert.ok(liste.length >= 16);
+  for (const n of ['pruefen.mjs', 'bilder.mjs', 'server.mjs']) assert.ok(liste.some((f) => f.endsWith(n)), n);
   for (const f of liste) {
     const r = spawnSync(process.execPath, ['--check', f], { encoding: 'utf8' });
     assert.equal(r.status, 0, `${f}: ${r.stderr}`);
   }
 });
 
-test('keine npm-Abhaengigkeiten', () => {
+test('keine npm-Abhaengigkeiten im Root, Skript pruefen vorhanden', () => {
   const p = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
   assert.equal(p.private, true);
   assert.equal(p.type, 'module');
   assert.equal(p.dependencies, undefined);
   assert.equal(p.devDependencies, undefined);
   assert.ok(p.scripts.build && p.scripts.test && p.scripts.check);
+  assert.equal(p.scripts.pruefen, 'node tools/pruefung/pruefen.mjs');
+});
+
+test('Pruefwerkzeug: eigene package.json mit festen Versionen, Lockfile, .npmrc, node_modules ignoriert', () => {
+  const dir = path.join(ROOT, 'tools/pruefung');
+  const p = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));
+  assert.equal(p.private, true);
+  assert.equal(p.dependencies, undefined);
+  assert.deepEqual(Object.keys(p.devDependencies).sort(), ['axe-core', 'html-validate', 'lighthouse', 'puppeteer-core']);
+  for (const [n, v] of Object.entries(p.devDependencies)) assert.match(v, /^\d+\.\d+\.\d+$/, `${n}: ${v} nicht fest`);
+  assert.deepEqual(
+    [p.devDependencies.lighthouse, p.devDependencies['axe-core'], p.devDependencies['html-validate'], p.devDependencies['puppeteer-core']],
+    ['13.5.0', '4.14.0', '11.16.2', '25.12.0'],
+  );
+  const npmrc = fs.readFileSync(path.join(dir, '.npmrc'), 'utf8');
+  assert.match(npmrc, /^ignore-scripts=true$/m);
+  assert.match(npmrc, /^save-exact=true$/m);
+  assert.match(npmrc, /^fund=false$/m);
+  const lock = JSON.parse(fs.readFileSync(path.join(dir, 'package-lock.json'), 'utf8'));
+  assert.equal(lock.lockfileVersion, 3);
+  assert.ok(Object.keys(lock.packages).length > 100);
+  assert.ok(Object.values(lock.packages).every((q) => !q.hasInstallScript), 'Paket mit Install-Skript im Lockfile');
+  assert.match(fs.readFileSync(path.join(ROOT, '.gitignore'), 'utf8'), /^node_modules\/$/m);
+  assert.ok(fs.existsSync(path.join(dir, '.htmlvalidate.json')));
+});
+
+test('Trennung: keine Datei unter src/ oder scripts/ importiert aus tools/, der Build kennt keine Pruefpakete', () => {
+  const geh = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => {
+    const p = path.join(d, e.name);
+    return e.isDirectory() ? geh(p) : [p];
+  });
+  for (const f of [...geh(path.join(ROOT, 'src')), ...geh(path.join(ROOT, 'scripts'))].filter((x) => /\.(mjs|js)$/.test(x))) {
+    const t = fs.readFileSync(f, 'utf8');
+    assert.doesNotMatch(t, /tools[\\/]/, f);
+    assert.doesNotMatch(t, /from\s+['"](lighthouse|axe-core|html-validate|puppeteer-core)/, f);
+  }
 });

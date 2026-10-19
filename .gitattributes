@@ -4,3 +4,7 @@
 *.ps1 text eol=crlf
 *.woff2 binary
 *.png binary
+*.webp binary
+*.jpg binary
+*.ico binary
+*.pdf binary

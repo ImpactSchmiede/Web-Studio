@@ -1,0 +1,588 @@
+
+> web-studio-freelancer-seite@0.1.0 test
+> node --test "test/*.test.mjs"
+
+✖ AK4: dist enthaelt genau die Pflichtdateien, nur normale Dateien (3.6682ms)
+✖ AK4: robots.txt sperrt alles, kein noindex-Meta (0.7668ms)
+✔ AK4: robots.txt bei indexierbar=true erlaubt und nennt die Sitemap (14.8087ms)
+✔ AK4: sitemap nennt nur die Basis-URL, kein lastmod (0.4538ms)
+✔ AK4: zwei Builds sind bytegleich (20.7037ms)
+✔ AK5: Schriften und Lizenzen sind hash-gleich zur Quelle, Lizenzen nennen die OFL (3.3547ms)
+✖ Bilder in dist sind hash-gleich zu src/bilder (Build kopiert nur, Favicon liegt oben) (0.3424ms)
+✖ AK3: kein Inhaltstext (>= 12 Zeichen) steht in den Templates (4.0197ms)
+✔ AK3: geaenderter Text erscheint in der Ausgabe, maskiert (14.2965ms)
+✖ AK3: fehlender Schluessel bricht den Build mit Schluesselnamen ab (15.3158ms)
+✔ AK3: unzulaessige URL im Inhalt bricht den Build ab (2.1241ms)
+✔ Build leert nur dist unter root oder unter dem Temp-Ordner (3.0684ms)
+✔ Ausgabeziel unter dem Temp-Ordner nur mit ws--Praefix direkt unter dem Temp-Ordner (3.6545ms)
+✔ Build lehnt einen fremden Ordner im Temp-Ordner ab und laesst ihn unveraendert (1.9183ms)
+✔ Build leert vorhandene Reste im Ausgabeordner (12.0803ms)
+✔ AK7: HTML ohne Klartext-Adresse und ohne mailto, Rueckfalltext vorhanden (0.648ms)
+✔ AK7: Seite referenziert Stil und Skript als eigene Dateien (0.3237ms)
+✔ 404: Entwurfsbanner, absolutes CSS, kein Skript, Links auf / (0.2266ms)
+✖ Konfiguration: Pflichtfelder fuer Kontakt und Foto werden geprueft (10.9629ms)
+✖ node --check fuer jede Quelldatei (auch tools/) (1.2476ms)
+✖ keine npm-Abhaengigkeiten im Root, Skript pruefen vorhanden (0.4624ms)
+✖ Pruefwerkzeug: eigene package.json mit festen Versionen, Lockfile, .npmrc, node_modules ignoriert (1.6991ms)
+✔ Trennung: keine Datei unter src/ oder scripts/ importiert aus tools/, der Build kennt keine Pruefpakete (1.8748ms)
+✖ checkDist ist gruen auf dem echten Build und liefert Dateiliste mit Groessen (8.1482ms)
+✔ checkDist meldet: style-Element (17.1385ms)
+✔ checkDist meldet: Inline-Skript (16.1528ms)
+✔ checkDist meldet: style-Attribut in HTML (15.6009ms)
+✔ checkDist meldet: style-Attribut in SVG (12.531ms)
+✔ checkDist meldet: onclick (13.1803ms)
+✔ checkDist meldet: onload (Grossbuchstaben) (12.4748ms)
+✔ checkDist meldet: javascript:-href (12.1917ms)
+✔ checkDist meldet: javascript:-href gemischt, mit Leerzeichen (13.1772ms)
+✔ checkDist meldet: externes Skript (13.3223ms)
+✔ checkDist meldet: externes Bild (11.4227ms)
+✔ checkDist meldet: externes srcset (10.7276ms)
+✔ checkDist meldet: link href // (9.9688ms)
+✔ checkDist meldet: css url(https) (10.0511ms)
+✔ checkDist meldet: css url("//") (10.6305ms)
+✔ checkDist meldet: css url('https') (9.965ms)
+✔ checkDist meldet: css @import https (11.2444ms)
+✔ checkDist meldet: css @import url(//) (10.4631ms)
+✔ checkDist meldet: SVG <use href> extern (10.3558ms)
+✔ checkDist meldet: SVG <use xlink:href> protokoll-relativ (10.4431ms)
+✔ checkDist meldet: SVG <image href> extern (11.3996ms)
+✔ checkDist meldet: video poster extern (10.6018ms)
+✔ checkDist meldet: object data extern (10.5269ms)
+✔ checkDist meldet: iframe src extern (9.7915ms)
+✔ checkDist meldet: iframe srcdoc (9.6989ms)
+✔ checkDist meldet: base href (9.7473ms)
+✔ checkDist meldet: meta refresh (10.1763ms)
+✔ checkDist meldet: meta refresh gemischt geschrieben (10.3492ms)
+✔ checkDist meldet: javascript: dezimal kodiert (10.1582ms)
+✔ checkDist meldet: javascript: hex kodiert (10.1919ms)
+✔ checkDist meldet: javascript: mit &colon; (10.0114ms)
+✔ checkDist meldet: javascript: mit &Tab; (9.7911ms)
+✔ checkDist meldet: extern kodiert (&#104;ttps) (10.2938ms)
+✔ checkDist meldet: extern mit Backslash-Host (zwei Backslashes) (10.1994ms)
+✔ checkDist meldet: extern mit Schraegstrich-Backslash-Host (9.9979ms)
+✔ checkDist meldet: css image-set mit String https (10.0361ms)
+✔ checkDist meldet: css -webkit-image-set mit String // (10.1348ms)
+✔ checkDist meldet: fehlende CSS-Datei (9.9279ms)
+✔ checkDist meldet: fehlende Schriftdatei (10.2746ms)
+✔ checkDist meldet: fehlendes Skript (10.109ms)
+✔ checkDist meldet: Punktdatei (10.9669ms)
+✔ checkDist meldet: Punktordner (11.372ms)
+✔ checkDist meldet: .php-Endung (10.3433ms)
+✔ checkDist meldet: Datei ohne Endung (9.965ms)
+✔ checkDist meldet: index.html nur im Unterordner (9.9613ms)
+✔ checkDist meldet: 404.html fehlt (9.4931ms)
+✔ checkDist meldet mehrere Befunde zugleich (kein Abbruch beim ersten) (10.752ms)
+✔ checkDist: Limit Dateianzahl (1.4404ms)
+✔ checkDist: Limit Gesamtgroesse (1.4342ms)
+✔ checkDist: Verzeichnis-Link (Junction unter Windows, Symlink sonst) wird gemeldet, nie uebersprungen (12.7475ms)
+﹣ checkDist: Datei-Symlink wird gemeldet (Windows ohne Sonderrecht nicht anlegbar, dort belegt der Junction-Test) (10.0083ms) # Windows: Datei-Symlink braucht Sonderrecht (EPERM); Verzeichnis-Link per Junction im Test davor
+✔ checkDist erlaubt ausgehende <a href> und prueft keine fremden Seiten (10.1765ms)
+✔ checkDist loest lokale Referenzen relativ zur jeweiligen Datei auf (404 absolut) (10.8529ms)
+✔ Linkpruefung: der echte Build hat keine toten lokalen Links oder Anker (1.9413ms)
+✖ Linkpruefung: toter Anker (#gibts-nicht) wird gemeldet (10.8998ms)
+✖ Linkpruefung: Anker in anderer Datei muss dort existieren (10.7401ms)
+✖ Linkpruefung: fehlende .html-Datei wird gemeldet (9.0291ms)
+✖ Linkpruefung: absoluter Verweis auf / und /seite.html wird aufgeloest (25.4012ms)
+✖ Linkpruefung: href="#" an einem anderen Element als dem Namen im Kopf wird gemeldet (9.6809ms)
+✖ Linkpruefung: externe Links werden gesammelt (einmalig, mit Fundstelle), aber nicht geladen (1.4329ms)
+file:///C:/Users/AI%20User/Projekte/Web-Studio/test/compare.test.mjs:5
+import { GEAENDERT, lookInvarianten, vergleicheCss, vergleicheSeite, vergleicheTexte } from '../src/build/compare.mjs';
+         ^^^^^^^^^
+SyntaxError: The requested module '../src/build/compare.mjs' does not provide an export named 'GEAENDERT'
+    at #asyncInstantiate (node:internal/modules/esm/module_job:327:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:431:5)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0
+✖ test\compare.test.mjs (71.5934ms)
+✔ AK1: ENTSCHEIDUNGEN.md nennt Stack, 5 Begruendungszeilen, Alternativen und Grenze der Mail-Verschleierung (1.405ms)
+✔ AK1: Verweis aus docs/architektur/README.md (0.3014ms)
+✔ AK2: docs/konzept/freelancer-seite.md ist versioniert (git ls-files nicht leer) (30.995ms)
+✔ PROJEKT.md: Befehle und Anleitung fuer Enrico sind eingetragen (0.4595ms)
+✔ .gitattributes: Binaerdateien sind markiert, LF bleibt (0.4655ms)
+✖ T-002: .gitattributes markiert webp, jpg und ico als binaer (0.9424ms)
+✖ T-002: PROJEKT.md nennt Einrichtung und Aufruf des Pruefwerkzeugs im Abschnitt Befehle (1.5303ms)
+✖ T-002: ENTSCHEIDUNGEN.md hat den Abschnitt zum Pruefwerkzeug mit Versionen, Bildweg, Adress-Konstante, Look-Invarianten und Regel-Begruendungen (0.4452ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\AI User\Projekte\Web-Studio\tools\pruefung\server.mjs' imported from C:\Users\AI User\Projekte\Web-Studio\test\pruefwerkzeug.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/AI%20User/Projekte/Web-Studio/tools/pruefung/server.mjs'
+}
+
+Node.js v24.19.0
+✖ test\pruefwerkzeug.test.mjs (102.8122ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\AI User\Projekte\Web-Studio\src\build\platzhalter.mjs' imported from C:\Users\AI User\Projekte\Web-Studio\test\seite.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/AI%20User/Projekte/Web-Studio/src/build/platzhalter.mjs'
+}
+
+Node.js v24.19.0
+✖ test\seite.test.mjs (70.9562ms)
+✔ esc maskiert & < > " und Apostroph (1.5514ms)
+✔ renderText: Script-Text wird maskiert, nicht ausgefuehrt (0.3164ms)
+✔ renderText: {ph:...} wird Platzhalter-Span, Inhalt maskiert (0.257ms)
+✔ renderText: Link, Text und URL getrennt maskiert (0.5079ms)
+✔ renderText: Reihenfolge Text, Platzhalter, Link (0.3725ms)
+✔ pruefeUrl lehnt ab: "javascript:alert(1)" (0.4889ms)
+✔ pruefeUrl lehnt ab: "JaVaScRiPt:alert(1)" (0.2248ms)
+✔ pruefeUrl lehnt ab: " javascript:alert(1)" (0.2076ms)
+✔ pruefeUrl lehnt ab: "\tjavascript:alert(1)" (0.2742ms)
+✔ pruefeUrl lehnt ab: "java\tscript:alert(1)" (0.3392ms)
+✔ pruefeUrl lehnt ab: "//evil.de" (0.1791ms)
+✔ pruefeUrl lehnt ab: "/\\evil.de" (0.1336ms)
+✔ pruefeUrl lehnt ab: "data:text/html,x" (0.1977ms)
+✔ pruefeUrl lehnt ab: "vbscript:x" (0.1585ms)
+✔ pruefeUrl lehnt ab: "http://unsicher.de" (0.0966ms)
+✔ pruefeUrl lehnt ab: "foo.html" (0.1532ms)
+✔ pruefeUrl lehnt ab: "" (0.1457ms)
+✔ pruefeUrl erlaubt: https://impact-schmiede.de (0.1487ms)
+✔ pruefeUrl erlaubt: HTTPS://X.DE/a (0.1092ms)
+✔ pruefeUrl erlaubt: mailto:a@b.de (0.1009ms)
+✔ pruefeUrl erlaubt: #kontakt (0.0892ms)
+✔ pruefeUrl erlaubt: # (0.0834ms)
+✔ pruefeUrl erlaubt: / (0.0847ms)
+✔ pruefeUrl erlaubt: /pfad/seite (0.0791ms)
+✔ renderText: {ph-hell:...} wird Platzhalter mit heller Schrift (0.1377ms)
+✔ pruefeUrl: geschuetztes Leerzeichen (NBSP) wird abgelehnt, im Quelltext als Escape geschrieben (0.6187ms)
+ℹ tests 120
+ℹ suites 0
+ℹ pass 97
+ℹ fail 22
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 875.9871
+
+✖ failing tests:
+
+test at test\build.test.mjs:26:1
+✖ AK4: dist enthaelt genau die Pflichtdateien, nur normale Dateien (3.6682ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '404.html',
+  -   'bilder/apple-touch-icon.png',
+  -   'bilder/foto-vorlaeufig.jpg',
+  -   'bilder/foto-vorlaeufig.webp',
+      'css/site.css',
+  -   'datenschutz.html',
+  -   'favicon.ico',
+      'fonts/LICENSE-Atkinson-Hyperlegible.txt',
+      'fonts/LICENSE-Bricolage-Grotesque.txt',
+      'fonts/atkinson-hyperlegible-latin-400-italic.woff2',
+      'fonts/atkinson-hyperlegible-latin-400-normal.woff2',
+      'fonts/atkinson-hyperlegible-latin-700-normal.woff2',
+      'fonts/bricolage-grotesque-latin-wght-normal.woff2',
+  -   'impressum.html',
+      'index.html',
+      'js/kontakt.js',
+      'robots.txt',
+      'sitemap.xml'
+    ]
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:27:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '404.html', 'css/site.css', 'fonts/LICENSE-Atkinson-Hyperlegible.txt', 'fonts/LICENSE-Bricolage-Grotesque.txt', 'fonts/atkinson-hyperlegible-latin-400-italic.woff2', 'fonts/atkinson-hyperlegible-latin-400-normal.woff2', 'fonts/atkinson-hyperlegible-latin-700-normal.woff2', 'fonts/bricolage-grotesque-latin-wght-normal.woff2', 'index.html', 'js/kontakt.js', 'robots.txt', 'sitemap.xml' ],
+    expected: [ '404.html', 'bilder/apple-touch-icon.png', 'bilder/foto-vorlaeufig.jpg', 'bilder/foto-vorlaeufig.webp', 'css/site.css', 'datenschutz.html', 'favicon.ico', 'fonts/LICENSE-Atkinson-Hyperlegible.txt', 'fonts/LICENSE-Bricolage-Grotesque.txt', 'fonts/atkinson-hyperlegible-latin-400-italic.woff2', 'fonts/atkinson-hyperlegible-latin-400-normal.woff2', 'fonts/atkinson-hyperlegible-latin-700-normal.woff2', 'fonts/bricolage-grotesque-latin-wght-normal.woff2', 'impressum.html', 'index.html', 'js/kontakt.js', 'robots.txt', 'sitemap.xml' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at test\build.test.mjs:54:1
+✖ AK4: robots.txt sperrt alles, kein noindex-Meta (0.7668ms)
+  Error: ENOENT: no such file or directory, open 'C:\Users\AIUSER~1\AppData\Local\Temp\ws-AsBU5V\dist\impressum.html'
+      at Object.readFileSync (node:fs:484:20)
+      at lies (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/_hilfe.mjs:35:13)
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:57:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'C:\\Users\\AIUSER~1\\AppData\\Local\\Temp\\ws-AsBU5V\\dist\\impressum.html'
+  }
+
+test at test\build.test.mjs:92:1
+✖ Bilder in dist sind hash-gleich zu src/bilder (Build kopiert nur, Favicon liegt oben) (0.3424ms)
+  Error: ENOENT: no such file or directory, open 'C:\Users\AIUSER~1\AppData\Local\Temp\ws-AsBU5V\dist\bilder\foto-vorlaeufig.webp'
+      at Object.openSync (node:fs:622:18)
+      at Object.readFileSync (node:fs:488:35)
+      at sha (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:12:58)
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:94:18)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'C:\\Users\\AIUSER~1\\AppData\\Local\\Temp\\ws-AsBU5V\\dist\\bilder\\foto-vorlaeufig.webp'
+  }
+
+test at test\build.test.mjs:100:1
+✖ AK3: kein Inhaltstext (>= 12 Zeichen) steht in den Templates (4.0197ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(dateienT.length >= 4)
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:103:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\build.test.mjs:119:1
+✖ AK3: fehlender Schluessel bricht den Build mit Schluesselnamen ab (15.3158ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:128:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /fehlerseite\.entwurf/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test\build.test.mjs:216:1
+✖ Konfiguration: Pflichtfelder fuer Kontakt und Foto werden geprueft (10.9629ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:225:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /site\.config\.json ungueltig/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test\build.test.mjs:229:1
+✖ node --check fuer jede Quelldatei (auch tools/) (1.2476ms)
+  AssertionError [ERR_ASSERTION]: pruefen.mjs
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:241:71)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\build.test.mjs:248:1
+✖ keine npm-Abhaengigkeiten im Root, Skript pruefen vorhanden (0.4624ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'node tools/pruefung/pruefen.mjs'
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:255:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'node tools/pruefung/pruefen.mjs',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\build.test.mjs:258:1
+✖ Pruefwerkzeug: eigene package.json mit festen Versionen, Lockfile, .npmrc, node_modules ignoriert (1.6991ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fs.existsSync(path.join(dir, '.htmlvalidate.json')))
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/build.test.mjs:278:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\check.test.mjs:13:1
+✖ checkDist ist gruen auf dem echten Build und liefert Dateiliste mit Groessen (8.1482ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  12 !== 18
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:16:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 12,
+    expected: 18,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\check.test.mjs:153:1
+✖ Linkpruefung: toter Anker (#gibts-nicht) wird gemeldet (10.8998ms)
+  AssertionError [ERR_ASSERTION]
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:157:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\check.test.mjs:160:1
+✖ Linkpruefung: Anker in anderer Datei muss dort existieren (10.7401ms)
+  AssertionError [ERR_ASSERTION]
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:164:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\check.test.mjs:168:1
+✖ Linkpruefung: fehlende .html-Datei wird gemeldet (9.0291ms)
+  Error: ENOENT: no such file or directory, lstat 'C:\Users\AIUSER~1\AppData\Local\Temp\ws-nb4YCU\dist\impressum.html'
+      at Object.rmSync (node:fs:1282:16)
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:170:6)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'lstat',
+    path: 'C:\\Users\\AIUSER~1\\AppData\\Local\\Temp\\ws-nb4YCU\\dist\\impressum.html'
+  }
+
+test at test\check.test.mjs:175:1
+✖ Linkpruefung: absoluter Verweis auf / und /seite.html wird aufgeloest (25.4012ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(pruefe(k).fehler.some((f) => /gibts-nicht/.test(f)))
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:181:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\check.test.mjs:184:1
+✖ Linkpruefung: href="#" an einem anderen Element als dem Namen im Kopf wird gemeldet (9.6809ms)
+  AssertionError [ERR_ASSERTION]
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:188:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\check.test.mjs:194:1
+✖ Linkpruefung: externe Links werden gesammelt (einmalig, mit Fundstelle), aber nicht geladen (1.4329ms)
+  TypeError: Cannot read properties of undefined (reading 'map')
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/check.test.mjs:196:26)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at test\compare.test.mjs:1:1
+✖ test\compare.test.mjs (71.5934ms)
+  'test failed'
+
+test at test\docs.test.mjs:49:1
+✖ T-002: .gitattributes markiert webp, jpg und ico als binaer (0.9424ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\*\.webp binary/. Input:
+  
+  '* text=auto eol=lf\n' +
+    '*.cmd text eol=crlf\n' +
+    '*.bat text eol=crlf\n' +
+    '*.ps1 text eol=crlf\n' +
+    '*.woff2 binary\n' +
+    '*.png binary\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/docs.test.mjs:51:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '* text=auto eol=lf\n*.cmd text eol=crlf\n*.bat text eol=crlf\n*.ps1 text eol=crlf\n*.woff2 binary\n*.png binary\n',
+    expected: /\*\.webp binary/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test\docs.test.mjs:56:1
+✖ T-002: PROJEKT.md nennt Einrichtung und Aufruf des Pruefwerkzeugs im Abschnitt Befehle (1.5303ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /npm ci --prefix tools\/pruefung/. Input:
+  
+  'Befehle\n' +
+    '- Voraussetzung: Node.js ab Version 22. Keine npm-Pakete, daher kein `npm install` und kein `npm ci`.\n' +
+    '- **Setup:** keine\n' +
+    '- **Build:** `npm run build` (schreibt `dist/`, listet die Dateien, prüft die Lieferform; Exit 1 bei Verstoß)\n' +
+    '- **Tests:** `npm test` (`node --test`, baut nur in Temp-Ordnern)\n' +
+    '- **Lieferform prüfen:** `npm run check` (prüft ein vorhandenes `dist/`; optional Ordner als Argument)\n' +
+    '- **Lint / Format / Typen:** nicht vorhanden (keine Werkzeuge ohne Abhängigkeit); der Test führt `node --check` für jede Quelldatei aus\n' +
+    '- **Smoke** = Build + Seite öffnen: `npm run build`, dann `dist/index.html` im Browser öffnen. Erwartung: Seite wie das Mockup, mit JavaScript steht die Adresse im Klartext und „Adresse kopieren“ ist sichtbar, ohne JavaScript steht „kontakt [at] enricofalk.de“ ohne Knöpfe\n' +
+    '- **App starten:** keine laufende App; `dist/` ist eine statische Seite (Übergabe an den VPS-Admin als .tar kommt mit T-003)\n' +
+    '- Texte ändern: `src/content/de.json` · Aussehen: `src/styles/site.css` · Entscheidungen: `docs/ENTSCHEIDUNGEN.md`\n' +
+    '\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/docs.test.mjs:58:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Befehle\n- Voraussetzung: Node.js ab Version 22. Keine npm-Pakete, daher kein `npm install` und kein `npm ci`.\n- **Setup:** keine\n- **Build:** `npm run build` (schreibt `dist/`, listet die Dateien, prüft die Lieferform; Exit 1 bei Verstoß)\n- **Tests:** `npm test` (`node --test`, baut nur in Temp-Ordnern)\n- **Lieferform prüfen:** `npm run check` (prüft ein vorhandenes `dist/`; optional Ordner als Argument)\n- **Lint / Format / Typen:** nicht vorhanden (keine Werkzeuge ohne Abhängigkeit); der Test führt `node --check` für jede Quelldatei aus\n- **Smoke** = Build + Seite öffnen: `npm run build`, dann `dist/index.html` im Browser öffnen. Erwartung: Seite wie das Mockup, mit JavaScript steht die Adresse im Klartext und „Adresse kopieren“ ist sichtbar, ohne JavaScript steht „kontakt [at] enricofalk.de“ ohne Knöpfe\n- **App starten:** keine laufende App; `dist/` ist eine statische Seite (Übergabe an den VPS-Admin als .tar kommt mit T-003)\n- Texte ändern: `src/content/de.json` · Aussehen: `src/styles/site.css` · Entscheidungen: `docs/ENTSCHEIDUNGEN.md`\n\n',
+    expected: /npm ci --prefix tools\/pruefung/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at test\docs.test.mjs:64:1
+✖ T-002: ENTSCHEIDUNGEN.md hat den Abschnitt zum Pruefwerkzeug mit Versionen, Bildweg, Adress-Konstante, Look-Invarianten und Regel-Begruendungen (0.4452ms)
+  AssertionError [ERR_ASSERTION]: Abschnitt T-002 fehlt
+      at TestContext.<anonymous> (file:///C:/Users/AI%20User/Projekte/Web-Studio/test/docs.test.mjs:67:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\pruefwerkzeug.test.mjs:1:1
+✖ test\pruefwerkzeug.test.mjs (102.8122ms)
+  'test failed'
+
+test at test\seite.test.mjs:1:1
+✖ test\seite.test.mjs (70.9562ms)
+  'test failed'

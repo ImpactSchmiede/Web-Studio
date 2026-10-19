@@ -1,0 +1,43 @@
+{
+  "lighthouse": "13.5.0",
+  "url": "http://127.0.0.1:8411/index.html",
+  "formFactor": "desktop",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "werte": {
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "befunde": [
+    {
+      "id": "document-latency-insight",
+      "titel": "Document request latency",
+      "score": 0.5,
+      "anzeige": "Est savings of 8 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "titel": "Network dependency tree",
+      "score": 0,
+      "anzeige": null
+    },
+    {
+      "id": "render-blocking-insight",
+      "titel": "Render-blocking requests",
+      "score": 0.5,
+      "anzeige": null
+    }
+  ],
+  "warnungen": [],
+  "netzwerk": [
+    "http://127.0.0.1:8411/index.html",
+    "http://127.0.0.1:8411/css/site.css",
+    "http://127.0.0.1:8411/js/kontakt.js",
+    "http://127.0.0.1:8411/fonts/bricolage-grotesque-latin-wght-normal.woff2",
+    "http://127.0.0.1:8411/fonts/atkinson-hyperlegible-latin-400-normal.woff2",
+    "http://127.0.0.1:8411/fonts/atkinson-hyperlegible-latin-700-normal.woff2",
+    "http://127.0.0.1:8411/fonts/atkinson-hyperlegible-latin-400-italic.woff2",
+    "http://127.0.0.1:8411/favicon.ico"
+  ]
+}

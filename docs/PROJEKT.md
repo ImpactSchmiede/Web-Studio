@@ -29,15 +29,18 @@
 - Wie Rahmen (`Autonomes Arbeiten\guidelines\`). Abweichungen: `docs/guidelines/` (bisher keine).
 
 ## Befehle
-- Voraussetzung: Node.js ab Version 22. Keine npm-Pakete, daher kein `npm install` und kein `npm ci`.
-- **Setup:** keine
+- Voraussetzung: Node.js ab Version 22. Build und Tests ohne npm-Pakete; Prüfwerkzeug: `npm ci --prefix tools/pruefung` (nur für `npm run pruefen`).
+- **Setup:** Build und Tests keine. Prüfwerkzeug (nur für `npm run pruefen`, eigene Pakete in `tools/pruefung/`, nicht im Build): `npm ci --prefix tools/pruefung` (Chrome muss installiert sein, sonst `CHROME_PATH` setzen)
 - **Build:** `npm run build` (schreibt `dist/`, listet die Dateien, prüft die Lieferform; Exit 1 bei Verstoß)
 - **Tests:** `npm test` (`node --test`, baut nur in Temp-Ordnern)
 - **Lieferform prüfen:** `npm run check` (prüft ein vorhandenes `dist/`; optional Ordner als Argument)
+- **Prüfläufe:** `npm run pruefen -- --ausgabe <Berichtsordner>` (Pflichtangabe, kein Standardpfad; Lighthouse mobil und Desktop für `index.html`, Zusatzlauf mit `indexierbar:true`, axe hell und dunkel auf 1280 und 390 px, html-validate, Linkprüfung, Fremdanfragen-Protokoll. Vorher werden nur die eigenen Berichte im Ordner entfernt. Optionen: `--html` schreibt zusätzlich die Lighthouse-Berichte als HTML (je rund 1 MB), `--ohne-links`, `--nur lighthouse,axe,html,links`. Der Prüfserver bindet nur 127.0.0.1, Port 8400 bis 8449. Beispiel T-002: `npm run pruefen -- --ausgabe docs/batches/B-001/evidenz/T-002/pruefung`)
+- **Platzhalterliste:** `npm run platzhalter` (alle gelben Stellen aus `de.json` plus Foto und Terminlink aus der Konfiguration)
+- **Bilder neu erzeugen:** `node tools/pruefung/bilder.mjs <foto.png>` (Original wird nur gelesen)
 - **Lint / Format / Typen:** nicht vorhanden (keine Werkzeuge ohne Abhängigkeit); der Test führt `node --check` für jede Quelldatei aus
 - **Smoke** = Build + Seite öffnen: `npm run build`, dann `dist/index.html` im Browser öffnen. Erwartung: Seite wie das Mockup, mit JavaScript steht die Adresse im Klartext und „Adresse kopieren“ ist sichtbar, ohne JavaScript steht „kontakt [at] enricofalk.de“ ohne Knöpfe
 - **App starten:** keine laufende App; `dist/` ist eine statische Seite (Übergabe an den VPS-Admin als .tar kommt mit T-003)
-- Texte ändern: `src/content/de.json` · Aussehen: `src/styles/site.css` · Entscheidungen: `docs/ENTSCHEIDUNGEN.md`
+- Texte ändern: `src/content/de.json` · Kontaktadresse und Terminlink: `src/site.config.json` · Aussehen: `src/styles/site.css` · Entscheidungen: `docs/ENTSCHEIDUNGEN.md`
 
 ## Testautomatisierung
 - Wie Standard. UI-Tests automatisiert über Frameworks; Computer-Use nur für Nutzertests/Sichtprüfung.
