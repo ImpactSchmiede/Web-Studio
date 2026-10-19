@@ -1,0 +1,49 @@
+== Linux vor dem Fix (HEAD 7270951, Aenderungen per git stash entfernt)
+not ok 229 - pruefePdf rot bei: Benutzername in Name mit \#20
+# tests 369
+# pass 368
+# fail 1
+# skipped 0
+== Linux nach dem Fix (Arbeitsstand)
+Linux: Linux 6.18.54.1-microsoft-standard-WSL2, Node v22.20.0
+# tests 379
+# pass 379
+# fail 0
+# skipped 0
+Pruefung der Lieferform: gruen
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+
+== Nach QA-Nacharbeit (B1/B2): WSL als normaler Benutzer und als root (Docker-typisch)
+== Linux nach dem Fix, Benutzer aiuser-Konto, Node v22.20.0
+# tests 384
+# pass 384
+# fail 0
+# skipped 0
+Pruefung der Lieferform: gruen
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+== Linux nach dem Fix, Benutzer root, Node v22.20.0
+# tests 384
+# pass 384
+# fail 0
+# skipped 0
+Pruefung der Lieferform: gruen
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+== Linux nach Diff-Check-Nacharbeit, Benutzer aiuser, Node v22.20.0
+# tests 387
+# pass 387
+# fail 0
+# skipped 0
+Pruefung der Lieferform: gruen
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+== Linux nach Diff-Check-Nacharbeit, Benutzer root, Node v22.20.0
+# tests 387
+# pass 387
+# fail 0
+# skipped 0
+Pruefung der Lieferform: gruen
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen

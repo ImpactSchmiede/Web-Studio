@@ -1,0 +1,11 @@
+not ok 72 - HF-001 pruefePdf rot bei: Benutzername im Klartext (Testkennung "<benutzer>" / "Server-PC", Umgebung gemockt als Linux-Nutzer)
+not ok 73 - HF-001 pruefePdf rot bei: Benutzername in Name mit \#20 (Testkennung "<benutzer>" / "Server-PC", Umgebung gemockt als Linux-Nutzer)
+not ok 74 - HF-001 pruefePdf rot bei: Benutzername mit %20 (Testkennung "<benutzer>" / "Server-PC", Umgebung gemockt als Linux-Nutzer)
+not ok 75 - HF-001 pruefePdf rot bei: Rechnername im Inhaltsstrom (Testkennung "<benutzer>" / "Server-PC", Umgebung gemockt als Linux-Nutzer)
+not ok 77 - HF-001 pruefePdf rot bei: Benutzername im Klartext (Testkennung "jemand" / "build-runner-01", Umgebung gemockt als Linux-Nutzer)
+not ok 78 - HF-001 pruefePdf rot bei: Benutzername in Name mit \#20 (Testkennung "jemand" / "build-runner-01", Umgebung gemockt als Linux-Nutzer)
+not ok 79 - HF-001 pruefePdf rot bei: Benutzername mit %20 (Testkennung "jemand" / "build-runner-01", Umgebung gemockt als Linux-Nutzer)
+not ok 80 - HF-001 pruefePdf rot bei: Rechnername im Inhaltsstrom (Testkennung "jemand" / "build-runner-01", Umgebung gemockt als Linux-Nutzer)
+# tests 83
+# pass 75
+# fail 8

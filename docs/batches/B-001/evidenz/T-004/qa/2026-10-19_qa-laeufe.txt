@@ -1,0 +1,34 @@
+QA Black-Box T-004/HF-001 - 2026-10-19 (Arbeitsstand, nicht committet; Node 22.20.0)
+Namen maskiert: <benutzer>, <rechner>, <win-benutzer>.
+
+AK1 npm test
+  Windows (<benutzer> mit Leerzeichen):      tests 379, pass 378, fail 0, skipped 1 (Symlink EPERM, bekannt)
+  Linux WSL frische Kopie, HEAD (vor Fix):   pass 368, fail 1  -> "pruefePdf rot bei: Benutzername in Name mit \#20" (Symptom nachgestellt)
+  Linux WSL Arbeitsstand (<benutzer> ohne Leerzeichen): tests 379, pass 379, fail 0
+  Linux TZ=America/Los_Angeles LANG=C LC_ALL=C:  pass 379, fail 0
+  Linux TZ=Pacific/Kiritimati  LANG=C LC_ALL=C:  pass 379, fail 0
+  Linux anderer Benutzer/Rechner ohne sudo (unshare -r -u -m, /etc/passwd per bind mount umbenannt, hostname qa-fremdhost),
+  zusaetzlich TZ=America/Los_Angeles LANG=C:
+    "Max Muster" -> fail 0 | "builduser" -> fail 0 | "runner" -> fail 0 | node, ubuntu, jenkins, admin -> fail 0
+    "root"  -> fail 14 (auch HEAD: fail 14)  Build: "Profil-PDF ist veraltet oder ungueltig: Kennung <Benutzername> (Name in Objekt 21)"
+    "info", "page", "font", "type" -> fail 14
+    "user", "test", "data" -> fail 1: "AK4: unkomprimiert und kein Benutzername ..." (test/paket.test.mjs, liest os.userInfo)
+    Rechnername "localhost" -> fail 1: "pruefePdf rot bei: localhost im Hex-Textstring (UTF-16BE)"
+    Rechnername "font", "enrico" -> fail 14 ; <rechner>, "falk-pc" -> fail 0
+
+AK2 Pruefung scharf (npm run check -- <Kopie von dist>, gleich lange Ersetzung im Profil-PDF)
+  Fall                      Windows  Linux(<benutzer>)  Linux("Max Muster")  Meldung
+  kontrolle (unveraendert)  0 gruen  0 gruen            0 gruen              -
+  Title = Benutzername      1 rot    1 rot              1 rot                Kennung "<Benutzername>" (Zeichenkette in Objekt 1)
+  Title = benutzername klein 1 rot   1 rot              1 rot                dto.
+  Title = Rechnername       1 rot    1 rot              1 rot                Kennung "<Rechnername>" (Zeichenkette in Objekt 1)
+  Name /<benutzer ohne Leer> 1 rot   1 rot              1 rot                Kennung "<Benutzername>" (Name in Objekt 3)
+  Name mit #20              1 rot    1 rot (=raw)       1 rot                Kennung "<Benutzername>" (Name in Objekt 3) + (Dateikopf und Dictionaries)
+  Name /<rechner>           1 rot    1 rot              1 rot                Kennung "<Rechnername>" (Name in Objekt 3)
+  Linux (<benutzer>) mit Name /<win-benutzer #20>: 0 gruen (fremder Windows-Name ist unter Linux unbekannt)
+  Meldungen nennen den Namen nicht im Klartext.
+
+AK3 Regression
+  Windows: build gruen, paket --ersetzen, paket:pruefen gruen, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+  Linux:   build gruen, paket --ersetzen, paket:pruefen gruen (exit 0), SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+  git status nach den Laeufen unveraendert (nur M src/build/pdf.mjs, test/paket.test.mjs, test/pdf.test.mjs, ?? evidenz/T-004)

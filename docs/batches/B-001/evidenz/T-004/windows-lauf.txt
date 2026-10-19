@@ -1,0 +1,19 @@
+== Windows nach dem Fix
+Windows: Microsoft Windows [Version 10.0.26300.9711], Node v24.19.0
+ℹ tests 379
+ℹ pass 378
+ℹ fail 0
+ℹ skipped 1
+Pruefung der Lieferform: gruen
+19 Dateien, 313856 Byte, SHA-256 d05bb94d8794725534b5a95e0740eec19cc287bcedd4e94b068de7146a18c299
+Paketpruefung: gruen
+== Windows nach QA-Nacharbeit
+ℹ tests 384
+ℹ pass 383
+ℹ fail 0
+ℹ skipped 1
+== Windows nach Diff-Check-Nacharbeit
+ℹ tests 387
+ℹ pass 386
+ℹ fail 0
+ℹ skipped 1

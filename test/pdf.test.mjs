@@ -77,7 +77,6 @@ const faelle = [
   ['file: im Inhaltsstrom unkomprimiert', (o) => { o[7] = strom('', 'BT (file:///x) Tj ET'); }, /file:/],
   ['127.0.0.1 im Wert eines Dictionaries', (o) => { o[9] = o[9].replace('(Enrico Falk)', '(127.0.0.1)'); }, /127\.0\.0\.1/],
   ['localhost im Hex-Textstring (UTF-16BE)', (o) => { o[9] = o[9].replace(/\/Title <[^>]*>/, `/Title ${hexText('http://localhost:8412/')}`); }, /localhost/],
-  ['Benutzername in Name mit #20', (o) => { o[3] = o[3].replace('/Type0', '/Type0 /X /AI#20User'); }, /Benutzername/],
   ['Temp-Ordner ws-profil-', (o) => { o[7] = strom('', 'BT (\\ws-profil-abc) Tj ET', { flate: true }); }, /ws-/],
 ];
 for (const [name, aendere, erwartet] of faelle) {
@@ -241,7 +240,6 @@ const nacharbeit = [
     o[5] = o[5].replace('/FontName /AAAAAA+AtkinsonHyperlegible-Regular ', '');
   }, /ohne Name/],
   ['m3 Inline-Bild (BI ... ID ... EI) im Inhaltsstrom', (o) => { o[7] = strom('', 'q 10 0 0 10 0 0 cm BI /W 1 /H 1 /CS /G /BPC 8 ID \xff EI Q BT /F1 12 Tf <0001> Tj ET', { flate: true }); }, /Inline|Bild/],
-  ['m4 Rechnername im Inhaltsstrom', (o) => { o[7] = strom('', `BT (${os.hostname()}) Tj ET`, { flate: true }); }, /Rechnername/],
 ];
 for (const [name, aendere, erwartet] of nacharbeit) {
   test(`pruefePdf rot bei: ${name}`, () => {
@@ -261,5 +259,91 @@ test('pruefePdf: indirekter /URI auf einen https-String ist gueltig und wird in 
 
 test('pruefePdf auf dem eingecheckten Profil-PDF bleibt ohne Befund (Aktionen, Annotationen, Schriften nach den neuen Regeln)', () => {
   const pdf = fs.readFileSync(path.join(ROOT, 'src/profil/profil-enrico-falk.pdf'));
-  assert.deepEqual(befunde(pdf), []);
+  assert.deepEqual(befunde(pdf, { kennungen: { benutzer: 'jemand', rechner: 'build-runner-01' } }), []);
+});
+
+// ---- HF-001: Leck-Pruefung unabhaengig von Benutzer- und Rechnername der Umgebung (feste Testwerte, Windows wie Linux)
+// Nachstellung Linux: Benutzername ohne Leerzeichen und kurzer Rechnername der Umgebung (os.userInfo/os.hostname gemockt).
+const KENNUNGEN = [
+  { benutzer: 'AI User', rechner: 'Server-PC' },
+  { benutzer: 'jemand', rechner: 'build-runner-01' },
+];
+const leckFaelle = (k) => [
+  ['Benutzername im Klartext', (o) => { o[7] = strom('', `BT (C:/x/${k.benutzer}/y) Tj ET`, { flate: true }); }, /Benutzername/],
+  ['Benutzername in Name mit #20', (o) => { o[3] = o[3].replace('/Type0', `/Type0 /X /${k.benutzer.replace(/ /g, '#20')}`); }, /Benutzername/],
+  ['Benutzername mit %20', (o) => { o[9] = o[9].replace('(Enrico Falk)', `(file-x/Users/${k.benutzer.replace(/ /g, '%20')}/y)`.replace('/Users', '')); }, /Benutzername/],
+  ['Rechnername im Inhaltsstrom', (o) => { o[7] = strom('', `BT (${k.rechner}) Tj ET`, { flate: true }); }, /Rechnername/],
+];
+for (const k of KENNUNGEN) {
+  for (const [name, aendere, erwartet] of leckFaelle(k)) {
+    test(`HF-001 pruefePdf rot bei: ${name} (Testkennung "${k.benutzer}" / "${k.rechner}", Umgebung gemockt als Linux-Nutzer)`, (t) => {
+      t.mock.method(os, 'userInfo', () => ({ username: 'ci', uid: 1000, gid: 1000, shell: '/bin/sh', homedir: '/home/ci' }));
+      t.mock.method(os, 'hostname', () => 'ci');
+      const f = befunde(mini(aendere), { kennungen: k });
+      assert.ok(f.some((x) => erwartet.test(x)), `Befunde: ${JSON.stringify(f)}`);
+      assert.ok(!f.some((x) => x.toLowerCase().includes(k.benutzer.toLowerCase())), 'Meldung nennt den Namen nicht im Klartext');
+    });
+  }
+  test(`HF-001 pruefePdf gruen ohne Leck (Testkennung "${k.benutzer}")`, () => {
+    assert.deepEqual(befunde(basisPdf(), { kennungen: k }), []);
+  });
+}
+
+test('HF-001 ohne Option kennungen gelten weiter Benutzer- und Rechnername der Umgebung (Pruefung bleibt im Echtbetrieb scharf)', (t) => {
+  t.mock.method(os, 'userInfo', () => ({ username: 'Max Muster', uid: 1, gid: 1, shell: '', homedir: '' }));
+  t.mock.method(os, 'hostname', () => 'rechner-abc');
+  assert.ok(befunde(mini((o) => { o[3] = o[3].replace('/Type0', '/Type0 /X /Max#20Muster'); })).some((x) => /Benutzername/.test(x)));
+  assert.ok(befunde(mini((o) => { o[7] = strom('', 'BT (rechner-abc) Tj ET', { flate: true }); })).some((x) => /Rechnername/.test(x)));
+});
+
+test('HF-001 zu kurze Kennungen (unter 4 Zeichen) erzeugen keine Fehlalarme', () => {
+  assert.deepEqual(befunde(basisPdf(), { kennungen: { benutzer: 'ci', rechner: 'pc' } }), []);
+});
+
+// QA B1/B2 zu HF-001: typische Build-Umgebungen (Docker als root, Benutzer gleich einem Wort des Titels) ohne Fehlalarm
+for (const k of [
+  { benutzer: 'root', rechner: 'localhost' },
+  { benutzer: 'info', rechner: 'font' },
+  { benutzer: 'enrico', rechner: 'page' },
+]) {
+  test(`HF-001 kein Fehlalarm bei Strukturwort oder Titelwort als Kennung ("${k.benutzer}" / "${k.rechner}"), mit Hinweis`, () => {
+    const r = pruefePdf(basisPdf(), { kennungen: k, erwartung: { Title: 'Enrico Falk – Profil', Author: 'Enrico Falk' } });
+    assert.deepEqual(r.fehler.filter((f) => /Kennung|Benutzername|Rechnername/.test(f)), []);
+    if (k.rechner !== 'localhost') assert.ok(r.hinweise.length >= 1, 'nicht gesuchte Kennung wird als Hinweis genannt');
+  });
+}
+
+test('HF-001 Rechnername "localhost": das feste Muster bleibt wirksam und heisst weiter localhost', () => {
+  const f = befunde(mini((o) => { o[9] = o[9].replace(/\/Title <[^>]*>/, `/Title ${hexText('http://localhost:8412/')}`); }), { kennungen: { benutzer: 'jemand', rechner: 'localhost' } });
+  assert.ok(f.some((x) => /localhost/.test(x)), JSON.stringify(f));
+});
+
+test('HF-001 Kennung nur als ganzes Wort: "jemand" schlaegt in "jemandem" nicht an, in "/jemand/" schon', () => {
+  const k = { benutzer: 'jemand', rechner: 'build-runner-01' };
+  assert.deepEqual(befunde(mini((o) => { o[7] = strom('', 'BT (jemandem) Tj ET', { flate: true }); }), { kennungen: k }), []);
+  assert.ok(befunde(mini((o) => { o[7] = strom('', 'BT (x/jemand/y) Tj ET', { flate: true }); }), { kennungen: k }).some((x) => /Benutzername/.test(x)));
+});
+
+// Diff-Check HF-001: Benutzername aus mehreren Woertern des Titels, Varianten als Strukturname, Hinweise
+test('HF-001 Benutzer "Enrico Falk" (Wortfolge aus Titel/Autor): kein Fehlalarm, Hinweis', () => {
+  const pdf = fs.readFileSync(path.join(ROOT, 'src/profil/profil-enrico-falk.pdf'));
+  const erwartung = { Title: 'Enrico Falk – Profil', Author: 'Enrico Falk' };
+  const r = pruefePdf(pdf, { erwartung, kennungen: { benutzer: 'Enrico Falk', rechner: 'build-runner-01' } });
+  assert.deepEqual(r.fehler, []);
+  assert.ok(r.hinweise.some((h) => /Benutzername/.test(h)));
+  for (const benutzer of ['enrico', 'falk', 'profil']) {
+    assert.deepEqual(befunde(pdf, { erwartung, kennungen: { benutzer, rechner: 'build-runner-01' } }), [], benutzer);
+  }
+  // ohne Erwartung bleibt ein Name im Titel ein Befund (keine Ausnahme aus den eigenen Info-Werten der Datei)
+  assert.ok(befunde(pdf, { kennungen: { benutzer: 'Enrico Falk', rechner: 'build-runner-01' } }).some((x) => /Benutzername/.test(x)));
+});
+
+test('HF-001 Variante als Strukturname ("Font Name" -> fontname) ohne Fehlalarm; andere Varianten bleiben gesucht', () => {
+  assert.deepEqual(befunde(basisPdf(), { kennungen: { benutzer: 'Font Name', rechner: 'build-runner-01' } }), []);
+  const f = befunde(mini((o) => { o[7] = strom('', 'BT (C:/x/font%20name/y) Tj ET', { flate: true }); }), { kennungen: { benutzer: 'Font Name', rechner: 'build-runner-01' } });
+  assert.ok(f.some((x) => /Benutzername/.test(x)), JSON.stringify(f));
+});
+
+test('HF-001 checkDist gibt Hinweise der PDF-Pruefung weiter', () => {
+  assert.ok(Array.isArray(pruefePdf(basisPdf()).hinweise));
 });

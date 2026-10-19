@@ -322,21 +322,48 @@ const AKTIONEN_ERLAUBT = new Set(['URI', 'GoTo']);
 const SCHRIFTEN_ERLAUBT = ['AtkinsonHyperlegible', 'BricolageGrotesque'];
 const A4 = [595.28, 841.89];
 
-// Namen, die nie im Klartext in Meldungen stehen sollen (Benutzername, Rechnername): Muster -> Anzeige
-const ANZEIGE = new Map();
-function leckMuster() {
-  const m = ['file:', '127.0.0.1', 'localhost', '\\users\\', '/users/', '/home/', 'appdata', '\\temp\\', '/tmp/', '\\ws-', '/ws-'];
-  let u = '';
-  try { u = os.userInfo().username; } catch { /* kein Benutzername ermittelbar */ }
-  if (u.length >= 4) {
-    for (const v of [u, u.replace(/ /g, '%20'), u.replace(/ /g, '#20'), u.replace(/ /g, '')]) { m.push(v.toLowerCase()); ANZEIGE.set(v.toLowerCase(), '<Benutzername>'); }
-  }
-  try {
-    const h = os.hostname().toLowerCase();
-    if (h.length >= 4) { m.push(h); ANZEIGE.set(h, '<Rechnername>'); }
-  } catch { /* kein Rechnername ermittelbar */ }
-  return [...new Set(m)];
+// Kennungen der Umgebung (Benutzer- und Rechnername); Tests uebergeben feste Werte (opt.kennungen), damit sie auf jeder Plattform gleich laufen (HF-001).
+function umgebungsKennungen() {
+  const k = { benutzer: '', rechner: '' };
+  try { k.benutzer = os.userInfo().username; } catch { /* kein Benutzername ermittelbar */ }
+  try { k.rechner = os.hostname(); } catch { /* kein Rechnername ermittelbar */ }
+  return k;
 }
+
+// Woerter, die in jeder Chrome-PDF als Strukturnamen stehen (/Root, /Info, /Page, /Font ...). Ein Benutzer- oder Rechnername,
+// der einem davon gleicht (z. B. "root" in Docker), ist nicht von der Struktur unterscheidbar und wird nicht gesucht (HF-001, QA B1).
+const PDF_STRUKTUR = new Set(('annot annots ascent basefont border capheight catalog charprocs cidfonttype2 cidsysteminfo cidtogidmap '
+  + 'contents count creationdate creator descendantfonts descent differences document encoding extgstate filter firstchar flags '
+  + 'flatedecode font fontbbox fontdescriptor fontfamily fontfile2 fontmatrix fontname fontstretch fontweight identity info '
+  + 'italicangle kids lang lastchar length link markinfo mediabox moddate nums objr ordering page pages parent procset producer '
+  + 'rect registry resources root size stemv structelem structparent structparents structtreeroot subtype supplement tabs text '
+  + 'title tounicode type type0 type3 viewerpreferences widths xheight action uri goto names dests xobject image').split(' '));
+
+// Muster fuer die Leck-Suche. Feste Pfadmuster als Teilzeichenkette; Benutzer- und Rechnername (ab 4 Zeichen) nur als ganzes Wort,
+// nie im Klartext in Meldungen, und nicht, wenn sie einem Strukturnamen oder einem Wort aus dem erwarteten Titel/Autor gleichen
+// (z. B. Benutzer "enrico" bei Titel "Enrico Falk – Profil"); solche Kennungen stehen in ergebnis.hinweise.
+function leckMuster({ benutzer = '', rechner = '' }, erwarteterText, hinweise) {
+  const m = ['file:', '127.0.0.1', 'localhost', '\\users\\', '/users/', '/home/', 'appdata', '\\temp\\', '/tmp/', '\\ws-', '/ws-']
+    .map((x) => ({ muster: x, anzeige: x, wort: false }));
+  const fest = new Set(m.map((x) => x.muster));
+  const kennung = (wert, anzeige, varianten) => {
+    if (wert.length < 4) return;
+    let ausgelassen = false;
+    for (const v of varianten(wert.toLowerCase())) {
+      if (fest.has(v)) continue;
+      // je Variante: Strukturname (z. B. "Font Name" -> "fontname") oder ganzes Wort/ganze Wortfolge im erwarteten Titel/Autor
+      if (PDF_STRUKTUR.has(v) || findeMuster(erwarteterText, { muster: v, wort: true })) { ausgelassen = true; continue; }
+      m.push({ muster: v, anzeige, wort: true });
+    }
+    if (ausgelassen) hinweise.push(`${anzeige} (oder eine Schreibweise davon) nicht gesucht: gleicht einem Strukturnamen oder dem erwarteten Titel/Autor`);
+  };
+  kennung(benutzer, '<Benutzername>', (k) => [...new Set([k, k.replace(/ /g, '%20'), k.replace(/ /g, '#20'), k.replace(/ /g, '')])]);
+  kennung(rechner, '<Rechnername>', (k) => [k]);
+  return m;
+}
+
+const RE_ESC = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const findeMuster = (text, { muster, wort }) => (wort ? new RegExp(`(?<![a-z0-9])${RE_ESC(muster)}(?![a-z0-9])`).test(text) : text.includes(muster));
 
 const utf16be = (b) => {
   let s = '';
@@ -357,7 +384,7 @@ const INLINE_BILD = /(?:^|[\s\]>)])BI(?=[\s/])/;
 export function pruefePdf(buf, opt = {}) {
   const o = { maxBytes: 1000000, maxSeiten: 2, erwartung: null, schriften: SCHRIFTEN_ERLAUBT, ...opt };
   const fehler = [];
-  const ergebnis = { fehler, info: {}, seiten: 0, schriften: [], uris: [], bytes: buf.length };
+  const ergebnis = { fehler, hinweise: [], info: {}, seiten: 0, schriften: [], uris: [], bytes: buf.length };
   if (buf.length > o.maxBytes) fehler.push(`Groesse ${buf.length} Byte ueber dem Limit ${o.maxBytes}`);
   let pdf;
   try {
@@ -471,9 +498,14 @@ export function pruefePdf(buf, opt = {}) {
     }
   }
   haystacks.push(['Dateikopf und Dictionaries', maske.toString('latin1').toLowerCase()]);
-  for (const muster of leckMuster()) {
-    const wo = haystacks.find(([, t]) => t.includes(muster));
-    if (wo) melde(`lokaler Pfad oder Kennung "${ANZEIGE.get(muster) ?? muster}" in der Datei (${wo[0].replace(muster, '<>')})`);
+  // Grundlage fuer Ausnahmen: nur die vorgegebene Erwartung (Build, check, paket:pruefen geben sie immer mit) und, wenn sie vorliegt,
+  // die erlaubten https-/mailto-Verweise (z. B. Benutzer "Enrico Falk" -> "enricofalk" in https://enricofalk.de/). Die eigenen Info-Werte der Datei nie.
+  const erwarteterText = o.erwartung
+    ? [...Object.values(o.erwartung), ...ergebnis.uris.filter((u) => /^(https|mailto):/i.test(u))].join(' | ').toLowerCase()
+    : '';
+  for (const lm of leckMuster(o.kennungen ?? umgebungsKennungen(), erwarteterText, ergebnis.hinweise)) {
+    const wo = haystacks.find(([, t]) => findeMuster(t, lm));
+    if (wo) melde(`lokaler Pfad oder Kennung "${lm.anzeige}" in der Datei (${wo[0].replace(lm.muster, '<>')})`);
   }
 
   // Schriften: jeder vorhandene Name (Type0: BaseFont, Nachkomme-BaseFont, FontDescriptor-FontName; sonst BaseFont und FontName) muss erlaubt sein, mindestens einer muss existieren.

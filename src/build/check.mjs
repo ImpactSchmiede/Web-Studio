@@ -81,9 +81,10 @@ export function checkDist(dir, opts = {}) {
   const o = { ...STANDARD, ...opts };
   const root = path.resolve(dir);
   const fehler = [];
+  const hinweise = [];
   const dateien = [];
   if (!fs.existsSync(root) || !fs.statSync(root).isDirectory()) {
-    return { fehler: [`${dir}: Ordner fehlt`], dateien, summe: 0 };
+    return { fehler: [`${dir}: Ordner fehlt`], hinweise, dateien, summe: 0 };
   }
   sammle(root, root, fehler, dateien);
   dateien.sort((a, b) => (a.pfad < b.pfad ? -1 : 1));
@@ -104,6 +105,7 @@ export function checkDist(dir, opts = {}) {
     if (path.extname(d.pfad).toLowerCase() !== '.pdf') continue;
     const r = pruefePdf(fs.readFileSync(path.join(root, d.pfad)), { maxBytes: o.pdfMaxBytes, erwartung: o.pdfErwartung });
     for (const f of r.fehler) fehler.push(`${d.pfad}: PDF: ${f}`);
+    for (const h of r.hinweise) hinweise.push(`${d.pfad}: PDF: ${h}`);
   }
 
   const verweise = []; // { von, ref }
@@ -172,7 +174,7 @@ export function checkDist(dir, opts = {}) {
     if (!ids.get(rel).has(name)) melde(`${von}: Anker fehlt: ${r} (kein id="${name}" in ${rel})`);
   }
 
-  return { fehler, dateien, summe, externe: [...externe].map(([url, von]) => ({ url, von })) };
+  return { fehler, hinweise, dateien, summe, externe: [...externe].map(([url, von]) => ({ url, von })) };
 }
 
 function pruefeHtml(rel, text, melde, ref, link) {

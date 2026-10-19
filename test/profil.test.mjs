@@ -3,7 +3,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { build, profilAktuell } from '../src/build/build.mjs';
@@ -196,7 +195,7 @@ test('AK2: keine Browser-Kennung, kein Benutzername, kein Pfad, kein lokaler Hos
   for (const alt of ['HeadlessChrome', 'Skia', 'Mozilla', 'file:', '127.0.0.1', 'localhost', '/Users/', '\\Users\\', 'AppData']) {
     assert.ok(!b.toLowerCase().includes(alt.toLowerCase()), alt);
   }
-  assert.deepEqual(pruefePdf(pdf, { maxBytes: konfig.profilPdf.maxBytes, erwartung: { Title: pdfTitel(inhalt), Author: inhalt.kopf.name } }).fehler, []);
+  assert.deepEqual(pruefePdf(pdf, { maxBytes: konfig.profilPdf.maxBytes, erwartung: { Title: pdfTitel(inhalt), Author: inhalt.kopf.name }, kennungen: { benutzer: 'jemand', rechner: 'build-runner-01' } }).fehler, []);
 });
 
 test('AK2: Schriften eingebettet mit ToUnicode (Textauswahl), nur Atkinson Hyperlegible und Bricolage Grotesque, Verweise nur https/mailto', () => {
@@ -401,11 +400,12 @@ test('AK3: scripts/build.mjs bricht ab, wenn die PDF veraltet ist (Hinweis npm r
 
 // ---- Nacharbeit T-003 (Diff-Check, QA)
 test('m4: der gelesene Text der PDF enthaelt weder Benutzername noch \Users\ noch den Rechnernamen', () => {
+  // Feste Pfadmuster im gelesenen Text; Benutzer- und Rechnername der Umgebung prueft pruefePdf mit seinen Regeln (HF-001).
   const alles = `${text}\n${pdf.toString('latin1')}`.toLowerCase();
-  const u = os.userInfo().username.toLowerCase();
   const bs = String.fromCharCode(92);
-  for (const verboten of [u, u.replace(/ /g, ''), `${bs}users${bs}`, '/users/', os.hostname().toLowerCase()]) {
-    if (verboten.length >= 4) assert.ok(!alles.includes(verboten), `in der PDF: ${verboten}`);
+  for (const verboten of [`${bs}users${bs}`, '/users/', '/home/', 'appdata']) assert.ok(!alles.includes(verboten), `in der PDF: ${verboten}`);
+  for (const k of [{ benutzer: 'AI User', rechner: 'Server-PC' }, { benutzer: 'jemand', rechner: 'build-runner-01' }]) {
+    assert.deepEqual(pruefePdf(pdf, { kennungen: k, erwartung: { Title: pdfTitel(inhalt), Author: inhalt.kopf.name } }).fehler, [], `Kennung ${k.benutzer}`);
   }
 });
 

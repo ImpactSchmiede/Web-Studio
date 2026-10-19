@@ -10,6 +10,7 @@ const inhalt = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/content/de.json')
 const dir = process.argv[2] ? path.resolve(process.argv[2]) : path.join(ROOT, 'dist');
 const r = checkDist(dir, { endungen: k.erlaubteEndungen, maxBytes: k.maxBytes, maxFiles: k.maxDateien, pdfMaxBytes: k.profilPdf.maxBytes, pdfErwartung: pdfErwartung(inhalt) });
 if (r.dateien.length) console.log(formatListe(r.dateien, r.summe));
+for (const h of r.hinweise) console.log(`Hinweis: ${h}`);
 if (r.fehler.length) {
   console.error(`\n${r.fehler.length} Befund(e):\n - ${r.fehler.join('\n - ')}`);
   process.exitCode = 1;

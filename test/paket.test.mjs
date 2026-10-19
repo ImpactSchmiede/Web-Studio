@@ -72,7 +72,9 @@ test('AK4: unkomprimiert und kein Benutzername, kein Pfad, keine Zeit ausser dem
   const text = t.toString('latin1');
   assert.ok(text.includes('<!doctype html>'), 'Klartext lesbar, also unkomprimiert');
   assert.notEqual(t[0], 0x1f);
-  for (const verboten of [os.userInfo().username, 'C:\\Users', os.tmpdir()]) assert.ok(!text.includes(verboten), verboten);
+  // Nur feste, umgebungsunabhaengige Muster (HF-001): echte Benutzernamen wie "user" oder "data" kommen zufaellig im Inhalt vor.
+  // Dass Kopfzeilen keinen Benutzernamen tragen, pruefen die uname/gname-Tests unten.
+  for (const verboten of ['C:\\Users', '\\Users\\', '/Users/', '/home/', 'AppData', os.tmpdir()]) assert.ok(!text.includes(verboten), verboten);
 });
 
 test('AK4: zweimal gepackt ergibt dieselben Bytes; Dateiinhalt ist bytegleich zu dist', () => {
