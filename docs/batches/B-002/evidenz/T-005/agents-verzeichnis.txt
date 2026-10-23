@@ -1,0 +1,12 @@
+$ ls -la .claude/agents
+total 21
+drwxr-xr-x 1 <benutzer> 197121   0 Oct 23 18:07 .
+drwxr-xr-x 1 <benutzer> 197121   0 Oct 11 13:51 ..
+-rw-r--r-- 1 <benutzer> 197121 893 Oct 11 19:08 planer.md.vor-konsistenz
+-rw-r--r-- 1 <benutzer> 197121 680 Oct 11 13:51 qa.md
+-rw-r--r-- 1 <benutzer> 197121 959 Oct 23 18:07 reviewer.md
+-rw-r--r-- 1 <benutzer> 197121 912 Oct 11 19:08 umsetzer.md.vor-konsistenz
+
+cmp reviewer.md gegen Rahmen-Vorlage vorlage-projekt/repo/.claude/agents/reviewer.md: gleich
+git diff a4a7df7 -- .claude/agents/qa.md: leer (unveraendert)
+git diff a4a7df7 --stat -- .claude/settings.json .claude/hooks .claude/protected-files.conf: leer (AK3)

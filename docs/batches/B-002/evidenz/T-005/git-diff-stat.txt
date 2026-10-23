@@ -1,0 +1,9 @@
+$ git diff --stat HEAD (nach git add der eigenen Dateien)
+ .claude/agents/planer.md                 | 12 ----------
+ .claude/agents/reviewer.md               | 11 +++++----
+ .claude/agents/umsetzer.md               | 12 ----------
+ CLAUDE.md                                |  7 +++++-
+ docs/PROJEKT.md                          |  2 ++
+ docs/batches/B-002/evidenz/T-005/plan.md | 31 ++++++++++++++++++++++++++
+ test/prozess.test.mjs                    | 38 ++++++++++++++++++++++++++++++++
+ 7 files changed, 82 insertions(+), 31 deletions(-)

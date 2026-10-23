@@ -24,6 +24,8 @@
 
 ## Tickets
 - Wie Rahmen: Ticket = Thread `_Austausch\Web-Studio\<Batch>\T-<Nr>_<kurz>.md`; am Batch-Ende nach `docs/batches/<Batch>/`.
+- Batch-Ablauf wie Rahmen (`Batch-Prozess.md` 5b): Mission → Batch-Plan mit Plan-Gate des Co-PO → Architektur-Review (Agent `reviewer`; Blocker/Major vor dem ersten Ticket beheben, Minor ins Backlog) → Tickets nacheinander → Härtung → Abnahme → Merge. Am Vorhabenende Schlusslauf über die Gesamtarchitektur (`reviewer`). Bericht je Review unter `docs/batches/<Batch>/evidenz/`.
+- Agenten, Workflow, Modell: wie Rahmen (`RAHMEN-STAND.md` „Subagenten, Workflow, Modell“, `KONZEPT-AGENTEN.md`). Sub-Agenten nur `reviewer` (Architektur-Review) und `qa` (QA, Black-Box je Ticket); Plan, Umsetzung und Selbsttest rechts und links macht Code selbst; Modell und Aufwand nach Rahmen.
 
 ## Guidelines
 - Wie Rahmen (`Autonomes Arbeiten\guidelines\`). Abweichungen: `docs/guidelines/` (bisher keine).

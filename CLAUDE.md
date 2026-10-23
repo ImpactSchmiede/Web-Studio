@@ -14,7 +14,12 @@ Konzipiert/designt (UX/UI, Content), setzt um, pflegt und verwaltet alle Website
 - VPS (Webseite, Dienst): nur ueber eine Anfrage des PO an den PO VPS-Administration (Vorlage `C:\Users\AI User\Projekte\_Austausch\VPS-Administration\Anfragen\_VORLAGE.md`); kein SSH, keine Zugangsdaten, nie selbst am Server installieren.
 - **Projekt-Steckbrief (Grunddaten, Abweichungen, Befehle, Testumgebung, Leitplanken): `docs/PROJEKT.md`**
 
-Bei Widerspruch gelten Rahmen und `docs/PROJEKT.md`. Sub-Agenten `reviewer` und `qa` sind an den Pflicht-Stellen der Pipelines vorgeschrieben; sonst entscheidet Code selbst nach `RAHMEN-STAND.md` (Subagenten, Workflow, Modell). Workflow und Modelle über Opus 5.5 nur mit Enricos Freigabe (`guidelines\ENTSCHEIDUNGSVORLAGE.md`).
+Bei Widerspruch gelten Rahmen und `docs/PROJEKT.md`.
+
+**Agenten, Workflow, Modell: wie Rahmen** (`RAHMEN-STAND.md` „Subagenten, Workflow, Modell“, `KONZEPT-AGENTEN.md`, `Batch-Prozess.md` 5b):
+- Sub-Agenten nur an zwei Stellen: `reviewer` für das Architektur-Review (zu Beginn jedes Batches nach dem Batch-Plan, am Vorhabenende als Schlusslauf über die Gesamtarchitektur) und `qa` für die QA (Black-Box je Ticket). Definitionen in `.claude/agents/`.
+- Plan und Umsetzung macht Code selbst im Hauptkontext, danach den Selbsttest rechts und links (`guidelines\SELF_REVIEW.md` Teil B).
+- Modell und Aufwand nach Rahmen (Standard Opus `medium`). Workflow und Modelle über Opus 5.5 nur mit Enricos Freigabe (`guidelines\ENTSCHEIDUNGSVORLAGE.md`).
 
 ## Beim Session-Start
 ```

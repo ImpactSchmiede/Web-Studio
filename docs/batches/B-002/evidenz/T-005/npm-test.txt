@@ -1,0 +1,12 @@
+$ npm test
+✔ T-005 AK1: CLAUDE.md und PROJEKT.md verweisen fuer Agenten, Workflow und Modell auf den Rahmen (2.0998ms)
+✔ T-005 AK2: .claude/agents enthaelt nur qa.md und reviewer.md (Architektur-Review), qa.md unveraendert (46.8747ms)
+✔ T-005 AK4: Batch-Ablauf nennt Architektur-Review nach dem Batch-Plan und den Schlusslauf Gesamtarchitektur (0.5437ms)
+ℹ tests 390
+ℹ suites 0
+ℹ pass 389
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 3196.2376
